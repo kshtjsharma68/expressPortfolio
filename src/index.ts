@@ -1,5 +1,5 @@
 import express from "express";
-import path from "path";
+import {resolve} from "path";
 
 // Extracting
 const app = express();
@@ -8,12 +8,17 @@ const port = process.env.PORT || 3000;
 
 // Static files
 // console.log(path.join(__dirname.))
-app.use(express.static('../assets'))
-// Views
-app.set("views", path.join(__dirname, "views"))
-app.set("view engine", "jade")
+app.use(express.static('public'))
 
-express.Router().get('/', (req, res) => {
+// app.engine('pug', require('pug')._express)
+
+// app.useStaticAssets(resolve('./src/public'));
+// app.setBaseViewsDir();
+// Views
+app.set("views", resolve('./src/views') )
+app.set("view engine", 'pug')
+
+app.get('/', (req, res) => {
     res.render("index")
 })
 
