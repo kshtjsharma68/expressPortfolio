@@ -25,9 +25,14 @@ class Migrations {
 
         return await new Promise((resolve, reject) => {
             try {
-                const queries = [ROLE_SQL, USER_SQL]; console.log(queries)
-                queries.forEach((sql, index) => { cosnole.log(sql)
-                    connection.query(sql, (error, result, fields) => { 
+                const queries = [ROLE_SQL, USER_SQL]; 
+                connection.query(`CREATE TABLE if not exists roles (
+                    id TINYINT unsigned NOT NULL AUTO_INCREMENT,
+                    role_name varchar(15) ,
+                    role_description varchar(120) ,
+                    PRIMARY KEY (id))`)
+                queries.forEach((sql, index) => { 
+                    connection.query(`${sql}`, (error, rows, fields) => {  console.log({error, rows, fields})
                         if(error) {
                             console.log(
                                 `error in query queryIndex ${index} error =${JSON.stringify(error, null, 2)}`
@@ -39,7 +44,7 @@ class Migrations {
                         }
                     })
                    });
-            } catch (e) {
+            } catch (e) {console.log(e)
                 reject(JSON.stringify(e, null, 2))
             }
         })
