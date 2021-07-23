@@ -7,13 +7,11 @@ const express_1 = __importDefault(require("express"));
 const path_1 = require("path");
 // Extracting
 const app = express_1.default();
+// to parse json data from request object
+app.use(express_1.default.json());
 const port = process.env.PORT || 3000;
 // Static files
-// console.log(path.join(__dirname.))
 app.use(express_1.default.static('public'));
-// app.engine('pug', require('pug')._express)
-// app.useStaticAssets(resolve('./src/public'));
-// app.setBaseViewsDir();
 // Views
 app.set("views", path_1.resolve('./src/views'));
 app.set("view engine", 'pug');
