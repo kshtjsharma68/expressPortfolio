@@ -1,5 +1,5 @@
 
-const bcrypt = require("bcrypt")
+import bcrypt from "bcrypt"
 
 /**
  * Set password for admin user

@@ -1,5 +1,5 @@
 require("dotenv").config();
-const dbConnection = require("../database/connection.ts");
+const dbConnection = require("../database/connection.ts")
 const baseMigrations = require("../database/migrations/all.ts")
 
 // Group of migrations
@@ -10,9 +10,15 @@ const Migrations = [baseMigrations];
 const runMigrations = async() => {
     console.log('Runnig migrations');
     try {
-        Migrations.forEach((migration) => {
-            migration.up(dbConnection)
-        });
+        await Promise.all(
+        Migrations.map(async(migration) => {
+            await migration.up(dbConnection)
+        })
+        ).catch(e => {
+            console.log('Migration Error: '+JSON.stringify(e, null, 2))
+        })
+
+        dbConnection.end()
     } catch (e) {
         console.log('Migration error: ' + JSON.stringify(e, null, 2))
     }

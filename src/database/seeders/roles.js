@@ -4,4 +4,4 @@ const ROLES_DATA = `insert into roles (role_id,role_name,role_description)
             (2,'User','User Have restricted'),
             `;
 
-module.exports = ROLES_DATA;        
+module.exports = ROLES_DATA;

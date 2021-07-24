@@ -1,15 +1,14 @@
 
-const RolesSeeder = require('./roles.ts');
-const UsersSeeder = require('./users.ts')
+import RolesSeeder from './roles';
+import UsersSeeder from './users';
 
 class Seeders {
-
     /**
      * Run seeders on db
      */
     up(connection) {
         return new Promise((resolve, reject) => {
-            let allSeeders = [RolesSeeder, UsersSeeder]
+            const allSeeders = [RolesSeeder, UsersSeeder]
             try{
                 allSeeders.forEach((seed, index) => {
                     connection.query(seed, (error, result, field) => {
@@ -28,7 +27,7 @@ class Seeders {
             } catch(e) {
                 reject(JSON.stringify(e, null, 2))
             }
-            
+
         })
     }
 }
