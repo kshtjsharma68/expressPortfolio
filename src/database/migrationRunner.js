@@ -1,6 +1,6 @@
 require("dotenv").config();
-const dbConnection = require("../database/connection.ts")
-const baseMigrations = require("../database/migrations/all.ts")
+const dbConnection = require("./connection.js")
+const baseMigrations = require("./migrations/all.js")
 
 // Group of migrations
 const Migrations = [baseMigrations];

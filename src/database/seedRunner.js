@@ -1,5 +1,5 @@
 require("dotenv").config();
-const dbConnection = require("../database/connection.ts")
+const dbConnection = require("./connection.js")
 const seeder = require("../database/seeders/all.ts")
 
 // Group of seeds
