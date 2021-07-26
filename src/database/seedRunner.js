@@ -1,6 +1,6 @@
 require("dotenv").config();
 const dbConnection = require("./connection.js")
-const seeder = require("../database/seeders/all.ts")
+const seeder = require("../database/seeders")
 
 // Group of seeds
 const Seeders = [seeder];
@@ -27,8 +27,10 @@ const runSeeders = async() => {
    process.exit(0)
 }
 
-const args = process.argv;
+// const args = process.argv;
 
-if(args.indexOf('up') !== -1){
-    runSeeders()
-}
+// if(args.indexOf('up') !== -1){
+//     runSeeders()
+// }
+
+runSeeders()

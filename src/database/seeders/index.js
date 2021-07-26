@@ -1,6 +1,6 @@
 
-import RolesSeeder from './roles';
-import UsersSeeder from './users';
+var RolesSeeder = require('./roles');
+var UsersSeeder = require('./users');
 
 class Seeders {
     /**
@@ -19,10 +19,11 @@ class Seeders {
                         } else {
                             console.log(`${Object.keys({seed})[0]} Seeder ran successfully.`)
                         }
-                        if(index + 1 === allSeeders.length) {
-                            resolve()
-                        }
                     })
+
+                    if(index + 1 === allSeeders.length) {
+                        resolve()
+                    }
                 })
             } catch(e) {
                 reject(JSON.stringify(e, null, 2))

@@ -4,7 +4,7 @@ require("dotenv").config();
 
 var dbConnection = require("./connection.js");
 
-var seeder = require("../database/seeders/all.ts"); // Group of seeds
+var seeder = require("../database/seeders"); // Group of seeds
 
 
 var Seeders = [seeder];
@@ -57,10 +57,10 @@ var runSeeders = function runSeeders() {
       }
     }
   }, null, null, [[1, 7]]);
-};
+}; // const args = process.argv;
+// if(args.indexOf('up') !== -1){
+//     runSeeders()
+// }
 
-var args = process.argv;
 
-if (args.indexOf('up') !== -1) {
-  runSeeders();
-}
+runSeeders();
