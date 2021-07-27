@@ -2,7 +2,7 @@
 
 require("dotenv").config();
 
-var dbConnection = require("./connection.js");
+var dbConnection = require("./connection");
 
 var seeder = require("../database/seeders"); // Group of seeds
 
@@ -57,10 +57,6 @@ var runSeeders = function runSeeders() {
       }
     }
   }, null, null, [[1, 7]]);
-}; // const args = process.argv;
-// if(args.indexOf('up') !== -1){
-//     runSeeders()
-// }
-
+};
 
 runSeeders();

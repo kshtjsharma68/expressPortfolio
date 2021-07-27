@@ -10,20 +10,22 @@ let connection = mysql.createConnection({
     multipleStatements: true
 });
 
-try {
-    connection.connect(err => {
-        if(err) {
-            console.log(JSON.stringify(err));
-        } else {
-            console.log('Sucessfully connected to database')
-        }
-    });
-    // To do query
-    connection.on('enqueue', sequence => {
-        // console.log('sequence',sequence.sql)
-    })
-} catch(err) {
-    console.log(`Unable to connect with the database with these configuration.Error: ${err.message}`)
-}
+module.exports = function() {
+    try { 
+        connection.connect(err => {
+            if(err) {
+                console.log(JSON.stringify(err));
+            } else {
+                console.log('Sucessfully connected to database')
+            }
+        });
+        // To do query
+        connection.on('enqueue', sequence => {
+            // console.log('sequence',sequence.sql)
+        })
+    } catch(err) {
+        console.log(`Unable to connect with the database with these configuration.Error: ${err.message}`)
+    }
 
-module.exports = connection;
+    return connection
+}();

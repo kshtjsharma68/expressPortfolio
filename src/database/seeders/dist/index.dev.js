@@ -29,7 +29,9 @@ function () {
 
         try {
           allSeeders.forEach(function (seed, index) {
-            connection.query(seed, function (error, result, field) {
+            connection.query("".concat(seed), function (error, result, field) {
+              console.log('herer');
+
               if (error) {
                 console.log("error in query queryIndex ".concat(index, " error =").concat(JSON.stringify(error, null, 2)));
               } else {
@@ -44,6 +46,7 @@ function () {
             }
           });
         } catch (e) {
+          console.log(e);
           reject(JSON.stringify(e, null, 2));
         }
       });

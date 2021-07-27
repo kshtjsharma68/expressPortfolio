@@ -13,19 +13,21 @@ var connection = mysql.createConnection({
   multipleStatements: true
 });
 
-try {
-  connection.connect(function (err) {
-    if (err) {
-      console.log(JSON.stringify(err));
-    } else {
-      console.log('Sucessfully connected to database');
-    }
-  }); // To do query
+module.exports = function () {
+  try {
+    connection.connect(function (err) {
+      if (err) {
+        console.log(JSON.stringify(err));
+      } else {
+        console.log('Sucessfully connected to database');
+      }
+    }); // To do query
 
-  connection.on('enqueue', function (sequence) {// console.log('sequence',sequence.sql)
-  });
-} catch (err) {
-  console.log("Unable to connect with the database with these configuration.Error: ".concat(err.message));
-}
+    connection.on('enqueue', function (sequence) {// console.log('sequence',sequence.sql)
+    });
+  } catch (err) {
+    console.log("Unable to connect with the database with these configuration.Error: ".concat(err.message));
+  }
 
-module.exports = connection;
+  return connection;
+}();

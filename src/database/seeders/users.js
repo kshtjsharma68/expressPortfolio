@@ -14,7 +14,7 @@ const AdminPassword = async() => {
     });
 }
 const ADMIN_DATA = _ => {
-    return `insert into users (id,role_id,first_name, last_name, email, profile_image, password) values (1,1,'Ad', 'min', 'admin@admin.com', '', '${AdminPassword()}') `;
+    return `insert into users (id,role_id,first_name, last_name, email, profile_image, password) values (1,1,'Ad', 'min', 'admin@admin.com', '', 'admin123') `;
 };
 
-module.exports = ADMIN_DATA;
+module.exports = ADMIN_DATA();

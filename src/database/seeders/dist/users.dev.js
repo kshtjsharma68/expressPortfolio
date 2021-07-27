@@ -32,7 +32,7 @@ var AdminPassword = function AdminPassword() {
 };
 
 var ADMIN_DATA = function ADMIN_DATA(_) {
-  return "insert into users (id,role_id,first_name, last_name, email, profile_image, password) values (1,1,'Ad', 'min', 'admin@admin.com', '', '".concat(AdminPassword(), "') ");
+  return "insert into users (id,role_id,first_name, last_name, email, profile_image, password) values (1,1,'Ad', 'min', 'admin@admin.com', '', 'admin123') ";
 };
 
-module.exports = ADMIN_DATA;
+module.exports = ADMIN_DATA();

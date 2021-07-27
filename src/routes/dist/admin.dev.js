@@ -6,7 +6,7 @@ var adminController = require('../controllers/admin.controller'); // Middleware 
 
 
 router.use(function (req, res, next) {
-  console.log('Middleware for logging admin request:' + JSON.stringify(req.body, null, 2));
+  // console.log('Middleware for logging admin request:' + JSON.stringify(req.body, null, 2));
   next();
 });
 router.get('/', adminController.index);

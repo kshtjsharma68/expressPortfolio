@@ -9,9 +9,9 @@ class Seeders {
     up(connection) {
         return new Promise((resolve, reject) => {
             const allSeeders = [RolesSeeder, UsersSeeder]
-            try{
-                allSeeders.forEach((seed, index) => {
-                    connection.query(seed, (error, result, field) => {
+            try{  
+                allSeeders.forEach((seed, index) => { 
+                    connection.query(`${seed}`, (error, result, field) => { console.log('herer')
                         if(error) {
                             console.log(
                                 `error in query queryIndex ${index} error =${JSON.stringify(error, null, 2)}`
@@ -25,7 +25,7 @@ class Seeders {
                         resolve()
                     }
                 })
-            } catch(e) {
+            } catch(e) { console.log(e)
                 reject(JSON.stringify(e, null, 2))
             }
 
