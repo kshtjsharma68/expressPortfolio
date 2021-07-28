@@ -48,14 +48,26 @@ function () {
           switch (_context.prev = _context.next) {
             case 0:
               _req$body = req.body, email = _req$body.email, password = _req$body.password;
-              result = User.checkUserWithEmailAndPassword({
-                email: email,
-                password: password
-              });
-              if (result) console.log(result); // res.redirect('/admin')
-              // res.redirect('/auth/login')
+              _context.next = 3;
+              return regeneratorRuntime.awrap(User.getUserWithEmail(email).then(function (r) {
+                return r;
+              }).then(function (res) {
+                return result = res[0];
+              })["catch"](function (err) {
+                console.log(err.message);
+              }));
 
             case 3:
+              if (!result) res.redirect('back');
+              req.session.user = {
+                id: result.id
+              }; // req.session.save(function(err) {
+              //     console.log('session saved', req.session)
+              // })
+
+              res.redirect('/admin');
+
+            case 6:
             case "end":
               return _context.stop();
           }

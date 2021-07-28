@@ -6,6 +6,7 @@ var authController = require('../controllers/auth.controller'); // Middleware fo
 
 
 router.use(function (req, res, next) {
+  // console.log(req.session)
   // console.log('Middleware for logging auth request:' + JSON.stringify(req.body, null, 2));
   next();
 });

@@ -20,15 +20,23 @@ app.use(bodyParser.urlencoded({
 var port = process.env.PORT || 3000; // Static files
 
 app.use(express["static"]('public'));
+var MemoryStore = session.MemoryStore; //Setting session
+
+app.use(session({
+  secret: 'cookie_secret',
+  resave: true,
+  store: new MemoryStore(),
+  saveUninitialized: true,
+  cookie: {
+    secure: false
+  },
+  maxAge: 3600
+})); //Routes
+
 app.use(routes); // Views
 
 app.set("views", resolve('./src/views'));
 app.set("view engine", 'pug');
-app.use(session({
-  secret: 'cookie_secret',
-  resave: true,
-  saveUninitialized: true
-}));
 app.listen(port, function () {
   console.log('Server is listening on port:' + port);
 });

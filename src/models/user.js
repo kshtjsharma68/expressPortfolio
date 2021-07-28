@@ -19,19 +19,10 @@ User.prototype.add = function(params) {
 /**
  * Check if user exists with email and password
  */
-User.prototype.checkUserWithEmailAndPassword = async function({ email = '',password = '', ...rest }) { 
-    let sql = `SELECT email, password from ${this.table} WHERE email = ` + this.connection.escape(email);
-    var result = await this.query({
+User.prototype.getUserWithEmail = function( email = '' ) { 
+    let sql = `SELECT id, email, password from ${this.table} WHERE email = ` + this.connection.escape(email);
+    return this.query({
         sql
-    })
-    
-    return result.then(res => { 
-        if(res.length) return true
-        throw Error('Not valid')
-    })
-    .catch(e => {
-        console.log(e.message)
-        return false
     })
 }
 

@@ -1,9 +1,11 @@
-const { User } = require('../models')
+const {
+    User
+} = require('../models')
 
 class AuthController {
 
     constructor() {
-
+    
     }
 
     /**
@@ -24,12 +26,26 @@ class AuthController {
      * Handle 
      */
     async Login(req, res) {
-        let { email, password } = req.body;
-        let result = User.checkUserWithEmailAndPassword({email, password})
-        if(result) 
-        console.log(result)
-        // res.redirect('/admin')
-        // res.redirect('/auth/login')
+        let {
+            email,
+            password
+        } = req.body;
+        var result;
+        await User.getUserWithEmail(email)
+            .then(r => r)
+            .then(res => result = res[0])
+            .catch(err => {
+                console.log(err.message)
+            })
+        if (!result) res.redirect('back')
+        req.session.user = {
+            id: result.id
+        }
+
+        // req.session.save(function(err) {
+        //     console.log('session saved', req.session)
+        // })
+        res.redirect('/admin')
     }
 }
 
