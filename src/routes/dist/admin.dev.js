@@ -6,15 +6,13 @@ var adminController = require('../controllers/admin.controller'); // Middleware 
 
 
 router.use(function (req, res, next) {
-  var _req$session$user = req.session.user,
-      user = _req$session$user === void 0 ? {} : _req$session$user;
-
-  if (!(user && user.id)) {
-    res.redirect('back');
-  } // console.log('Middleware for logging admin request:' + JSON.stringify(req.body, null, 2));
-
-
+  // let { user = {} } = req.session 
+  // if(!(user && user.id)){
+  //     return res.redirect('auth/login')
+  // }
+  // console.log('Middleware for logging admin request:' + JSON.stringify(req.body, null, 2));
   next();
 });
 router.get('/', adminController.index);
+router.get('/change-password', adminController.changePassword);
 module.exports = router;

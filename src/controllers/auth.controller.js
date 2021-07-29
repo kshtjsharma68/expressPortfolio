@@ -47,6 +47,15 @@ class AuthController {
         // })
         res.redirect('/admin')
     }
+
+    /**
+     * Logout a user
+     */
+    async logout(req, res) {
+        await req.session.destroy()
+        
+        res.redirect('/')
+    }
 }
 
 module.exports = new AuthController;

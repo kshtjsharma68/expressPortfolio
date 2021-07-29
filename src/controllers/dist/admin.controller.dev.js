@@ -20,6 +20,11 @@ function () {
     value: function index(req, res) {
       res.render('admin/index');
     }
+  }, {
+    key: "changePassword",
+    value: function changePassword(req, res) {
+      res.render('admin/changePassword');
+    }
   }]);
 
   return AdminController;

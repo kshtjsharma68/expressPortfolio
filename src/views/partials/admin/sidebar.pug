@@ -13,38 +13,43 @@ nav#sidebar.sidebar.sidebar-offcanvas
             img.img-xs.rounded-circle(src='assets/images/faces/face15.jpg' alt='')
             span.count.bg-success
           .profile-name
-            h5.mb-0.font-weight-normal Henry Klein
-            span Gold Member
+            h5.mb-0.font-weight-normal Admin
+            span Admin member
         a#profile-dropdown(href='#' data-toggle='dropdown')
           i.mdi.mdi-dots-vertical
         .dropdown-menu.dropdown-menu-right.sidebar-dropdown.preview-list(aria-labelledby='profile-dropdown')
-          a.dropdown-item.preview-item(href='#')
-            .preview-thumbnail
-              .preview-icon.bg-dark.rounded-circle
-                i.mdi.mdi-settings.text-primary
-            .preview-item-content
-              p.preview-subject.ellipsis.mb-1.text-small Account settings
-          .dropdown-divider
-          a.dropdown-item.preview-item(href='#')
+          //- a.dropdown-item.preview-item(href='#')
+          //-   .preview-thumbnail
+          //-     .preview-icon.bg-dark.rounded-circle
+          //-       i.mdi.mdi-settings.text-primary
+          //-   .preview-item-content
+          //-     p.preview-subject.ellipsis.mb-1.text-small Account settings
+          //- .dropdown-divider
+          a.dropdown-item.preview-item(href='/admin/change-password')
             .preview-thumbnail
               .preview-icon.bg-dark.rounded-circle
                 i.mdi.mdi-onepassword.text-info
             .preview-item-content
               p.preview-subject.ellipsis.mb-1.text-small Change Password
           .dropdown-divider
-          a.dropdown-item.preview-item(href='#')
-            .preview-thumbnail
-              .preview-icon.bg-dark.rounded-circle
-                i.mdi.mdi-calendar-today.text-success
-            .preview-item-content
-              p.preview-subject.ellipsis.mb-1.text-small To-do list
+          //- a.dropdown-item.preview-item(href='#')
+          //-   .preview-thumbnail
+          //-     .preview-icon.bg-dark.rounded-circle
+          //-       i.mdi.mdi-calendar-today.text-success
+          //-   .preview-item-content
+          //-     p.preview-subject.ellipsis.mb-1.text-small To-do list
     li.nav-item.nav-category
       span.nav-link Navigation
     li.nav-item.menu-items
-      a.nav-link(href='index.html')
+      a.nav-link(href='/admin')
         span.menu-icon
           i.mdi.mdi-speedometer
         span.menu-title Dashboard
+    li.nav-item.menu-items
+      a.nav-link(href='pages/tables/basic-table.html')
+        span.menu-icon
+          i.mdi.mdi-table-large
+        span.menu-title Developers
     li.nav-item.menu-items
       a.nav-link(data-toggle='collapse' href='#ui-basic' aria-expanded='false' aria-controls='ui-basic')
         span.menu-icon
@@ -64,41 +69,4 @@ nav#sidebar.sidebar.sidebar-offcanvas
         span.menu-icon
           i.mdi.mdi-playlist-play
         span.menu-title Form Elements
-    li.nav-item.menu-items
-      a.nav-link(href='pages/tables/basic-table.html')
-        span.menu-icon
-          i.mdi.mdi-table-large
-        span.menu-title Tables
-    li.nav-item.menu-items
-      a.nav-link(href='pages/charts/chartjs.html')
-        span.menu-icon
-          i.mdi.mdi-chart-bar
-        span.menu-title Charts
-    li.nav-item.menu-items
-      a.nav-link(href='pages/icons/mdi.html')
-        span.menu-icon
-          i.mdi.mdi-contacts
-        span.menu-title Icons
-    li.nav-item.menu-items
-      a.nav-link(data-toggle='collapse' href='#auth' aria-expanded='false' aria-controls='auth')
-        span.menu-icon
-          i.mdi.mdi-security
-        span.menu-title User Pages
-        i.menu-arrow
-      #auth.collapse
-        ul.nav.flex-column.sub-menu
-          li.nav-item
-            a.nav-link(href='pages/samples/blank-page.html')  Blank Page 
-          li.nav-item
-            a.nav-link(href='pages/samples/error-404.html')  404 
-          li.nav-item
-            a.nav-link(href='pages/samples/error-500.html')  500 
-          li.nav-item
-            a.nav-link(href='pages/samples/login.html')  Login 
-          li.nav-item
-            a.nav-link(href='pages/samples/register.html')  Register 
-    li.nav-item.menu-items
-      a.nav-link(href='http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html')
-        span.menu-icon
-          i.mdi.mdi-file-document-box
-        span.menu-title Documentation
+    
