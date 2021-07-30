@@ -6,33 +6,21 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var AdminController =
+var developer =
 /*#__PURE__*/
 function () {
-  function AdminController() {
-    _classCallCheck(this, AdminController);
-
-    console.log('inside admin controller');
+  function developer() {
+    _classCallCheck(this, developer);
   }
 
-  _createClass(AdminController, [{
+  _createClass(developer, [{
     key: "index",
     value: function index(req, res) {
-      res.render('admin/index');
-    }
-  }, {
-    key: "changePassword",
-    value: function changePassword(req, res) {
-      res.render('admin/changePassword');
-    }
-  }, {
-    key: "parameters",
-    value: function parameters(req, res) {
-      res.render('admin/parameters');
+      res.render('admin/developer');
     }
   }]);
 
-  return AdminController;
+  return developer;
 }();
 
-module.exports = new AdminController();
+module.exports = new developer();

@@ -2,7 +2,9 @@
 
 var router = require('express').Router();
 
-var adminController = require('../controllers/admin.controller'); // Middleware for common routes
+var adminController = require('../controllers/admin.controller');
+
+var developerController = require('../controllers/admin.developer.controller'); // Middleware for common routes
 
 
 router.use(function (req, res, next) {
@@ -15,4 +17,6 @@ router.use(function (req, res, next) {
 });
 router.get('/', adminController.index);
 router.get('/change-password', adminController.changePassword);
+router.get('/parameters', adminController.parameters);
+router.get('/developers', developerController.index);
 module.exports = router;

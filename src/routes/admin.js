@@ -2,6 +2,8 @@ const router = require('express').Router();
 
 const adminController = require('../controllers/admin.controller');
 
+const developerController = require('../controllers/admin.developer.controller');
+
 // Middleware for common routes
 router.use((req, res, next) => {
     // let { user = {} } = req.session 
@@ -15,6 +17,10 @@ router.use((req, res, next) => {
 router.get('/', adminController.index)
 
 router.get('/change-password', adminController.changePassword)
+
+router.get('/parameters', adminController.parameters)
+
+router.get('/developers', developerController.index)
 
 
 module.exports = router;

@@ -1,0 +1,203 @@
+extends ../../adminLayout
+
+block content
+    .main-panel
+        .content-wrapper
+            .page-header
+                h3.page-title  Developers 
+                nav(aria-label='breadcrumb')
+                    ol.breadcrumb
+                        li.breadcrumb-item
+                            a(href='#') Admin
+                        li.breadcrumb-item.active(aria-current='page') Developers
+
+            .row
+                .col-lg-12.grid-margin.stretch-card.developer-table
+                    .card
+                        .card-body
+                            //- h4.card-title Striped Table
+                            button.btn.btn-inverse-primary.btn-fw#add-developer(type='button' style="float: right;")
+                                i.mdi.mdi-account-plus
+                                | ADD
+                            .table-responsive
+                                table.table.table-striped
+                                    thead
+                                        tr
+                                            th  User 
+                                            th  First name 
+                                            th  Progress 
+                                            th  Amount 
+                                            th  Deadline 
+                                    tbody
+                                        tr
+                                            td.py-1
+                                                img(src='/assets/images/faces-clipart/pic-1.png' alt='image')
+                                            td  Herman Beck 
+                                            td
+                                                .progress
+                                                    .progress-bar.bg-success(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
+                                            td  $ 77.99 
+                                            td  May 15, 2015 
+                                        tr
+                                            td.py-1
+                                                img(src='/assets/images/faces-clipart/pic-2.png' alt='image')
+                                            td  Messsy Adam 
+                                            td
+                                                .progress
+                                                    .progress-bar.bg-danger(role='progressbar' style='width: 75%' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
+                                            td  $245.30 
+                                            td  July 1, 2015 
+                                        tr
+                                            td.py-1
+                                                img(src='/assets/images/faces-clipart/pic-3.png' alt='image')
+                                            td  John Richards 
+                                            td
+                                                .progress
+                                                    .progress-bar.bg-warning(role='progressbar' style='width: 90%' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100')
+                                            td  $138.00 
+                                            td  Apr 12, 2015 
+                                        tr
+                                            td.py-1
+                                                img(src='/assets/images/faces-clipart/pic-4.png' alt='image')
+                                            td  Peter Meggik 
+                                            td
+                                                .progress
+                                                    .progress-bar.bg-primary(role='progressbar' style='width: 50%' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100')
+                                            td  $ 77.99 
+                                            td  May 15, 2015 
+                                        tr
+                                            td.py-1
+                                                img(src='/assets/images/faces-clipart/pic-1.png' alt='image')
+                                            td  Edward 
+                                            td
+                                                .progress
+                                                    .progress-bar.bg-danger(role='progressbar' style='width: 35%' aria-valuenow='35' aria-valuemin='0' aria-valuemax='100')
+                                            td  $ 160.25 
+                                            td  May 03, 2015 
+                                        tr
+                                            td.py-1
+                                                img(src='/assets/images/faces-clipart/pic-2.png' alt='image')
+                                            td  John Doe 
+                                            td
+                                                .progress
+                                                    .progress-bar.bg-info(role='progressbar' style='width: 65%' aria-valuenow='65' aria-valuemin='0' aria-valuemax='100')
+                                            td  $ 123.21 
+                                            td  April 05, 2015 
+                                        tr
+                                            td.py-1
+                                                img(src='/assets/images/faces-clipart/pic-3.png' alt='image')
+                                            td  Henry Tom 
+                                            td
+                                                .progress
+                                                    .progress-bar.bg-warning(role='progressbar' style='width: 20%' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100')
+                                            td  $ 150.00 
+                                            td  June 16, 2015 
+
+                .col-12.grid-margin
+                    .card
+                        .card-body
+                            h4.card-title Basic 
+                            form.form-sample
+                                p.card-description  Personal Info 
+                                .row
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label(for='first_name') First Name
+                                            .col-sm-9
+                                                input#first_name.form-control(type='text', placeholder="First Name")
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label(for='last_name') Last Name
+                                            .col-sm-9
+                                                input#last_name.form-control(type='text' placeholder="Last Name")
+                                .row
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label(for='email') Email
+                                            .col-sm-9
+                                                input#email.form-control(type='text' placeholder="Email")
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label Date of Birth
+                                            .col-sm-9
+                                                input.form-control(placeholder='dd/mm/yyyy')
+                                .row
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label Category
+                                            .col-sm-9
+                                                select.form-control
+                                                    option Category1
+                                                    option Category2
+                                                    option Category3
+                                                    option Category4
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label Membership
+                                            .col-sm-4
+                                                .form-check
+                                                    label.form-check-label
+                                                        input#membershipRadios1.form-check-input(type='radio' name='membershipRadios' value='' checked='')
+                                                        |  Free 
+                                                        i.input-helper
+                                            .col-sm-5
+                                                .form-check
+                                                    label.form-check-label
+                                                        input#membershipRadios2.form-check-input(type='radio' name='membershipRadios' value='option2')
+                                                        |  Professional 
+                                                        i.input-helper
+                                p.card-description  Address 
+                                .row
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label Address 1
+                                            .col-sm-9
+                                                input.form-control(type='text')
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label State
+                                            .col-sm-9
+                                                input.form-control(type='text')
+                                .row
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label Address 2
+                                            .col-sm-9
+                                                input.form-control(type='text')
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label Postcode
+                                            .col-sm-9
+                                                input.form-control(type='text')
+                                .row
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label City
+                                            .col-sm-9
+                                                input.form-control(type='text')
+                                    .col-md-6
+                                        .form-group.row
+                                            label.col-sm-3.col-form-label Country
+                                            .col-sm-9
+                                                select.form-control
+                                                    option America
+                                                    option Italy
+                                                    option Russia
+                                                    option Britain
+                                .row(style="justify-content: center;")
+                                    button.btn.btn-primary.mr-2(type='submit') Submit
+                                    button.btn.btn-dark(type='reset') Cancel
+            // content-wrapper ends
+            include  ../../partials/admin/footer
+
+
+block scripts
+    script(type="text/javascript").
+        $('#add-developer').on('click',function(e) {
+            $('.developer-table').hide()
+            $('.developer-form').show()
+            })
+        $(document).ready(function(){ 
+            $('.developer-form').hide()
+        })
+
