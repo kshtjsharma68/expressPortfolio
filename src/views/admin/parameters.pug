@@ -1,365 +1,364 @@
 extends ../adminLayout
 
 block content
+        
+    .page-header
+        h3.page-title  Basic Tables 
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item
+                    a(href='#') Tables
+                li.breadcrumb-item.active(aria-current='page') Basic tables
+    .row
+        .col-lg-6.grid-margin.stretch-card
+            .card
+                .card-body
+                    h4.card-title Roles
+                    .table-responsive
+                        table.table
+                            thead
+                                tr
+                                    th Profile
+                                    th VatNo.
+                                    th Created
+                                    th Status
+                            tbody
+                                tr
+                                    td Jacob
+                                    td 53275531
+                                    td 12 May 2017
+                                    td
+                                        label.badge.badge-danger Pending
+                                tr
+                                    td Messsy
+                                    td 53275532
+                                    td 15 May 2017
+                                    td
+                                        label.badge.badge-warning In progress
+                                tr
+                                    td John
+                                    td 53275533
+                                    td 14 May 2017
+                                    td
+                                        label.badge.badge-info Fixed
+                                tr
+                                    td Peter
+                                    td 53275534
+                                    td 16 May 2017
+                                    td
+                                        label.badge.badge-success Completed
+                                tr
+                                    td Dave
+                                    td 53275535
+                                    td 20 May 2017
+                                    td
+                                        label.badge.badge-warning In progress
+        .col-lg-6.grid-margin.stretch-card
+            .card
+                .card-body
+                    h4.card-title Hoverable Table
+                    p.card-description
+                        | Add class 
+                        code .table-hover
+                    .table-responsive
+                        table.table.table-hover
+                            thead
+                                tr
+                                    th User
+                                    th Product
+                                    th Sale
+                                    th Status
+                            tbody
+                                tr
+                                    td Jacob
+                                    td Photoshop
+                                    td.text-danger
+                                        | 28.76% 
+                                        i.mdi.mdi-arrow-down
+                                    td
+                                        label.badge.badge-danger Pending
+                                tr
+                                    td Messsy
+                                    td Flash
+                                    td.text-danger
+                                        | 21.06% 
+                                        i.mdi.mdi-arrow-down
+                                    td
+                                        label.badge.badge-warning In progress
+                                tr
+                                    td John
+                                    td Premier
+                                    td.text-danger
+                                        | 35.00% 
+                                        i.mdi.mdi-arrow-down
+                                    td
+                                        label.badge.badge-info Fixed
+                                tr
+                                    td Peter
+                                    td After effects
+                                    td.text-success
+                                        | 82.00% 
+                                        i.mdi.mdi-arrow-up
+                                    td
+                                        label.badge.badge-success Completed
+                                tr
+                                    td Dave
+                                    td 53275535
+                                    td.text-success
+                                        | 98.05% 
+                                        i.mdi.mdi-arrow-up
+                                    td
+                                        label.badge.badge-warning In progress
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    h4.card-title Striped Table
+                    p.card-description
+                        | Add class 
+                        code .table-striped
+                    .table-responsive
+                        table.table.table-striped
+                            thead
+                                tr
+                                    th  User 
+                                    th  First name 
+                                    th  Progress 
+                                    th  Amount 
+                                    th  Deadline 
+                            tbody
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-1.png' alt='image')
+                                    td  Herman Beck 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-success(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-2.png' alt='image')
+                                    td  Messsy Adam 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-danger(role='progressbar' style='width: 75%' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
+                                    td  $245.30 
+                                    td  July 1, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-3.png' alt='image')
+                                    td  John Richards 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-warning(role='progressbar' style='width: 90%' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100')
+                                    td  $138.00 
+                                    td  Apr 12, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-4.png' alt='image')
+                                    td  Peter Meggik 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-primary(role='progressbar' style='width: 50%' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-1.png' alt='image')
+                                    td  Edward 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-danger(role='progressbar' style='width: 35%' aria-valuenow='35' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 160.25 
+                                    td  May 03, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-2.png' alt='image')
+                                    td  John Doe 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-info(role='progressbar' style='width: 65%' aria-valuenow='65' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 123.21 
+                                    td  April 05, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-3.png' alt='image')
+                                    td  Henry Tom 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-warning(role='progressbar' style='width: 20%' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 150.00 
+                                    td  June 16, 2015 
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    h4.card-title Bordered table
+                    p.card-description
+                        | Add class 
+                        code .table-bordered
+                    .table-responsive
+                        table.table.table-bordered
+                            thead
+                                tr
+                                    th  # 
+                                    th  First name 
+                                    th  Progress 
+                                    th  Amount 
+                                    th  Deadline 
+                            tbody
+                                tr
+                                    td  1 
+                                    td  Herman Beck 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-success(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td  2 
+                                    td  Messsy Adam 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-danger(role='progressbar' style='width: 75%' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
+                                    td  $245.30 
+                                    td  July 1, 2015 
+                                tr
+                                    td  3 
+                                    td  John Richards 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-warning(role='progressbar' style='width: 90%' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100')
+                                    td  $138.00 
+                                    td  Apr 12, 2015 
+                                tr
+                                    td  4 
+                                    td  Peter Meggik 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-primary(role='progressbar' style='width: 50%' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td  5 
+                                    td  Edward 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-danger(role='progressbar' style='width: 35%' aria-valuenow='35' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 160.25 
+                                    td  May 03, 2015 
+                                tr
+                                    td  6 
+                                    td  John Doe 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-info(role='progressbar' style='width: 65%' aria-valuenow='65' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 123.21 
+                                    td  April 05, 2015 
+                                tr
+                                    td  7 
+                                    td  Henry Tom 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-warning(role='progressbar' style='width: 20%' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 150.00 
+                                    td  June 16, 2015 
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    h4.card-title Inverse table
+                    p.card-description
+                        | Add class 
+                        code .table-dark
+                    .table-responsive
+                        table.table.table-dark
+                            thead
+                                tr
+                                    th  # 
+                                    th  First name 
+                                    th  Amount 
+                                    th  Deadline 
+                            tbody
+                                tr
+                                    td  1 
+                                    td  Herman Beck 
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td  2 
+                                    td  Messsy Adam 
+                                    td  $245.30 
+                                    td  July 1, 2015 
+                                tr
+                                    td  3 
+                                    td  John Richards 
+                                    td  $138.00 
+                                    td  Apr 12, 2015 
+                                tr
+                                    td  4 
+                                    td  Peter Meggik 
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td  5 
+                                    td  Edward 
+                                    td  $ 160.25 
+                                    td  May 03, 2015 
+                                tr
+                                    td  6 
+                                    td  John Doe 
+                                    td  $ 123.21 
+                                    td  April 05, 2015 
+                                tr
+                                    td  7 
+                                    td  Henry Tom 
+                                    td  $ 150.00 
+                                    td  June 16, 2015 
+        .col-lg-12.stretch-card
+            .card
+                .card-body
+                    h4.card-title Table with contextual classes
+                    p.card-description
+                        | Add class 
+                        code .table-{color}
+                    .table-responsive
+                        table.table.table-bordered.table-contextual
+                            thead
+                                tr
+                                    th  # 
+                                    th  First name 
+                                    th  Product 
+                                    th  Amount 
+                                    th  Deadline 
+                            tbody
+                                tr.table-info
+                                    td  1 
+                                    td  Herman Beck 
+                                    td  Photoshop 
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr.table-warning
+                                    td  2 
+                                    td  Messsy Adam 
+                                    td  Flash 
+                                    td  $245.30 
+                                    td  July 1, 2015 
+                                tr.table-danger
+                                    td  3 
+                                    td  John Richards 
+                                    td  Premeire 
+                                    td  $138.00 
+                                    td  Apr 12, 2015 
+                                tr.table-success
+                                    td  4 
+                                    td  Peter Meggik 
+                                    td  After effects 
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr.table-primary
+                                    td  5 
+                                    td  Edward 
+                                    td  Illustrator 
+                                    td  $ 160.25 
+                                    td  May 03, 2015 
 
-    
-.page-header
-    h3.page-title  Basic Tables 
-    nav(aria-label='breadcrumb')
-        ol.breadcrumb
-            li.breadcrumb-item
-                a(href='#') Tables
-            li.breadcrumb-item.active(aria-current='page') Basic tables
-.row
-    .col-lg-6.grid-margin.stretch-card
-        .card
-            .card-body
-                h4.card-title Roles
-                .table-responsive
-                    table.table
-                        thead
-                            tr
-                                th Profile
-                                th VatNo.
-                                th Created
-                                th Status
-                        tbody
-                            tr
-                                td Jacob
-                                td 53275531
-                                td 12 May 2017
-                                td
-                                    label.badge.badge-danger Pending
-                            tr
-                                td Messsy
-                                td 53275532
-                                td 15 May 2017
-                                td
-                                    label.badge.badge-warning In progress
-                            tr
-                                td John
-                                td 53275533
-                                td 14 May 2017
-                                td
-                                    label.badge.badge-info Fixed
-                            tr
-                                td Peter
-                                td 53275534
-                                td 16 May 2017
-                                td
-                                    label.badge.badge-success Completed
-                            tr
-                                td Dave
-                                td 53275535
-                                td 20 May 2017
-                                td
-                                    label.badge.badge-warning In progress
-    .col-lg-6.grid-margin.stretch-card
-        .card
-            .card-body
-                h4.card-title Hoverable Table
-                p.card-description
-                    | Add class 
-                    code .table-hover
-                .table-responsive
-                    table.table.table-hover
-                        thead
-                            tr
-                                th User
-                                th Product
-                                th Sale
-                                th Status
-                        tbody
-                            tr
-                                td Jacob
-                                td Photoshop
-                                td.text-danger
-                                    | 28.76% 
-                                    i.mdi.mdi-arrow-down
-                                td
-                                    label.badge.badge-danger Pending
-                            tr
-                                td Messsy
-                                td Flash
-                                td.text-danger
-                                    | 21.06% 
-                                    i.mdi.mdi-arrow-down
-                                td
-                                    label.badge.badge-warning In progress
-                            tr
-                                td John
-                                td Premier
-                                td.text-danger
-                                    | 35.00% 
-                                    i.mdi.mdi-arrow-down
-                                td
-                                    label.badge.badge-info Fixed
-                            tr
-                                td Peter
-                                td After effects
-                                td.text-success
-                                    | 82.00% 
-                                    i.mdi.mdi-arrow-up
-                                td
-                                    label.badge.badge-success Completed
-                            tr
-                                td Dave
-                                td 53275535
-                                td.text-success
-                                    | 98.05% 
-                                    i.mdi.mdi-arrow-up
-                                td
-                                    label.badge.badge-warning In progress
-    .col-lg-12.grid-margin.stretch-card
-        .card
-            .card-body
-                h4.card-title Striped Table
-                p.card-description
-                    | Add class 
-                    code .table-striped
-                .table-responsive
-                    table.table.table-striped
-                        thead
-                            tr
-                                th  User 
-                                th  First name 
-                                th  Progress 
-                                th  Amount 
-                                th  Deadline 
-                        tbody
-                            tr
-                                td.py-1
-                                    img(src='../../assets/images/faces-clipart/pic-1.png' alt='image')
-                                td  Herman Beck 
-                                td
-                                    .progress
-                                        .progress-bar.bg-success(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
-                                td  $ 77.99 
-                                td  May 15, 2015 
-                            tr
-                                td.py-1
-                                    img(src='../../assets/images/faces-clipart/pic-2.png' alt='image')
-                                td  Messsy Adam 
-                                td
-                                    .progress
-                                        .progress-bar.bg-danger(role='progressbar' style='width: 75%' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
-                                td  $245.30 
-                                td  July 1, 2015 
-                            tr
-                                td.py-1
-                                    img(src='../../assets/images/faces-clipart/pic-3.png' alt='image')
-                                td  John Richards 
-                                td
-                                    .progress
-                                        .progress-bar.bg-warning(role='progressbar' style='width: 90%' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100')
-                                td  $138.00 
-                                td  Apr 12, 2015 
-                            tr
-                                td.py-1
-                                    img(src='../../assets/images/faces-clipart/pic-4.png' alt='image')
-                                td  Peter Meggik 
-                                td
-                                    .progress
-                                        .progress-bar.bg-primary(role='progressbar' style='width: 50%' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100')
-                                td  $ 77.99 
-                                td  May 15, 2015 
-                            tr
-                                td.py-1
-                                    img(src='../../assets/images/faces-clipart/pic-1.png' alt='image')
-                                td  Edward 
-                                td
-                                    .progress
-                                        .progress-bar.bg-danger(role='progressbar' style='width: 35%' aria-valuenow='35' aria-valuemin='0' aria-valuemax='100')
-                                td  $ 160.25 
-                                td  May 03, 2015 
-                            tr
-                                td.py-1
-                                    img(src='../../assets/images/faces-clipart/pic-2.png' alt='image')
-                                td  John Doe 
-                                td
-                                    .progress
-                                        .progress-bar.bg-info(role='progressbar' style='width: 65%' aria-valuenow='65' aria-valuemin='0' aria-valuemax='100')
-                                td  $ 123.21 
-                                td  April 05, 2015 
-                            tr
-                                td.py-1
-                                    img(src='../../assets/images/faces-clipart/pic-3.png' alt='image')
-                                td  Henry Tom 
-                                td
-                                    .progress
-                                        .progress-bar.bg-warning(role='progressbar' style='width: 20%' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100')
-                                td  $ 150.00 
-                                td  June 16, 2015 
-    .col-lg-12.grid-margin.stretch-card
-        .card
-            .card-body
-                h4.card-title Bordered table
-                p.card-description
-                    | Add class 
-                    code .table-bordered
-                .table-responsive
-                    table.table.table-bordered
-                        thead
-                            tr
-                                th  # 
-                                th  First name 
-                                th  Progress 
-                                th  Amount 
-                                th  Deadline 
-                        tbody
-                            tr
-                                td  1 
-                                td  Herman Beck 
-                                td
-                                    .progress
-                                        .progress-bar.bg-success(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
-                                td  $ 77.99 
-                                td  May 15, 2015 
-                            tr
-                                td  2 
-                                td  Messsy Adam 
-                                td
-                                    .progress
-                                        .progress-bar.bg-danger(role='progressbar' style='width: 75%' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
-                                td  $245.30 
-                                td  July 1, 2015 
-                            tr
-                                td  3 
-                                td  John Richards 
-                                td
-                                    .progress
-                                        .progress-bar.bg-warning(role='progressbar' style='width: 90%' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100')
-                                td  $138.00 
-                                td  Apr 12, 2015 
-                            tr
-                                td  4 
-                                td  Peter Meggik 
-                                td
-                                    .progress
-                                        .progress-bar.bg-primary(role='progressbar' style='width: 50%' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100')
-                                td  $ 77.99 
-                                td  May 15, 2015 
-                            tr
-                                td  5 
-                                td  Edward 
-                                td
-                                    .progress
-                                        .progress-bar.bg-danger(role='progressbar' style='width: 35%' aria-valuenow='35' aria-valuemin='0' aria-valuemax='100')
-                                td  $ 160.25 
-                                td  May 03, 2015 
-                            tr
-                                td  6 
-                                td  John Doe 
-                                td
-                                    .progress
-                                        .progress-bar.bg-info(role='progressbar' style='width: 65%' aria-valuenow='65' aria-valuemin='0' aria-valuemax='100')
-                                td  $ 123.21 
-                                td  April 05, 2015 
-                            tr
-                                td  7 
-                                td  Henry Tom 
-                                td
-                                    .progress
-                                        .progress-bar.bg-warning(role='progressbar' style='width: 20%' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100')
-                                td  $ 150.00 
-                                td  June 16, 2015 
-    .col-lg-12.grid-margin.stretch-card
-        .card
-            .card-body
-                h4.card-title Inverse table
-                p.card-description
-                    | Add class 
-                    code .table-dark
-                .table-responsive
-                    table.table.table-dark
-                        thead
-                            tr
-                                th  # 
-                                th  First name 
-                                th  Amount 
-                                th  Deadline 
-                        tbody
-                            tr
-                                td  1 
-                                td  Herman Beck 
-                                td  $ 77.99 
-                                td  May 15, 2015 
-                            tr
-                                td  2 
-                                td  Messsy Adam 
-                                td  $245.30 
-                                td  July 1, 2015 
-                            tr
-                                td  3 
-                                td  John Richards 
-                                td  $138.00 
-                                td  Apr 12, 2015 
-                            tr
-                                td  4 
-                                td  Peter Meggik 
-                                td  $ 77.99 
-                                td  May 15, 2015 
-                            tr
-                                td  5 
-                                td  Edward 
-                                td  $ 160.25 
-                                td  May 03, 2015 
-                            tr
-                                td  6 
-                                td  John Doe 
-                                td  $ 123.21 
-                                td  April 05, 2015 
-                            tr
-                                td  7 
-                                td  Henry Tom 
-                                td  $ 150.00 
-                                td  June 16, 2015 
-    .col-lg-12.stretch-card
-        .card
-            .card-body
-                h4.card-title Table with contextual classes
-                p.card-description
-                    | Add class 
-                    code .table-{color}
-                .table-responsive
-                    table.table.table-bordered.table-contextual
-                        thead
-                            tr
-                                th  # 
-                                th  First name 
-                                th  Product 
-                                th  Amount 
-                                th  Deadline 
-                        tbody
-                            tr.table-info
-                                td  1 
-                                td  Herman Beck 
-                                td  Photoshop 
-                                td  $ 77.99 
-                                td  May 15, 2015 
-                            tr.table-warning
-                                td  2 
-                                td  Messsy Adam 
-                                td  Flash 
-                                td  $245.30 
-                                td  July 1, 2015 
-                            tr.table-danger
-                                td  3 
-                                td  John Richards 
-                                td  Premeire 
-                                td  $138.00 
-                                td  Apr 12, 2015 
-                            tr.table-success
-                                td  4 
-                                td  Peter Meggik 
-                                td  After effects 
-                                td  $ 77.99 
-                                td  May 15, 2015 
-                            tr.table-primary
-                                td  5 
-                                td  Edward 
-                                td  Illustrator 
-                                td  $ 160.25 
-                                td  May 03, 2015 
-
-            
+                
