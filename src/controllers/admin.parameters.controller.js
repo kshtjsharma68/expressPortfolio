@@ -25,7 +25,7 @@ class Parameters {
      */
     async addRole(req, res) {
         await Title.add(req.body)
-        .then(result => console.log(result))
+        .then(result => result)
         .catch(err => console.log('error',err.message))
         res.redirect('back')
     }
