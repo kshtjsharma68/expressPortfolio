@@ -15,7 +15,7 @@ var routes = require("./routes"); // Extracting
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
 var port = process.env.PORT || 3000; // Static files
 

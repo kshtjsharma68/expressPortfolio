@@ -14,45 +14,29 @@ block content
             .card
                 .card-body
                     h4.card-title Roles
+                        button#roles_btn.btn.btn-inverse-primary.btn-fw(style="float: right;")  ADD
                     .table-responsive
-                        table.table
+                        table.table.role-table
                             thead
                                 tr
-                                    th Profile
-                                    th VatNo.
-                                    th Created
-                                    th Status
+                                    th Id
+                                    th Name
+                                    th Action
                             tbody
-                                tr
-                                    td Jacob
-                                    td 53275531
-                                    td 12 May 2017
-                                    td
-                                        label.badge.badge-danger Pending
-                                tr
-                                    td Messsy
-                                    td 53275532
-                                    td 15 May 2017
-                                    td
-                                        label.badge.badge-warning In progress
-                                tr
-                                    td John
-                                    td 53275533
-                                    td 14 May 2017
-                                    td
-                                        label.badge.badge-info Fixed
-                                tr
-                                    td Peter
-                                    td 53275534
-                                    td 16 May 2017
-                                    td
-                                        label.badge.badge-success Completed
-                                tr
-                                    td Dave
-                                    td 53275535
-                                    td 20 May 2017
-                                    td
-                                        label.badge.badge-warning In progress
+                                each title in titles
+                                    tr
+                                        td=title.id
+                                        td=title.name
+                                        td 
+                                            button.btn.btn-danger.btn-sm.role-del(data-id=title.id, onclick=`removeRole(this,${title.id})`)
+                                                i.mdi.mdi-delete 
+
+                    form.forms-sample.role-form(style="display: none;", method="post", action="/admin/add-role")
+                        .form-group
+                            label(for='Name') Name
+                            input#name.form-control(type='text' name="name" placeholder='Role name')
+                        button.btn.btn-primary.mr-2(type='submit') Submit
+                        button.btn.btn-dark Cancel
         .col-lg-6.grid-margin.stretch-card
             .card
                 .card-body
@@ -362,3 +346,29 @@ block content
                                     td  May 03, 2015 
 
                 
+block scripts
+    script(type="text/javascript").
+        $(document).ready(function() {
+            $('#roles_btn').click(function(){
+                    $('.role-form').toggle()
+                    $('.role-table').toggle()
+            })
+        })
+        function removeRole(elm, id) {
+            $.ajax({
+                url:'/admin/remove-role',
+                type:'post',
+                data:{id},
+                success: function({message, titles}){
+                    let rows = '';
+                    titles.forEach(title => rows +=`<tr><td>${title.id}</td><td>${title.name}</td><td><button class="btn btn-danger btn-sm" onClick="removeRole(this, ${title.id})"><i class="mdi mdi-delete"></i></button></td></tr>`)
+                    
+                    $(elm).parent().parent().parent().empty().html(rows)
+                },
+                error: function(err){
+                    console.log(err)
+                }
+            })
+        }
+
+

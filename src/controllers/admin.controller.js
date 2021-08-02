@@ -11,10 +11,6 @@ class AdminController {
     changePassword(req, res) {
         res.render('admin/changePassword')
     }
-
-    parameters(req, res) {
-        res.render('admin/parameters')
-    }
 }
 
 module.exports = new AdminController;

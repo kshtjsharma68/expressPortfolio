@@ -22,8 +22,8 @@ router.use('/auth', auth)
 router.use(common)
 
 //If any unhandled route is sent
-router.use((req, res, next) => {
-    res.redirect('/500');
-})
+// router.use((req, res, next) => {
+//     res.redirect('/500');
+// })
 
 module.exports = router;

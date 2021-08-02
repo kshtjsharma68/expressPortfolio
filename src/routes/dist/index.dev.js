@@ -18,8 +18,8 @@ router.get('/500', function (req, res) {
 router.use('/admin', admin);
 router.use('/auth', auth);
 router.use(common); //If any unhandled route is sent
+// router.use((req, res, next) => {
+//     res.redirect('/500');
+// })
 
-router.use(function (req, res, next) {
-  res.redirect('/500');
-});
 module.exports = router;

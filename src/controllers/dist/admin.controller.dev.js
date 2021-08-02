@@ -25,11 +25,6 @@ function () {
     value: function changePassword(req, res) {
       res.render('admin/changePassword');
     }
-  }, {
-    key: "parameters",
-    value: function parameters(req, res) {
-      res.render('admin/parameters');
-    }
   }]);
 
   return AdminController;

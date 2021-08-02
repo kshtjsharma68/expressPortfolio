@@ -4,10 +4,12 @@ require("dotenv").config();
 
 var dbConnection = require("./connection.js");
 
-var baseMigrations = require("./migrations/all.js"); // Group of migrations
+var baseMigrations = require("./migrations/all.js");
+
+var Roles = require("./migrations/roles.js"); // Group of migrations
 
 
-var Migrations = [baseMigrations];
+var Migrations = [baseMigrations, Roles];
 /**
  * TO create table and run migrations
  */
