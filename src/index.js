@@ -4,14 +4,15 @@ const {resolve} = require("path")
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
+const csrf = require('csurf')
+
 const routes = require("./routes")
 
 // Extracting
 const app = express();
 
-
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: false })); 
 
 const port = process.env.PORT || 3000;
 
@@ -29,15 +30,15 @@ app.use(session({
     maxAge: 3600
 }));
 
+//CSRF middleware
+app.use(csrf({ cookie: false }))
+
 //Routes
 app.use(routes)
 
 // Views
 app.set("views", resolve('./src/views') )
 app.set("view engine", 'pug')
-
-
-
 
 
 app.listen(port, () => {

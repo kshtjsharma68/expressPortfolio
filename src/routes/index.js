@@ -5,6 +5,11 @@ const auth = require('./auth')
 
 const router = require('express').Router();
 
+router.use((req, res, next) => {
+    res.locals.csrfToken = req.csrfToken()
+    next()
+})
+
 router.get('/404', (req, res) => {
     res.render('errors/404')
 })

@@ -22,11 +22,15 @@ router.get('/change-password', adminController.changePassword)
 
 router.get('/developers', developerController.index)
 
-router.post('/add-role', parametersController.addRole)
-
 router.get('/parameters', parametersController.index)
 
+//Roles
+router.post('/add-role', parametersController.addRole)
 router.post('/remove-role', parametersController.removeRole)
+
+//Skills
+router.post('/add-skill', parametersController.addSkill)
+router.post('/remove-skill', parametersController.removeSkill)
 
 
 module.exports = router;

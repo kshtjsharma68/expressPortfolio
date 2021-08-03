@@ -1,5 +1,6 @@
 module.exports = {
     'User': require('./user'),
     'Role': require('./roles'),
-    'Title': require('./titles')
+    'Title': require('./titles'),
+    'Skill': require('./skills')
 }

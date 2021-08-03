@@ -36,63 +36,35 @@ block content
                             label(for='Name') Name
                             input#name.form-control(type='text' name="name" placeholder='Role name')
                         button.btn.btn-primary.mr-2(type='submit') Submit
-                        button.btn.btn-dark Cancel
+                        button.btn.btn-dark(type="reset") Cancel
         .col-lg-6.grid-margin.stretch-card
             .card
                 .card-body
-                    h4.card-title Hoverable Table
-                    p.card-description
-                        | Add class 
-                        code .table-hover
-                    .table-responsive
+                    h4.card-title 
+                        |   Skills
+                        button#skills_btn.btn.btn-inverse-primary.btn-fw(style="float: right;")  ADD
+                    .table-responsive.skill-table
                         table.table.table-hover
                             thead
                                 tr
-                                    th User
-                                    th Product
-                                    th Sale
-                                    th Status
+                                    th Id
+                                    th Skill
+                                    th Action
                             tbody
-                                tr
-                                    td Jacob
-                                    td Photoshop
-                                    td.text-danger
-                                        | 28.76% 
-                                        i.mdi.mdi-arrow-down
-                                    td
-                                        label.badge.badge-danger Pending
-                                tr
-                                    td Messsy
-                                    td Flash
-                                    td.text-danger
-                                        | 21.06% 
-                                        i.mdi.mdi-arrow-down
-                                    td
-                                        label.badge.badge-warning In progress
-                                tr
-                                    td John
-                                    td Premier
-                                    td.text-danger
-                                        | 35.00% 
-                                        i.mdi.mdi-arrow-down
-                                    td
-                                        label.badge.badge-info Fixed
-                                tr
-                                    td Peter
-                                    td After effects
-                                    td.text-success
-                                        | 82.00% 
-                                        i.mdi.mdi-arrow-up
-                                    td
-                                        label.badge.badge-success Completed
-                                tr
-                                    td Dave
-                                    td 53275535
-                                    td.text-success
-                                        | 98.05% 
-                                        i.mdi.mdi-arrow-up
-                                    td
-                                        label.badge.badge-warning In progress
+                                each skill in skills
+                                    tr
+                                        td=skill.id
+                                        td=skill.name
+                                        td 
+                                            button.btn.btn-danger.btn-sm(data-id=skill.id, onclick=`removeSkill(this,${skill.id})`)
+                                                i.mdi.mdi-delete
+                    form.forms-sample.skill-form(style="display: none;", method="post", action="/admin/add-skill")
+                        input(type="hidden" name="_csrf" value=csrfToken)
+                        .form-group
+                            label(for='Name') Name
+                            input#name.form-control(type='text' name="name" placeholder='Skill name')
+                        button.btn.btn-primary.mr-2(type='submit') Submit
+                        button.btn.btn-dark(type="reset") Cancel
         .col-lg-12.grid-margin.stretch-card
             .card
                 .card-body
@@ -348,26 +320,51 @@ block content
                 
 block scripts
     script(type="text/javascript").
+        $.ajaxSetup({
+            headers: {'X-CSRF-Token': $('input[name="_csrf"]').val()}
+        });
+
         $(document).ready(function() {
+
             $('#roles_btn').click(function(){
                     $('.role-form').toggle()
                     $('.role-table').toggle()
             })
+
+            $('#skills_btn').click(function() {
+                $('.skill-form').toggle()
+                $('.skill-table').toggle()
+            })
         })
-        function removeRole(elm, id) {
-            $.ajax({
-                url:'/admin/remove-role',
-                type:'post',
-                data:{id},
-                success: function({message, titles}){
-                    let rows = '';
-                    titles.forEach(title => rows +=`<tr><td>${title.id}</td><td>${title.name}</td><td><button class="btn btn-danger btn-sm" onClick="removeRole(this, ${title.id})"><i class="mdi mdi-delete"></i></button></td></tr>`)
-                    
-                    $(elm).parent().parent().parent().empty().html(rows)
-                },
-                error: function(err){
-                    console.log(err)
-                }
+
+        async function removeRole(elm, id) {
+            let rows = '';
+            let data = await sendRequest('/admin/remove-role', {id}).then(r =>  r).catch(err => []);
+            data.forEach(title => rows +=`<tr><td>${title.id}</td><td>${title.name}</td><td><button class="btn btn-danger btn-sm" onClick="removeRole(this, ${title.id})"><i class="mdi mdi-delete"></i></button></td></tr>`);
+            $(elm).parent().parent().parent().empty().html(rows)
+        }
+
+        async function removeSkill(elm, id) {
+            let rows = '';
+            let data = await sendRequest('/admin/remove-skill', {id}).then(r =>  r).catch(err => []);
+            data.forEach(skill => rows +=`<tr><td>${skill.id}</td><td>${skill.name}</td><td><button class="btn btn-danger btn-sm" onClick="removeSkill(this, ${skill.id})"><i class="mdi mdi-delete"></i></button></td></tr>`);
+            $(elm).parent().parent().parent().empty().html(rows)
+        }
+
+        function sendRequest(url, data) { 
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url,
+                    type:'post',
+                    data,
+                    success: function({message, data}){   
+                        resolve(data)
+                    },
+                    error: function(err){
+                        console.log(err)
+                        reject([]);
+                    }
+                })
             })
         }
 
