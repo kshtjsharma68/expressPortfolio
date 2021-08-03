@@ -93,6 +93,8 @@ block content
                                     td  $ 150.00 
                                     td  June 16, 2015 
 
+
+    .row.developer-form
         .col-12.grid-margin
             .card
                 .card-body
@@ -104,7 +106,7 @@ block content
                                 .form-group.row
                                     label.col-sm-3.col-form-label(for='first_name') First Name
                                     .col-sm-9
-                                        input#first_name.form-control(type='text', placeholder="First Name")
+                                        input#first_name.form-control(type='text' placeholder="First Name")
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label(for='last_name') Last Name
@@ -187,14 +189,61 @@ block content
                         .row(style="justify-content: center;")
                             button.btn.btn-primary.mr-2(type='submit') Submit
                             button.btn.btn-dark(type='reset') Cancel
-    
+        .col-md-6.grid-margin.stretch-card
+            .card
+                .card-body
+                    h4.card-title Basic input groups
+                    p.card-description  Basic bootstrap input groups 
+                    .form-group
+                        .input-group
+                            .input-group-prepend
+                                span.input-group-text @
+                            input.form-control(type='text' placeholder='Username' aria-label='Username' aria-describedby='basic-addon1')
+                    .form-group
+                        .input-group
+                            .input-group-prepend
+                                span.input-group-text.bg-primary.text-white $
+                            input.form-control(type='text' aria-label='Amount (to the nearest dollar)')
+                            .input-group-append
+                                span.input-group-text .00
+                    .form-group
+                        .input-group
+                            .input-group-prepend
+                                span.input-group-text $
+                            .input-group-prepend
+                                span.input-group-text 0.00
+                            input.form-control(type='text' aria-label='Amount (to the nearest dollar)')
+                    .form-group
+                        .input-group
+                            input.form-control(type='text' placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby='basic-addon2')
+                            .input-group-append
+                                button.btn.btn-sm.btn-primary(type='button') Search
+                    .form-group
+                        .input-group
+                            .input-group-prepend
+                                button.btn.btn-sm.btn-outline-primary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') Dropdown
+                                .dropdown-menu
+                                    a.dropdown-item(href='#') Action
+                                    a.dropdown-item(href='#') Another action
+                                    a.dropdown-item(href='#') Something else here
+                                    .dropdown-divider(role='separator')
+                                    a.dropdown-item(href='#') Separated link
+                            input.form-control(type='text' aria-label='Text input with dropdown button')
+                    .form-group
+                        .input-group
+                            input.form-control(type='text' placeholder='Find in facebook' aria-label="Recipient's username" aria-describedby='basic-addon2')
+                            .input-group-append
+                                button.btn.btn-sm.btn-facebook(type='button')
+                                    i.mdi.mdi-facebook
+
+
 
 
 block scripts
     script(type="text/javascript").
         $('#add-developer').on('click',function(e) {
-            $('.developer-table').hide()
-            $('.developer-form').show()
+            $('.developer-table').toggle()
+            $('.developer-form').toggle()
             })
         $(document).ready(function(){ 
             $('.developer-form').hide()
