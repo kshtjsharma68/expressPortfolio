@@ -21,6 +21,7 @@ router.get('/', adminController.index)
 router.get('/change-password', adminController.changePassword)
 
 router.get('/developers', developerController.index)
+router.post('/add-developer', developerController.addDeveloper)
 
 router.get('/parameters', parametersController.index)
 

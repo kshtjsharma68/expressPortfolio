@@ -11,8 +11,8 @@ block content
                     a(href='#') Admin
                 li.breadcrumb-item.active(aria-current='page') Developers
 
-    .row
-        .col-lg-12.grid-margin.stretch-card.developer-table
+    .row.developer-table
+        .col-lg-12.grid-margin.stretch-card
             .card
                 .card-body
                     //- h4.card-title Striped Table
@@ -99,142 +99,135 @@ block content
             .card
                 .card-body
                     h4.card-title Basic 
-                    form.form-sample
-                        p.card-description  Personal Info 
+                    form.form-sample(method="post" action="/admin/add-developer")
+                        p.card-description  Personal Info
+                        input(type="hidden" name="_csrf" value=csrfToken) 
                         .row
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label(for='first_name') First Name
                                     .col-sm-9
-                                        input#first_name.form-control(type='text' placeholder="First Name")
+                                        input#first_name.form-control(type='text' placeholder="First Name" name="first_name" )
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label(for='last_name') Last Name
                                     .col-sm-9
-                                        input#last_name.form-control(type='text' placeholder="Last Name")
+                                        input#last_name.form-control(type='text' placeholder="Last Name" name="last_name" )
                         .row
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label(for='email') Email
                                     .col-sm-9
-                                        input#email.form-control(type='text' placeholder="Email")
+                                        input#email.form-control(type='text' placeholder="Email" name="email" )
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label Date of Birth
                                     .col-sm-9
-                                        input.form-control(placeholder='dd/mm/yyyy')
+                                        input.form-control(placeholder='dd/mm/yyyy' name="dob" )
                         .row
                             .col-md-6
                                 .form-group.row
-                                    label.col-sm-3.col-form-label Category
-                                    .col-sm-9
-                                        select.form-control
-                                            option Category1
-                                            option Category2
-                                            option Category3
-                                            option Category4
+                                    label.col-sm-3.col-form-label(for='phone') Phone
+                                    .input-group.col-sm-9
+                                        .input-group-prepend
+                                        span.input-group-text +91
+                                        input.form-control(type='text' name="number" placeholder='Phone' )
                             .col-md-6
                                 .form-group.row
-                                    label.col-sm-3.col-form-label Membership
+                                    label.col-sm-3.col-form-label(for='website') Website
+                                    .col-sm-9
+                                        input#website.form-control(type='text' placeholder="Website" name="website")
+
+                        .row                            
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label Type
                                     .col-sm-4
                                         .form-check
                                             label.form-check-label
-                                                input#membershipRadios1.form-check-input(type='radio' name='membershipRadios' value='' checked='')
-                                                |  Free 
+                                                input#freelancer.form-check-input(type='radio' name='membertype' value='' checked='')
+                                                |  Freelancer 
                                                 i.input-helper
                                     .col-sm-5
                                         .form-check
                                             label.form-check-label
-                                                input#membershipRadios2.form-check-input(type='radio' name='membershipRadios' value='option2')
+                                                input#professional.form-check-input(type='radio' name='membertype' value='option2')
                                                 |  Professional 
                                                 i.input-helper
                         p.card-description  Address 
                         .row
                             .col-md-6
                                 .form-group.row
-                                    label.col-sm-3.col-form-label Address 1
+                                    label.col-sm-3.col-form-label Line1
                                     .col-sm-9
-                                        input.form-control(type='text')
-                            .col-md-6
-                                .form-group.row
-                                    label.col-sm-3.col-form-label State
-                                    .col-sm-9
-                                        input.form-control(type='text')
-                        .row
-                            .col-md-6
-                                .form-group.row
-                                    label.col-sm-3.col-form-label Address 2
-                                    .col-sm-9
-                                        input.form-control(type='text')
+                                        input.form-control(type='text' name="address[line1]" )
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label Postcode
                                     .col-sm-9
-                                        input.form-control(type='text')
+                                        input.form-control(type='text' name="address[postcode]" )
                         .row
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label City
                                     .col-sm-9
-                                        input.form-control(type='text')
+                                        input.form-control(type='text' name="address[city]" )
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label Country
                                     .col-sm-9
-                                        select.form-control
-                                            option America
-                                            option Italy
-                                            option Russia
-                                            option Britain
-                        .row(style="justify-content: center;")
-                            button.btn.btn-primary.mr-2(type='submit') Submit
-                            button.btn.btn-dark(type='reset') Cancel
+                                        select.form-control(name="address[country]" )
+                                            option(selected) India
+                        .row 
+                            .form-group.col-md-12.col-sm-12.col-xs-12
+                                label File upload
+                                input.file-upload-default(type='file' name='img[]' )
+                                .input-group.col-xs-12
+                                    input.form-control.file-upload-info(type='text' disabled='' placeholder='Upload Image')
+                                    span.input-group-append
+                                    button.file-upload-browse.btn.btn-primary(type='button') Upload
+
+                        .row(style="justify-content: right;")
+                            button.btn.btn-primary.mr-2.col-md-2(type='submit') Submit
+                            button.btn.btn-dark.col-md-2(type='reset') Cancel
         .col-md-6.grid-margin.stretch-card
             .card
                 .card-body
-                    h4.card-title Basic input groups
-                    p.card-description  Basic bootstrap input groups 
-                    .form-group
-                        .input-group
-                            .input-group-prepend
-                                span.input-group-text @
-                            input.form-control(type='text' placeholder='Username' aria-label='Username' aria-describedby='basic-addon1')
-                    .form-group
-                        .input-group
-                            .input-group-prepend
-                                span.input-group-text.bg-primary.text-white $
-                            input.form-control(type='text' aria-label='Amount (to the nearest dollar)')
-                            .input-group-append
-                                span.input-group-text .00
-                    .form-group
-                        .input-group
-                            .input-group-prepend
-                                span.input-group-text $
-                            .input-group-prepend
-                                span.input-group-text 0.00
-                            input.form-control(type='text' aria-label='Amount (to the nearest dollar)')
-                    .form-group
-                        .input-group
-                            input.form-control(type='text' placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby='basic-addon2')
-                            .input-group-append
-                                button.btn.btn-sm.btn-primary(type='button') Search
-                    .form-group
-                        .input-group
-                            .input-group-prepend
-                                button.btn.btn-sm.btn-outline-primary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') Dropdown
-                                .dropdown-menu
-                                    a.dropdown-item(href='#') Action
-                                    a.dropdown-item(href='#') Another action
-                                    a.dropdown-item(href='#') Something else here
-                                    .dropdown-divider(role='separator')
-                                    a.dropdown-item(href='#') Separated link
-                            input.form-control(type='text' aria-label='Text input with dropdown button')
-                    .form-group
-                        .input-group
-                            input.form-control(type='text' placeholder='Find in facebook' aria-label="Recipient's username" aria-describedby='basic-addon2')
-                            .input-group-append
-                                button.btn.btn-sm.btn-facebook(type='button')
-                                    i.mdi.mdi-facebook
+                    h4.card-title Social Media Links
+                    form.form-sample(method='post' action='/admin/social')
+                        .form-group
+                            .input-group
+                                input.form-control(type='text' name="twitter" placeholder='Twitter' aria-label="Recipient's username" aria-describedby='basic-addon2')
+                                .input-group-append
+                                    button.btn.btn-sm.btn-twitter(type='button')
+                                        i.mdi.mdi-twitter 
+                        .form-group
+                            .input-group
+                                input.form-control(type='text' name="facebook" placeholder='Facebook' aria-label="Recipient's username" aria-describedby='basic-addon2')
+                                .input-group-append
+                                    button.btn.btn-sm.btn-facebook(type='button')
+                                        i.mdi.mdi-facebook
+                        .form-group
+                            .input-group
+                                input.form-control(type='text' name='instagram' placeholder='Instagram' aria-label="Recipient's username" aria-describedby='basic-addon2')
+                                .input-group-append
+                                    button.btn.btn-sm.btn-instagram(type='button')
+                                        i.mdi.mdi-instagram
+                        .form-group
+                            .input-group
+                                input.form-control(type='text' name='linkedin' placeholder='LinkedIn' aria-label="Recipient's username" aria-describedby='basic-addon2')
+                                .input-group-append
+                                    button.btn.btn-sm.btn-linkedin(type='button')
+                                        i.mdi.mdi-linkedin
+                        .form-group
+                            .input-group
+                                input.form-control(type='text' name='skype' placeholder='Skype' aria-label="Recipient's username" aria-describedby='basic-addon2')
+                                .input-group-append
+                                    button.btn.btn-sm.btn-skype(type='button')
+                                        i.mdi.mdi-skype
+                        .row(style="justify-content: center;")
+                                button.btn.btn-primary.mr-2(type='submit') Submit
+                                button.btn.btn-dark(type='reset') Cancel
 
 
 
@@ -245,7 +238,18 @@ block scripts
             $('.developer-table').toggle()
             $('.developer-form').toggle()
             })
+
+        $(function() {
+            $('.file-upload-browse').on('click', function() {
+            var file = $(this).parent().parent().parent().find('.file-upload-default');
+            file.trigger('click');
+            });
+            $('.file-upload-default').on('change', function() {
+            $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+            });
+        });
         $(document).ready(function(){ 
-            $('.developer-form').hide()
+            $('.developer-form').show()
+             $('.developer-table').hide()
         })
 
