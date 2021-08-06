@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const multer = require('multer')
-const upload   = multer({dest: 'uploads/'})
+const upload   = multer({dest: './public/uploads/'})
 
 const adminController = require('../controllers/admin.controller');
 
@@ -23,7 +23,7 @@ router.get('/', adminController.index)
 router.get('/change-password', adminController.changePassword)
 
 router.get('/developers', developerController.index)
-router.post('/developers', developerController.addDeveloper)
+router.post('/developers', upload.single('avatar'), developerController.addDeveloper)
 
 router.get('/parameters', parametersController.index)
 

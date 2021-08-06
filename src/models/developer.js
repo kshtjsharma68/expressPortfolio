@@ -20,10 +20,11 @@ Developer.prototype.all = function() {
 /**
  * Adding new title record
  */
-Developer.prototype.add = function() {
-    let sql = `INSERT INTO ${this.table} (${this.columns.join(',')}) VALUES ()`;
+Developer.prototype.add = function(params) {
+    let values = [...params].map(r => `'${r}'`).join(',');
+    let sql = `INSERT INTO ${this.table} (${this.columns.join(',')}) VALUES (${values})`;
     console.log(sql)
-    // return this.query({sql})
+    return this.query({sql})
 }
 
 /**

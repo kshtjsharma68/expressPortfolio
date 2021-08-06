@@ -6,12 +6,23 @@ class developer {
     }
 
     async addDeveloper(req, res) {
-        let form = req.body;
-        console.log(form);
-        var user = await User.add({first_name: 'kshitij', last_name: 'sharma', role_id: 2, email: 'kshtjsharma68@gmail.com', profile_image:'', password: 'password'}).then(r => r).catch(err => {});
-        // Developer.add()
-        console.log(user)
-        res.send('ok')
+        let {first_name, last_name, email, dob, website, membertype } = req.body
+        let file = req.file;
+        let payload = {first_name, last_name, role_id: 2, email, profile_image: file.filename, password: 'password'};
+        //Save user
+        var user = await User.add(payload)
+
+        user
+        .then(res => {
+                console.log('response', res);
+                let payload2 = {user_id : res.insertI, dob, website, freelancer: membertype == 0 }
+                Developer.add(payload2).then(r => r)
+            res.redirect('back')
+        })
+        .catch(error=> {
+            res.status(400).send({ error: error.message })
+            res.redirect('/404')
+        })
     }
 }
 

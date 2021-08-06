@@ -99,9 +99,8 @@ block content
             .card
                 .card-body
                     h4.card-title Basic 
-                    form.form-sample(method="post" action="/admin/developers" enctype="multipart/form-data")
+                    form.form-sample(method="post" action="/admin/developers?_csrf="+csrfToken enctype="multipart/form-data" )
                         p.card-description  Personal Info
-                        input(type="hidden" name="_csrf" value=csrfToken) 
                         .row
                             .col-md-6
                                 .form-group.row
@@ -145,13 +144,13 @@ block content
                                     .col-sm-4
                                         .form-check
                                             label.form-check-label
-                                                input#freelancer.form-check-input(type='radio' name='membertype' value='' checked='')
+                                                input#freelancer.form-check-input(type='radio' name='membertype' value='0' checked='')
                                                 |  Freelancer 
                                                 i.input-helper
                                     .col-sm-5
                                         .form-check
                                             label.form-check-label
-                                                input#professional.form-check-input(type='radio' name='membertype' value='option2')
+                                                input#professional.form-check-input(type='radio' name='membertype' value='1')
                                                 |  Professional 
                                                 i.input-helper
                         p.card-description  Address 
