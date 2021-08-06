@@ -3,9 +3,10 @@ const dbConnection = require("./connection.js")
 const baseMigrations = require("./migrations/all.js")
 const Roles = require("./migrations/roles.js")
 const Skills = require("./migrations/skills.js")
+const Developer = require("./migrations/developer.js")
 
 // Group of migrations
-const Migrations = [baseMigrations,Roles,Skills];
+const Migrations = [baseMigrations,Roles,Skills, Developer];
 /**
  * TO create table and run migrations
  */

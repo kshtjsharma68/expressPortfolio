@@ -99,7 +99,7 @@ block content
             .card
                 .card-body
                     h4.card-title Basic 
-                    form.form-sample(method="post" action="/admin/add-developer")
+                    form.form-sample(method="post" action="/admin/developers" enctype="multipart/form-data")
                         p.card-description  Personal Info
                         input(type="hidden" name="_csrf" value=csrfToken) 
                         .row
@@ -181,7 +181,7 @@ block content
                         .row 
                             .form-group.col-md-12.col-sm-12.col-xs-12
                                 label File upload
-                                input.file-upload-default(type='file' name='img[]' )
+                                input.file-upload-default(type='file' name='avatar' )
                                 .input-group.col-xs-12
                                     input.form-control.file-upload-info(type='text' disabled='' placeholder='Upload Image')
                                     span.input-group-append

@@ -4,20 +4,20 @@ class Developer {
      * Run migration on call
      */
     async up(connection) {
-        const ROLE_SQL = `CREATE TABLE developer(
+        const DEVELOPER_SQL = `CREATE TABLE developer(
             id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
-            user_id tinyint(8) unsigned ,
+            user_id int unsigned,
             dob DATE,
             phone int,
             website VARCHAR(50),
             freelancer BIT(1),
             PRIMARY KEY(id),
-            FOREIGN KEY(user_id) REFERENCES users(id)
+            FOREIGN KEY (user_id) REFERENCES users(id)
         );`;
 
         return await new Promise((resolve, reject) => {
             try {
-                const queries = [ROLE_SQL];
+                const queries = [DEVELOPER_SQL];
                 queries.forEach((sql, index) => {
                     connection.query(`${sql}`, (error, rows, fields) => {
                         if(error) {
@@ -38,4 +38,4 @@ class Developer {
     }
 }
 
-module.exports = new Titles();
+module.exports = new Developer();

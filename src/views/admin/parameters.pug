@@ -32,6 +32,7 @@ block content
                                                 i.mdi.mdi-delete 
 
                     form.forms-sample.role-form(style="display: none;", method="post", action="/admin/add-role")
+                        input(type="hidden" name="_csrf" value=csrfToken)
                         .form-group
                             label(for='Name') Name
                             input#name.form-control(type='text' name="name" placeholder='Role name')
