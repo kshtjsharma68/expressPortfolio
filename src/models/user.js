@@ -30,7 +30,8 @@ User.prototype.add = function({
     profile_image = '', 
     password = ''
 }) {
-    return this.hashPassword(password).then(res => { 
+    return this.hashPassword(password)
+        .then(res => { 
         let values = [role_id,first_name, last_name, email, profile_image, res].map(r => `'${r}'`).join(',');
         let sql = `INSERT INTO ${this.table} (${[...this.columns, ...this.protectedColumns].join(',')}) VALUES (${values})`;
         return this.query({ sql })

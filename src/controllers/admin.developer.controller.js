@@ -1,28 +1,47 @@
-const { User, Developer } = require('../models')
+const { User, Developer, Address } = require('../models')
 
 class developer {
     index(req, res) {
         res.render('admin/developer')
     }
 
-    async addDeveloper(req, res) {
-        let {first_name, last_name, email, dob, website, membertype } = req.body
-        let file = req.file;
-        let payload = {first_name, last_name, role_id: 2, email, profile_image: file.filename, password: 'password'};
-        //Save user
-        var user = await User.add(payload)
+    sendErrorResponse(error) {
+        return res.status(400).send({ error: error ? error : 'Not able to add information' }) 
+    }
 
-        user
-        .then(res => {
-                console.log('response', res);
-                let payload2 = {user_id : res.insertI, dob, website, freelancer: membertype == 0 }
-                Developer.add(payload2).then(r => r)
-            res.redirect('back')
-        })
-        .catch(error=> {
-            res.status(400).send({ error: error.message })
-            res.redirect('/404')
-        })
+    async addDeveloper(req, res) {
+        let {
+            first_name,
+            last_name, 
+            email, 
+            dob, 
+            website, 
+            membertype, 
+            number,
+            address
+        } = req.body
+        let file = req.file;
+        let payload = {first_name, last_name, role_id: 2, email, profile_image: file ? file.filename : '', password: 'password'};
+        //Save user
+        var user = await User.add(payload);
+        if (!user) {
+            return this.sendErrorResponse('Not able to add user.')
+        }
+        let user_id = user.insertId;
+        //payload to create a developer
+        let payload2 = {user_id , dob, phone: number, website, freelancer: membertype == 0 ? 1 : 0 };
+       
+        var developer = await Developer.add(payload2);
+        if(!developer) {
+            return this.sendErrorResponse('Not able to add information')          
+        } 
+        //Add address
+        let devAddress = await Address.add({user_id, ...address }) 
+        if(!devAddress){
+            return this.sendErrorResponse('Developer address not added.')
+        }
+        res.redirect('back')
+        
     }
 }
 

@@ -1,28 +1,27 @@
 const db = require('../database/connection');
 const Base = require('./base')
 
-function Developer(connection) {
-    this.table = 'developer';
-    this.columns = ['user_id', 'dob', 'phone', 'website', 'freelancer'];
+function Address(connection) {
+    this.table = 'developer_address';
+    this.columns = ['user_id', 'line1', 'postcode', 'city', 'country'];
     Base.call(this, connection)
 }
 
 //Extending the class and setting methods
-Developer.prototype = Object.create(Base.prototype);
+Address.prototype = Object.create(Base.prototype);
 
 /**
  * Get all titles
  */
-Developer.prototype.all = function() {
+Address.prototype.all = function() {
     let sql = `SELECT * FROM ${this.table}`;
     return this.query({ sql })
 }
 /**
  * Adding new title record
  */
-Developer.prototype.add = function({user_id, dob, phone, website, freelancer}) { 
-    dob = dob ? new Date(dob): new Date;
-    let data = [user_id, dob, phone, website, freelancer];  
+Address.prototype.add = function({user_id, line1, postcode, city, country}) { 
+    let data = [user_id, line1, postcode, city, country];  
     let sql = "INSERT INTO "+this.table+" ("+this.columns.join(',')+") VALUES (?,?,?,?,?)";
     return this.query({sql, data})
             .then(r => r)
@@ -32,9 +31,9 @@ Developer.prototype.add = function({user_id, dob, phone, website, freelancer}) {
 /**
  * Remove a record by id
  */
-Developer.prototype.removeById = function(id) {
+Address.prototype.removeById = function(id) {
     let sql = `DELETE FROM ${this.table} WHERE id=${id}`
     return this.query({sql})
 }
 
-module.exports = new Developer(db);
+module.exports = new Address(db);

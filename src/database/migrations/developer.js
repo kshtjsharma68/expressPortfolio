@@ -4,11 +4,11 @@ class Developer {
      * Run migration on call
      */
     async up(connection) {
-        const DEVELOPER_SQL = `CREATE TABLE developer(
+        const DEVELOPER_SQL = `CREATE TABLE if not exists developer(
             id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
             user_id int unsigned,
             dob DATE,
-            phone int,
+            phone VARCHAR(50),
             website VARCHAR(50),
             freelancer BIT(1),
             PRIMARY KEY(id),

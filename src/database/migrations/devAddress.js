@@ -1,19 +1,18 @@
 
-class Developer {
+class devAddress {
     /**
      * Run migration on call
      */
     async up(connection) {
-        const ROLE_SQL = `CREATE TABLE developer(
+        const ROLE_SQL = `CREATE TABLE if not exists developer_address(
             id TINYINT unsigned NOT NULL AUTO_INCREMENT,
-            first_name varchar(50),
-            last_name varchar(50),
-            email varchar(50),
-            dob DATE,
-            phone int(11),
-            website varchar(50),
-            freelancer BIT,
-            PRIMARY KEY (id)
+            user_id int unsigned,
+            line1 varchar(50),
+            postcode varchar(50),
+            city varchar(50),
+            country varchar(50),
+            PRIMARY KEY (id),
+            FOREIGN KEY (user_id) REFERENCES users(id)
         );`;
 
         return await new Promise((resolve, reject) => {
@@ -39,4 +38,4 @@ class Developer {
     }
 }
 
-module.exports = new Titles();
+module.exports = new devAddress();

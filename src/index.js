@@ -18,6 +18,7 @@ const port = process.env.PORT || 3000;
 
 // Static files
 app.use(express.static('public'))
+app.use('/uploads', express.static('uploads'))
 
 var MemoryStore = session.MemoryStore;
 //Setting session
