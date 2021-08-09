@@ -16,7 +16,7 @@ block content
             .card
                 .card-body
                     h4.card-title Basic 
-                    form.form-sample(method="post" action="/admin/developers?_csrf="+csrfToken enctype="multipart/form-data" )
+                    form.form-sample(method="post" action=`/admin/developers/${developer.id}/update?_csrf=`+csrfToken enctype="multipart/form-data" )
                         p.card-description  Personal Info
                         .row
                             .col-md-6

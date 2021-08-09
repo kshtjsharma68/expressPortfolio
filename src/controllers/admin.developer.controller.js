@@ -10,10 +10,14 @@ class developer {
      * Edit developer view
      * @param {} error 
      */
-    edit(req, res) {
+    async edit(req, res) {
         let id = req.params.id; 
-        let developer = {};
-        res.render('admin/developer/edit',{developer})
+        if(!id) {
+            return res.redirect('/404')
+        }
+        let developer = await User.getDeveloperById(id); console.log(developer)
+        
+        res.render('admin/developer/edit',{id, developer})
     }
 
     sendErrorResponse(error) {

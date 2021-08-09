@@ -4,5 +4,6 @@ module.exports = {
     'Title': require('./titles'),
     'Skill': require('./skills'),
     Developer : require('./developer'),
-    Address : require('./developerAddress')
+    Address : require('./developerAddress'),
+    Social : require('./developerSocial')
 }

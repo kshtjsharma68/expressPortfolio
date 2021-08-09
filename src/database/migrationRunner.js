@@ -4,7 +4,8 @@ const baseMigrations = require("./migrations/all.js")
 const Roles = require("./migrations/roles.js")
 const Skills = require("./migrations/skills.js")
 const Developer = require("./migrations/developer.js")
-const devAddress = require("./migrations/devAddress.js")
+const devAddress = require("./migrations/devAddress.js");
+const devSocial = require("./migrations/devSocial.js");
 
 // Group of migrations
 const Migrations = [baseMigrations,Roles,Skills, Developer,devAddress];

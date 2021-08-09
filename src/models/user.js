@@ -60,4 +60,18 @@ User.prototype.getDevelopers = function(withAddress = true) {
     })
 }
 
+/**
+ * 
+ * @param {id} id 
+ */
+User.prototype.getDeveloperById = function(id = 0 ) {
+    let sql = `SELECT users.*, developer.*, developer_address.* from users `;
+    sql += `LEFT OUTER JOIN developer ON users.id = developer.user_id `;
+    sql += `LEFT OUTER JOIN developer_address ON users.id = developer_address.user_id `;
+    sql += ` WHERE users.id = ${id} LIMIT 1`;
+    return this.query({
+        sql
+    })
+}
+
 module.exports = new User(db);
