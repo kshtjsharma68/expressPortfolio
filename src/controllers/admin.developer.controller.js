@@ -1,8 +1,19 @@
 const { User, Developer, Address } = require('../models')
 
 class developer {
-    index(req, res) {
-        res.render('admin/developer')
+    async index(req, res) {
+        let developers = await User.getDevelopers();
+        res.render('admin/developer', {developers});
+    }
+
+    /**
+     * Edit developer view
+     * @param {} error 
+     */
+    edit(req, res) {
+        let id = req.params.id; 
+        let developer = {};
+        res.render('admin/developer/edit',{developer})
     }
 
     sendErrorResponse(error) {

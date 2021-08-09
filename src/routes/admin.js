@@ -31,6 +31,7 @@ router.get('/', adminController.index)
 router.get('/change-password', adminController.changePassword)
 
 router.get('/developers', developerController.index)
+router.get('/developers/:id/edit', developerController.edit)
 router.post('/developers', upload.single('avatar'), developerController.addDeveloper)
 
 router.get('/parameters', parametersController.index)

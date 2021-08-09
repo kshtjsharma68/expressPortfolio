@@ -51,4 +51,13 @@ User.prototype.getUserWithEmail = function( email = '' ) {
     })
 }
 
+User.prototype.getDevelopers = function(withAddress = true) {
+    let sql = `SELECT users.id, CONCAT(users.first_name ," ", users.last_name) AS Name, users.profile_image, developer.dob, developer.freelancer from users `;
+    sql += `LEFT OUTER JOIN developer ON users.id = developer.user_id `;
+    sql += ` WHERE users.role_id = 2`;
+    return this.query({
+        sql
+    })
+}
+
 module.exports = new User(db);

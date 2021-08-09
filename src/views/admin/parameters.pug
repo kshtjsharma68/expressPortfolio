@@ -29,7 +29,7 @@ block content
                                         td=title.name
                                         td 
                                             button.btn.btn-danger.btn-sm.role-del(data-id=title.id, onclick=`removeRole(this,${title.id})`)
-                                                i.mdi.mdi-delete 
+                                                i.mdi.mdi-pencil  
 
                     form.forms-sample.role-form(style="display: none;", method="post", action="/admin/add-role")
                         input(type="hidden" name="_csrf" value=csrfToken)

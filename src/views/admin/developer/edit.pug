@@ -11,38 +11,7 @@ block content
                     a(href='#') Admin
                 li.breadcrumb-item.active(aria-current='page') Developers
 
-    .row.developer-table
-        .col-lg-12.grid-margin.stretch-card
-            .card
-                .card-body
-                    //- h4.card-title Striped Table
-                    button.btn.btn-inverse-primary.btn-fw#add-developer(type='button' style="float: right;")
-                        i.mdi.mdi-account-plus
-                        | ADD
-                    .table-responsive
-                        table.table.table-striped
-                            thead
-                                tr
-                                    th  User 
-                                    th  Name 
-                                    th  Dob 
-                                    th  Freelancer 
-                                    th  Actions 
-                            tbody
-                                each developer in developers                            
-                                    tr
-                                        td.py-1
-                                            img(src='/assets/images/faces-clipart/pic-1.png' alt='image')
-                                        td=`${developer.Name||'NA'}`
-                                        td=new Date(developer.dob).toLocaleString('en-US')
-                                            //- .progress
-                                            //-     .progress-bar.bg-success(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
-                                        td=developer.freelancer 
-                                        td
-                                            a.btn.btn-primary.btn-sm.role-del(href=`/admin/developers/${developer.id}/edit`)
-                                                i.mdi.mdi-pencil 
-
-    .row.developer-form
+    .row
         .col-12.grid-margin
             .card
                 .card-body
@@ -181,22 +150,4 @@ block content
 
 block scripts
     script(type="text/javascript").
-        $('#add-developer').on('click',function(e) {
-            $('.developer-table').toggle()
-            $('.developer-form').toggle()
-            })
-
-        $(function() {
-            $('.file-upload-browse').on('click', function() {
-            var file = $(this).parent().parent().parent().find('.file-upload-default');
-            file.trigger('click');
-            });
-            $('.file-upload-default').on('change', function() {
-            $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
-            });
-        });
-        $(document).ready(function(){ 
-            $('.developer-form').hide()
-             $('.developer-table').show()
-        })
 
