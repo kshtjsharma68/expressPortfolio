@@ -1,4 +1,4 @@
-const { User, Developer, Address } = require('../models')
+const { User, Developer, Address, Social } = require('../models')
 
 class developer {
     async index(req, res) {
@@ -15,9 +15,14 @@ class developer {
         if(!id) {
             return res.redirect('/404')
         }
-        let developer = await User.getDeveloperById(id); console.log(developer)
-        
-        res.render('admin/developer/edit',{id, developer})
+        let developer;
+        let social;
+        await Promise.all([User.getDeveloperById(id), Social.getByUserId(id) ])
+                .then((values) => { 
+                    developer = values[0][0];
+                    social = values[1];
+                 }); 
+        res.render('admin/developer/edit',{id, developer, social})
     }
 
     sendErrorResponse(error) {

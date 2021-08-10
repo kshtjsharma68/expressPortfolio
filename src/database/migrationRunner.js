@@ -8,7 +8,7 @@ const devAddress = require("./migrations/devAddress.js");
 const devSocial = require("./migrations/devSocial.js");
 
 // Group of migrations
-const Migrations = [baseMigrations,Roles,Skills, Developer,devAddress];
+const Migrations = [baseMigrations,Roles,Skills, Developer,devAddress,devSocial];
 /**
  * TO create table and run migrations
  */
