@@ -17,7 +17,7 @@ class developer {
         }
         let developer = await User.getDeveloperById(id); console.log(developer)
         
-        res.render('admin/developer/edit',{id, developer})
+        res.render('admin/developer/edit',{id, developer,})
     }
 
     sendErrorResponse(error) {
