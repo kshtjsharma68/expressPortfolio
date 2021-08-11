@@ -5,13 +5,14 @@ class devSocial {
      */
     async up(connection) {
         const ROLE_SQL = `CREATE TABLE if not exists developer_social(
-            id TINYINT unsigned NOT NULL AUTO_INCREMENT,
+            id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
             user_id int unsigned,
             twitter varchar(50),
             facebook varchar(50),
             instagram varchar(50),
             linkedin varchar(50),
             skype varchar(50),
+            PRIMARY KEY(id),
             FOREIGN KEY (user_id) REFERENCES users(id)
         );`;
 

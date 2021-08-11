@@ -16,30 +16,30 @@ block content
             .card
                 .card-body
                     h4.card-title Basic 
-                    form.form-sample(method="post" action=`/admin/developers/${developer.id}/update?_csrf=`+csrfToken enctype="multipart/form-data" )
+                    form.form-sample(method="post" action=`/admin/developers/${id}/update?_csrf=`+csrfToken enctype="multipart/form-data" )
                         p.card-description  Personal Info
                         .row
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label(for='first_name') First Name
                                     .col-sm-9
-                                        input#first_name.form-control(type='text' placeholder="First Name" name="first_name" required)
+                                        input#first_name.form-control(type='text' placeholder="First Name" name="first_name" value=`${developer.first_name}` required)
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label(for='last_name') Last Name
                                     .col-sm-9
-                                        input#last_name.form-control(type='text' placeholder="Last Name" name="last_name" required)
+                                        input#last_name.form-control(type='text' placeholder="Last Name" name="last_name" value=developer.last_name required)
                         .row
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label(for='email') Email
                                     .col-sm-9
-                                        input#email.form-control(type='text' placeholder="Email" name="email" required)
+                                        input#email.form-control(type='text' placeholder="Email" name="email" value=developer.email required)
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label Date of Birth
                                     .col-sm-9
-                                        input.form-control(placeholder='yyyy-mm-dd' name="dob" required)
+                                        input.form-control(placeholder='yyyy-mm-dd' name="dob" value=new Date(developer.dob).toLocaleString('en-US') required)
                         .row
                             .col-md-6
                                 .form-group.row
@@ -47,12 +47,12 @@ block content
                                     .input-group.col-sm-9
                                         .input-group-prepend
                                         span.input-group-text +91
-                                        input.form-control(type='text' name="number" placeholder='Phone' required)
+                                        input.form-control(type='text' name="number" placeholder='Phone' value=developer.phone required)
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label(for='website') Website
                                     .col-sm-9
-                                        input#website.form-control(type='text' placeholder="Website" name="website" required)
+                                        input#website.form-control(type='text' placeholder="Website" name="website" value=developer.website required)
 
                         .row                            
                             .col-md-6
@@ -61,13 +61,13 @@ block content
                                     .col-sm-4
                                         .form-check
                                             label.form-check-label
-                                                input#freelancer.form-check-input(type='radio' name='membertype' value='0' checked='')
+                                                input#freelancer.form-check-input(type='radio' name='membertype' value='0' checked=`${developer.freelancer.toString('hex')[1] === 1 ? 'checked' : ''}`)
                                                 |  Freelancer 
                                                 i.input-helper
                                     .col-sm-5
                                         .form-check
                                             label.form-check-label
-                                                input#professional.form-check-input(type='radio' name='membertype' value='1')
+                                                input#professional.form-check-input(type='radio' name='membertype' value='1' checked=`${developer.freelancer.toString('hex')[1] === 0 ? '' : 'checked'}`)
                                                 |  Professional 
                                                 i.input-helper
                         p.card-description  Address 
@@ -76,18 +76,18 @@ block content
                                 .form-group.row
                                     label.col-sm-3.col-form-label Line1
                                     .col-sm-9
-                                        input.form-control(type='text' name="address[line1]" required)
+                                        input.form-control(type='text' name="address[line1]" value=developer.line1 required)
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label Postcode
                                     .col-sm-9
-                                        input.form-control(type='text' name="address[postcode]"  required)
+                                        input.form-control(type='text' name="address[postcode]" value=developer.postcode  required)
                         .row
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label City
                                     .col-sm-9
-                                        input.form-control(type='text' name="address[city]"  required)
+                                        input.form-control(type='text' name="address[city]" value=developer.city required)
                             .col-md-6
                                 .form-group.row
                                     label.col-sm-3.col-form-label Country

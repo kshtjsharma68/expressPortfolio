@@ -31,7 +31,9 @@ Social.prototype.add = function({user_id, twitter, facebook, instagram,linkedin,
 }
 
 Social.prototype.getByUserId = function(id) {
-    thi.sql = `SELECt * from ${this.table} WHERE user_id = ${id}`
+    this.data = []
+    this.sql = `SELECt * from ${this.table} WHERE user_id = ${id}`;
+    return this.runQuery()
 }
 
 module.exports = new Social(db);
