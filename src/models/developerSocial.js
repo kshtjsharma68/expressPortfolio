@@ -24,9 +24,9 @@ Social.prototype.runQuery = function() {
 /**
  * Adding new title record
  */
-Social.prototype.add = function({user_id, twitter, facebook, instagram,linkedin, skype}) { 
+Social.prototype.add = function({user_id, twitter, facebook, instagram, linkedin, skype}) { 
     this.data = [user_id, twitter, facebook, instagram,linkedin, skype];  
-    this.sql = "INSERT INTO "+this.table+" ("+this.columns.join(',')+") VALUES (?,?,?,?,?)";
+    this.sql = "INSERT INTO "+this.table+" ("+this.columns.join(',')+") VALUES (?,?,?,?,?,?)";
     return this.runQuery()
 }
 

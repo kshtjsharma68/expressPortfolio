@@ -62,6 +62,25 @@ class developer {
         res.redirect('back')
         
     }
+
+    /**
+     * Adding developer social
+     */
+    async addSocial(req, res){
+        let id = req.params.id;
+        let record = Social.add({user_id: id, ...req.body});
+        res.redirect('back')
+     }
+
+
+    /**
+     * Update developer social
+     */
+    async updateSocial(req, res){
+        let id = req.params.id;
+        console.log(id, req.body)
+        res.send(req.body)
+     }
 }
 
 module.exports = new developer
