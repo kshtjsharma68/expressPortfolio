@@ -110,15 +110,12 @@ block content
             .card
                 .card-body
                     h4.card-title Social Media Links
-                    if social.length
-                        form.form-sample(method='put' action='/admin/developers/social/'+id)
-                    else 
-                        form.form-sample(method='post' action='/admin/developers/social/'+id)
+                    form.form-sample(method='post' action='/admin/developers/social/'+id+(social.id ? '/update/'+social.id : ''))
                             
                             input(type="hidden" name="_csrf" value=csrfToken)
                             .form-group
                                 .input-group
-                                    input.form-control(type='text' name="twitter" placeholder='Twitter' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.twitter|| '')
+                                    input.form-control(type='text' name="twitter" placeholder='Twitter' aria-label="Recipient's username" aria-describedby='basic-addon2' value=(social.twitter||''))
                                     .input-group-append
                                         button.btn.btn-sm.btn-twitter(type='button')
                                             i.mdi.mdi-twitter 

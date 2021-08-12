@@ -36,4 +36,8 @@ Social.prototype.getByUserId = function(id) {
     return this.runQuery()
 }
 
+Social.prototype.updateById = function(id, { twitter, facebook, instagram, skype, linkedin }) {
+
+}
+
 module.exports = new Social(db);

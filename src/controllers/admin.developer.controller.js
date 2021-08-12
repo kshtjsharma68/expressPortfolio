@@ -17,10 +17,10 @@ class developer {
         }
         let developer,social;
         await Promise.all([User.getDeveloperById(id), Social.getByUserId(id) ])
-                .then((values) => { 
-                    developer = values[0][0];
-                    social = values[1];
-                 }); 
+                .then(values => {  
+                    developer = values[0][0]
+                    social = values[1][0] ? values[1][0] : {}
+                 });
         res.render('admin/developer/edit',{id, developer, social})
     }
 
@@ -66,7 +66,7 @@ class developer {
     /**
      * Adding developer social
      */
-    async addSocial(req, res){
+    async addSocial(req, res){ 
         let id = req.params.id;
         let record = Social.add({user_id: id, ...req.body});
         res.redirect('back')
@@ -77,8 +77,8 @@ class developer {
      * Update developer social
      */
     async updateSocial(req, res){
-        let id = req.params.id;
-        console.log(id, req.body)
+        let {id, socialId} = req.params.id;
+        let record = Social.updateById(socialId,req.body)
         res.send(req.body)
      }
 }
