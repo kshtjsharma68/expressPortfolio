@@ -36,8 +36,11 @@ Social.prototype.getByUserId = function(id) {
     return this.runQuery()
 }
 
-Social.prototype.updateById = function(id, { twitter, facebook, instagram, skype, linkedin }) {
-
+Social.prototype.updateById = function(id, fields) {
+    let { twitter, facebook, instagram, skype, linkedin } = fields; 
+    this.data = [ twitter, facebook, instagram, skype, linkedin]; 
+    this.sql = `UPDATE ${this.table} SET twitter=?, facebook=?, instagram=?, skype=?, linkedin=? WHERE id = ${id}`;
+    return this.runQuery()
 }
 
 module.exports = new Social(db);

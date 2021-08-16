@@ -77,9 +77,12 @@ class developer {
      * Update developer social
      */
     async updateSocial(req, res){
-        let {id, socialId} = req.params.id;
-        let record = Social.updateById(socialId,req.body)
-        res.send(req.body)
+        let {id, socialId} = req.params; 
+        let record = await Social.updateById(socialId, req.body); 
+        if(record.serverStatus !== 2) {
+            res.send(req.body)
+        }
+        res.redirect('back')
      }
 }
 
