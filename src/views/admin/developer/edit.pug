@@ -2,6 +2,16 @@ extends ../../adminLayout
 
 block style
     link(rel="stylesheet" type="text/css" href="/css/custom.css")
+    style. 
+        .skills {
+            display: none;
+        }
+        .projects {
+            display: none;
+        }
+        .education {
+            display: none;
+        }
 
 block content
 
@@ -19,8 +29,9 @@ block content
                 .card-body
                     h4.card-title Basic 
                     .text-right 
-                        a.btn.btn-link.btn-fw(href=`/admin/developers/${id}/projects`) Projects
-                        a.btn.btn-link.btn-fw(href=`/admin/developers/${id}/education`) Education
+                        a.btn.btn-link.btn-fw(href=`javascript:void(0);` onclick="show('skills'))") Skils
+                        a.btn.btn-link.btn-fw(href=`javascript:void(0);`  onclick="show('projects')") Projects
+                        a.btn.btn-link.btn-fw(href=`javascript:void(0);`  onclick="show('education')") Education
                     form.form-sample(method="post" action=`/admin/developers/${id}/update?_csrf=`+csrfToken enctype="multipart/form-data" )
                         p.card-description  Personal Info
                         .row
@@ -111,7 +122,7 @@ block content
                         .row(style="justify-content: right;")
                             button.btn.btn-primary.mr-2.col-md-2(type='submit') Submit
                             button.btn.btn-dark.col-md-2(type='reset') Cancel
-        .col-md-6.grid-margin.stretch-card
+        .col-md-6.grid-margin.stretch-card.basic
             .card
                 .card-body
                     h4.card-title Social Media Links
@@ -152,7 +163,7 @@ block content
                                     button.btn.btn-primary.mr-2(type='submit') Submit
                                     button.btn.btn-dark(type='reset') Cancel
 
-        .col-md-6.grid-margin.stretch-card
+        .col-md-6.grid-margin.stretch-card.basic
             .card
                 .card-body
                     h4.card-title Information
@@ -173,8 +184,132 @@ block content
                             button.btn.btn-primary.mr-2(type='submit') Submit
                             button.btn.btn-dark Cancel
 
+        .col-md-6.grid-margin.stretch-card.skills
+            .card
+                .card-body
+                    h4.card-title Skils
+                    form.form-sample(method='post' action='/admin/developers/social/'+id+(social.id ? '/update/'+social.id : ''))
+                            
+                            input(type="hidden" name="_csrf" value=csrfToken)
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name="twitter" placeholder='Twitter' aria-label="Recipient's username" aria-describedby='basic-addon2' value=(social.twitter||''))
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-twitter(type='button')
+                                            i.mdi.mdi-twitter 
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name="facebook" placeholder='Facebook' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.facebook|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-facebook(type='button')
+                                            i.mdi.mdi-facebook
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='instagram' placeholder='Instagram' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.instagram|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-instagram(type='button')
+                                            i.mdi.mdi-instagram
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='linkedin' placeholder='LinkedIn' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.linkedin|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-linkedin(type='button')
+                                            i.mdi.mdi-linkedin
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='skype' placeholder='Skype' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.skype|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-skype(type='button')
+                                            i.mdi.mdi-skype
+                            .row(style="justify-content: center;")
+                                    button.btn.btn-primary.mr-2(type='submit') Submit
+                                    button.btn.btn-dark(type='reset') Cancel
 
+        .col-md-6.grid-margin.stretch-card.education
+            .card
+                .card-body
+                    h4.card-title Education
+                    form.form-sample(method='post' action='/admin/developers/social/'+id+(social.id ? '/update/'+social.id : ''))
+                            
+                            input(type="hidden" name="_csrf" value=csrfToken)
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name="twitter" placeholder='Twitter' aria-label="Recipient's username" aria-describedby='basic-addon2' value=(social.twitter||''))
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-twitter(type='button')
+                                            i.mdi.mdi-twitter 
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name="facebook" placeholder='Facebook' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.facebook|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-facebook(type='button')
+                                            i.mdi.mdi-facebook
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='instagram' placeholder='Instagram' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.instagram|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-instagram(type='button')
+                                            i.mdi.mdi-instagram
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='linkedin' placeholder='LinkedIn' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.linkedin|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-linkedin(type='button')
+                                            i.mdi.mdi-linkedin
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='skype' placeholder='Skype' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.skype|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-skype(type='button')
+                                            i.mdi.mdi-skype
+                            .row(style="justify-content: center;")
+                                    button.btn.btn-primary.mr-2(type='submit') Submit
+                                    button.btn.btn-dark(type='reset') Cancel
 
+        .col-md-6.grid-margin.stretch-card.projects
+            .card
+                .card-body
+                    h4.card-title Some projects
+                    form.form-sample(method='post' action='/admin/developers/social/'+id+(social.id ? '/update/'+social.id : ''))
+                            
+                            input(type="hidden" name="_csrf" value=csrfToken)
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name="twitter" placeholder='Twitter' aria-label="Recipient's username" aria-describedby='basic-addon2' value=(social.twitter||''))
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-twitter(type='button')
+                                            i.mdi.mdi-twitter 
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name="facebook" placeholder='Facebook' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.facebook|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-facebook(type='button')
+                                            i.mdi.mdi-facebook
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='instagram' placeholder='Instagram' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.instagram|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-instagram(type='button')
+                                            i.mdi.mdi-instagram
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='linkedin' placeholder='LinkedIn' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.linkedin|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-linkedin(type='button')
+                                            i.mdi.mdi-linkedin
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='skype' placeholder='Skype' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.skype|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-skype(type='button')
+                                            i.mdi.mdi-skype
+                            .row(style="justify-content: center;")
+                                    button.btn.btn-primary.mr-2(type='submit') Submit
+                                    button.btn.btn-dark(type='reset') Cancel
 block scripts
     script(type="text/javascript").
+        var divs = ['basic', 'skills', 'education', 'projects']
+        function show(key) {
+            divs.forEach(v => v === key ? $(`.${v}`).show() : $(`.${v}`).hide())
+        }
 

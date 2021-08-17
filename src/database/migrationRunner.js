@@ -9,9 +9,10 @@ const devSocial = require("./migrations/devSocial.js");
 const basic = require("./migrations/basic.js");
 const projects = require("./migrations/projects.js");
 const education = require("./migrations/education.js");
+const devSkill = require("./migrations/devSkills.js");
 
 // Group of migrations
-const Migrations = [baseMigrations, Roles, Skills, Developer, devAddress, devSocial, projects, basic];
+const Migrations = [baseMigrations, Roles, Skills, Developer, devAddress, devSocial, projects, basic, devSkill, education];
 /**
  * TO create table and run migrations
  */
