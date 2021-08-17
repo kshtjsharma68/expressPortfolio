@@ -6,9 +6,12 @@ const Skills = require("./migrations/skills.js")
 const Developer = require("./migrations/developer.js")
 const devAddress = require("./migrations/devAddress.js");
 const devSocial = require("./migrations/devSocial.js");
+const basic = require("./migrations/basic.js");
+const projects = require("./migrations/projects.js");
+const education = require("./migrations/education.js");
 
 // Group of migrations
-const Migrations = [baseMigrations,Roles,Skills, Developer,devAddress,devSocial];
+const Migrations = [baseMigrations, Roles, Skills, Developer, devAddress, devSocial, projects, basic];
 /**
  * TO create table and run migrations
  */
