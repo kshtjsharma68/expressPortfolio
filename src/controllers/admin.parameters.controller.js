@@ -67,6 +67,17 @@ class Parameters {
                                 .catch(err => [])
         res.status(200).json({'message': 'Well done', data: skills})
     }
+
+    /**
+     * Get all skills
+     * @param req
+     * @param res
+     * @return json
+     */
+    async skills(req, res) {
+        let skills = await Skill.all();
+        res.status(200).json({data: skills})
+    }
 }
 
 module.exports = new Parameters()

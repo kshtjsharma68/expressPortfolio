@@ -36,7 +36,8 @@ router.post('/developers', upload.single('avatar'), developerController.addDevel
 router.post('/developers/social/:id', developerController.addSocial)
 router.post('/developers/social/:id/update/:socialId', developerController.updateSocial)
 
-router.get('/parameters', parametersController.index)
+router.get('/parameters', parametersController.index);
+router.get('/skills', parametersController.skills);
 
 //Roles
 router.post('/add-role', parametersController.addRole)

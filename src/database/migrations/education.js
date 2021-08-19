@@ -44,4 +44,4 @@ class Education {
     }
 }
 
-module.exports = new Education();
+module.exports = new Education;

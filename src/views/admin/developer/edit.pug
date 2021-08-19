@@ -2,16 +2,6 @@ extends ../../adminLayout
 
 block style
     link(rel="stylesheet" type="text/css" href="/css/custom.css")
-    style. 
-        .skills {
-            display: none;
-        }
-        .projects {
-            display: none;
-        }
-        .education {
-            display: none;
-        }
 
 block content
 
@@ -29,7 +19,7 @@ block content
                 .card-body
                     h4.card-title Basic 
                     .text-right 
-                        a.btn.btn-link.btn-fw(href=`javascript:void(0);` onclick="show('skills'))") Skils
+                        a.btn.btn-link.btn-fw(href=`javascript:void(0);` onclick="show('skills')") Skils
                         a.btn.btn-link.btn-fw(href=`javascript:void(0);`  onclick="show('projects')") Projects
                         a.btn.btn-link.btn-fw(href=`javascript:void(0);`  onclick="show('education')") Education
                     form.form-sample(method="post" action=`/admin/developers/${id}/update?_csrf=`+csrfToken enctype="multipart/form-data" )
@@ -188,39 +178,13 @@ block content
             .card
                 .card-body
                     h4.card-title Skils
-                    form.form-sample(method='post' action='/admin/developers/social/'+id+(social.id ? '/update/'+social.id : ''))
+                    form.form-sample(method='post' action='/admin/developers/social/'+id+'/skills')
                             
                             input(type="hidden" name="_csrf" value=csrfToken)
-                            .form-group
-                                .input-group
-                                    input.form-control(type='text' name="twitter" placeholder='Twitter' aria-label="Recipient's username" aria-describedby='basic-addon2' value=(social.twitter||''))
-                                    .input-group-append
-                                        button.btn.btn-sm.btn-twitter(type='button')
-                                            i.mdi.mdi-twitter 
-                            .form-group
-                                .input-group
-                                    input.form-control(type='text' name="facebook" placeholder='Facebook' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.facebook|| '')
-                                    .input-group-append
-                                        button.btn.btn-sm.btn-facebook(type='button')
-                                            i.mdi.mdi-facebook
-                            .form-group
-                                .input-group
-                                    input.form-control(type='text' name='instagram' placeholder='Instagram' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.instagram|| '')
-                                    .input-group-append
-                                        button.btn.btn-sm.btn-instagram(type='button')
-                                            i.mdi.mdi-instagram
-                            .form-group
-                                .input-group
-                                    input.form-control(type='text' name='linkedin' placeholder='LinkedIn' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.linkedin|| '')
-                                    .input-group-append
-                                        button.btn.btn-sm.btn-linkedin(type='button')
-                                            i.mdi.mdi-linkedin
-                            .form-group
-                                .input-group
-                                    input.form-control(type='text' name='skype' placeholder='Skype' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.skype|| '')
-                                    .input-group-append
-                                        button.btn.btn-sm.btn-skype(type='button')
-                                            i.mdi.mdi-skype
+                            .form-group.row
+                                    label.col-sm-3.col-form-label City
+                                    .col-sm-9
+                                        input.form-control(type='text' name="" value= required)
                             .row(style="justify-content: center;")
                                     button.btn.btn-primary.mr-2(type='submit') Submit
                                     button.btn.btn-dark(type='reset') Cancel
@@ -308,8 +272,40 @@ block content
                                     button.btn.btn-dark(type='reset') Cancel
 block scripts
     script(type="text/javascript").
-        var divs = ['basic', 'skills', 'education', 'projects']
-        function show(key) {
-            divs.forEach(v => v === key ? $(`.${v}`).show() : $(`.${v}`).hide())
+        var parent = {
+            request: function(url, type, data){ 
+                let result = $.ajax({
+                                url,
+                                type,
+                                data,
+                            });
+                result.success = data => data;
+                result.error = err => err)
+                console.log(result)
+            }
+        }
+        var operations = {
+            __proto__: parent,
+            allSkills: [],
+            index: '', 
+            skills: function() { 
+                if(this.allSkills.length) return this.allSkills;
+                let rslt = this.request('/admin/skills', 'get', {});
+                console.log('result', rslt)
+                return this.allSkills;
+            },
+            renderHtml(){ console.log(this.allSkills)
+                let html = ``;
+                html += `<div class="form-group row">`;
+                html += `<label class="col-sm-3 col-form-label" for=""></label>`;
+                html += `<div class="col-sm-9">`;
+                html += `<input class="form-control" type="number" name=""  required/>`;
+            }
+        }
+        function show(key) { 
+            operations[key](); console.log('operations',operations);
+            operations.renderHtml()
+            ['basic', 'skills', 'education', 'projects'].forEach(v => v === key ? $(`.${v}`).show() : $(`.${v}`).hide());
+            
         }
 
