@@ -272,29 +272,31 @@ block content
                                     button.btn.btn-dark(type='reset') Cancel
 block scripts
     script(type="text/javascript").
-        var parent = {
-            request: function(url, type, data){ 
-                let result = $.ajax({
+        async function request (url, type, data) {
+            let result = await $.ajax({
                                 url,
                                 type,
                                 data,
+                                cache: false,
+                                success: data => data,
+                                error: err => []
                             });
-                result.success = data => data;
-                result.error = err => err)
-                console.log(result)
-            }
+            return result.then(r => r).catch(err => [])
         }
+
+        var parent = {}
         var operations = {
             __proto__: parent,
             allSkills: [],
             index: '', 
-            skills: function() { 
+            get skills() { 
                 if(this.allSkills.length) return this.allSkills;
-                let rslt = this.request('/admin/skills', 'get', {});
-                console.log('result', rslt)
+                let rslt = request('/admin/skills', 'get', {}); console.log(this)
+                this.allSkills = rslt;
+                this.index = "skills";console.log('result',rslt)
                 return this.allSkills;
             },
-            renderHtml(){ console.log(this.allSkills)
+            render: function(){ console.log(this)
                 let html = ``;
                 html += `<div class="form-group row">`;
                 html += `<label class="col-sm-3 col-form-label" for=""></label>`;
@@ -303,8 +305,8 @@ block scripts
             }
         }
         function show(key) { 
-            operations[key](); console.log('operations',operations);
-            operations.renderHtml()
+            operations[key]; console.log(operations);
+            //- operations.renderHtml()
             ['basic', 'skills', 'education', 'projects'].forEach(v => v === key ? $(`.${v}`).show() : $(`.${v}`).hide());
             
         }
