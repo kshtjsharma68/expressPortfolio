@@ -290,27 +290,36 @@ block scripts
             __proto__: parent,
             allSkills: [],
             index: '', 
+            path: '',
+            type: '',
             get skills() {
                 this.index = "skills"; 
-                if(this.allSkills.length) return this.allSkills;
-                let r = this.sendRequest('/admin/skills', 'get', {}); 
+                this.path = '/admin/skills';
+                this.type = 'get';
                 return this.allSkills;
             },
-            sendRequest: async function(url, type, data) {
-                let result = await request(url, type, data); 
-                return result
+            set skills(data) {
+                this.allSkills = data;
+            },
+            skillsHtml: function() {
+                let html = ``; 
+                this.allSkills.forEach(v => { 
+                    html += `<div class="form-group row">`;
+                    html += `<label class="col-sm-3 col-form-label" for="">${v.name}</label>`;
+                    html += `<div class="col-sm-9">`;
+                    html += `<input class="form-control" type="number" name="${v.name}"  required/>`;
+                });                
+                return html;
             },
             render: function(){ 
-                let html = ``; 
-                html += `<div class="form-group row">`;
-                html += `<label class="col-sm-3 col-form-label" for=""></label>`;
-                html += `<div class="col-sm-9">`;
-                html += `<input class="form-control" type="number" name=""  required/>`;
+                let key = `${this.index}Html`; console.log(key)
+                return this[key]();                
             }
         }
         async function show(key) { 
-            operations[key];
-            operations.render();
+            if(!operations[key].length) operations[key] = await request(operations.path, operations.type, {});
+            console.log(operations.render());
+            //- operations.render();
             //- operations.renderHtml()
             ['basic', 'skills', 'education', 'projects'].forEach(v => v === key ? $(`.${v}`).show() : $(`.${v}`).hide());
             
