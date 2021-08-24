@@ -181,10 +181,7 @@ block content
                     form.form-sample(method='post' action='/admin/developers/social/'+id+'/skills')
                             
                             input(type="hidden" name="_csrf" value=csrfToken)
-                            .form-group.row
-                                    label.col-sm-3.col-form-label City
-                                    .col-sm-9
-                                        input.form-control(type='text' name="" value= required)
+                            .row#skill-content
                             .row(style="justify-content: center;")
                                     button.btn.btn-primary.mr-2(type='submit') Submit
                                     button.btn.btn-dark(type='reset') Cancel
@@ -304,12 +301,13 @@ block scripts
             skillsHtml: function() {
                 let html = ``; 
                 this.allSkills.forEach(v => { 
-                    html += `<div class="form-group row">`;
+                    html += `<div class="form-group row col-md-12">`;
                     html += `<label class="col-sm-3 col-form-label" for="">${v.name}</label>`;
                     html += `<div class="col-sm-9">`;
-                    html += `<input class="form-control" type="number" name="${v.name}"  required/>`;
+                    html += `<input class="form-control" type="number" name="skill['${v.id}']"  required/>`;
+                    html += `</div></div>`;
                 });                
-                return html;
+                $('#skill-content').html(html);
             },
             render: function(){ 
                 let key = `${this.index}Html`; console.log(key)

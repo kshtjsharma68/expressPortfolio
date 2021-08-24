@@ -1,7 +1,7 @@
 const db = require('../database/connection');
 const Base = require('./base')
 
-function Social(connection) {
+function devSkills(connection) {
     this.table = 'developer_skills';
     this.columns = ['user_id', 'skill_id', 'fill'];
     this.sql = '';
@@ -10,9 +10,9 @@ function Social(connection) {
 }
 
 //Extending the class and setting methods
-Social.prototype = Object.create(Base.prototype);
+devSkills.prototype = Object.create(Base.prototype);
 
-Social.prototype.runQuery = function() {
+devSkills.prototype.runQuery = function() {
     return this.query({sql: this.sql, data: this.data})
                 .then(r => r)
                 .catch(err => {
@@ -22,25 +22,34 @@ Social.prototype.runQuery = function() {
 }
 
 /**
- * Adding new title record
+ * Adding new skill record
  */
-Social.prototype.add = function({user_id, twitter, facebook, instagram, linkedin, skype}) { 
-    this.data = [user_id, twitter, facebook, instagram,linkedin, skype];  
-    this.sql = "INSERT INTO "+this.table+" ("+this.columns.join(',')+") VALUES (?,?,?,?,?,?)";
+devSkills.prototype.add = function({user_id, skill_id, fill}) {   console.log(skill_id)   
+    this.data = [user_id, skill_id, fill];  
+    this.sql = "INSERT INTO "+this.table+" ("+this.columns.join(',')+") VALUES (?,?,?)";
     return this.runQuery()
 }
 
-Social.prototype.getByUserId = function(id) {
-    this.data = []
-    this.sql = `SELECt * from ${this.table} WHERE user_id = ${id}`;
-    return this.runQuery()
+/**
+ * Check if exists
+ */
+devSkills.prototype.ifExists = function({user_id, skill_id}) {
+    let query = `SELECT * from ${this.table} WHERE user_id = ${user_id} && skill_id = ${skill_id}`;
+    this.sql = query;
+    return this.runQuery();
 }
 
-Social.prototype.updateById = function(id, fields) {
-    let { twitter, facebook, instagram, skype, linkedin } = fields; 
-    this.data = [ twitter, facebook, instagram, skype, linkedin]; 
-    this.sql = `UPDATE ${this.table} SET twitter=?, facebook=?, instagram=?, skype=?, linkedin=? WHERE id = ${id}`;
-    return this.runQuery()
-}
+// Social.prototype.getByUserId = function(id) {
+//     this.data = []
+//     this.sql = `SELECt * from ${this.table} WHERE user_id = ${id}`;
+//     return this.runQuery()
+// }
 
-module.exports = new Social(db);
+// Social.prototype.updateById = function(id, fields) {
+//     let { twitter, facebook, instagram, skype, linkedin } = fields; 
+//     this.data = [ twitter, facebook, instagram, skype, linkedin]; 
+//     this.sql = `UPDATE ${this.table} SET twitter=?, facebook=?, instagram=?, skype=?, linkedin=? WHERE id = ${id}`;
+//     return this.runQuery()
+// }
+
+module.exports = new devSkills(db);

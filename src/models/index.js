@@ -5,5 +5,6 @@ module.exports = {
     'Skill': require('./skills'),
     Developer : require('./developer'),
     Address : require('./developerAddress'),
-    Social : require('./developerSocial')
+    Social : require('./developerSocial'),
+    devSkills : require('./developerSkills'),
 }

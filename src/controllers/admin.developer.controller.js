@@ -1,4 +1,4 @@
-const { User, Developer, Address, Social, Title } = require('../models')
+const { User, Developer, Address, Social, Title, devSkills } = require('../models')
 
 class developer {
     async index(req, res) {
@@ -83,6 +83,22 @@ class developer {
         if(record.serverStatus !== 2) {
             res.send(req.body)
         }
+        res.redirect('back')
+     }
+    
+     /**
+      * Add skills to developer social
+      * @param Request req
+      * @param Response res
+      * @return 
+      */
+     addSkillsToDevelopers(req, res) {
+        let { id } = req.params;
+        let { skill  } = req.body; 
+        Object.keys(skill).forEach(async function(k)  {
+            let exists = await devSkills.ifExists({user_id: id, skill_id: k}).then(data => data.length ? true: false).catch(err => false);
+            if( !exists ) await devSkills.add({user_id: id, skill_id: k, fill: skill[k]})
+        })
         res.redirect('back')
      }
 }
