@@ -24,9 +24,9 @@ devSkills.prototype.runQuery = function() {
 /**
  * Adding new skill record
  */
-devSkills.prototype.add = function({user_id, skill_id, fill}) {   console.log(skill_id)   
+devSkills.prototype.add = function({user_id, skill_id, fill}) {   console.log(user_id,skill_id)   
     this.data = [user_id, skill_id, fill];  
-    this.sql = "INSERT INTO "+this.table+" ("+this.columns.join(',')+") VALUES (?,?,?)";
+    this.sql = "INSERT INTO "+this.table+" ("+this.columns.join(',')+") VALUES (?,?,?)"; 
     return this.runQuery()
 }
 

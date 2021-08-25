@@ -7,4 +7,5 @@ module.exports = {
     Address : require('./developerAddress'),
     Social : require('./developerSocial'),
     devSkills : require('./developerSkills'),
+    devBasic : require('./developerBasic'),
 }
