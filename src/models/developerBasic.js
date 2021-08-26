@@ -4,8 +4,6 @@ const Base = require('./base')
 function devBasic(connection) {
     this.table = 'basic';
     this.columns = ['user_id', 'type', 'degree', 'about', 'client', 'projects', 'hours', 'teams'];
-    this.sql = '';
-    this.data = [];
     Base.call(this, connection)
 }
 
@@ -45,6 +43,16 @@ devBasic.prototype.ifExists = function({user_id}) {
 devBasic.prototype.getByUserId = function(user_id) {
     this.sql = `SELECT * FROM ${this.table} WHERE user_id = ${user_id}`;
     return this.runQuery();
+}
+
+/**
+ * Updating record
+ */
+devBasic.prototype.update = function({type, degree, about, clients, projects, hours, teams}) { 
+    type = type.join(',');
+    this.data = [type, degree, about, clients, projects, hours, teams];  
+    this.sql = `UPDATE ${this.table} SET type = ?, degree = ?, about = ?, client = ?, projects = ?, hours = ?, teams = ? WHERE id = ${this.active.id}`; 
+    return this.runQuery()
 }
 
 module.exports = new devBasic(db);

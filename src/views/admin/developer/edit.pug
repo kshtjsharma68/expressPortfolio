@@ -161,10 +161,13 @@ block content
                         input(type="hidden" name="_csrf" value=csrfToken)
                         - var typeString = basic.type.split(',')
                         .form-group
-                            label(for='type') Type 
+                            label(for='type') Type  #{basic.type.split(',')}
                             select#type.form-control(multiple="multiple" name="type")
                                 each title in titles
-                                    option(value=title.name ) #{title.name}
+                                    if typeString.includes(title.name)
+                                        option(value=title.name, selected) #{title.name}
+                                    else 
+                                        option(value=title.name) #{title.name}
                         .form-group
                             label(for='exampleInputCity1') Degree
                             input#exampleInputCity1.form-control(type='text' placeholder='Degree' name="degree" value=basic.degree||'')

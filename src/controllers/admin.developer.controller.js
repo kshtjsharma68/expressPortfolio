@@ -106,7 +106,12 @@ class developer {
      async addbasicInfo(req, res) {
          let { id } = req.params;
          let record = await devBasic.ifExists({user_id: id}); 
-         if(!record.length) await devBasic.add({user_id: id, ...req.body});
+         if(!record.length) {
+             await devBasic.add({user_id: id, ...req.body});
+         } else {
+            devBasic.active = record[0];
+             await devBasic.update(req.body);
+         }
          res.redirect('back');
      }
     

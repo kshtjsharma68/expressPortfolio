@@ -2,6 +2,7 @@ function Base(connection) {
     this.connection = connection;
     this.sql = '';
     this.data = [];
+    this.active = null;
 }
 
 Base.prototype.query = function({ sql, data = [] }) { 
