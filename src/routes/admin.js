@@ -37,6 +37,7 @@ router.post('/developers/social/:id', developerController.addSocial)
 router.post('/developers/social/:id/update/:socialId', developerController.updateSocial)
 router.post('/developers/social/:id/skills', developerController.addSkillsToDevelopers)
 router.post('/developers/basic/:id', developerController.addbasicInfo);
+router.post('/developers/projects/:id', upload.array('project_image',5), developerController.addProject);
 
 
 router.get('/parameters', parametersController.index);

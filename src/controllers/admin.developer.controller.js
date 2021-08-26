@@ -1,4 +1,13 @@
-const { User, Developer, Address, Social, Title, devSkills, devBasic } = require('../models')
+const { 
+        User, 
+        Developer, 
+        Address, 
+        Social, 
+        Title, 
+        devSkills, 
+        devBasic,
+        devProjects 
+    } = require('../models')
 
 class developer {
     async index(req, res) {
@@ -104,7 +113,7 @@ class developer {
       * @param Response res
       * @return 
       */
-     addSkillsToDevelopers(req, res) {
+     async addSkillsToDevelopers(req, res) {
         let { id } = req.params;
         let { skill  } = req.body; 
         Object.keys(skill).forEach(async function(k)  { 
@@ -114,6 +123,15 @@ class developer {
         })
         res.redirect('back')
      }
+
+    /**
+     * Add project details to the developer
+     */
+    async addProject(req, res) {
+        let { id } = req.params;
+        console.log(req.body, req.files)
+        res.redirect('back')
+    }
 }
 
 module.exports = new developer

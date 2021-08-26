@@ -8,4 +8,5 @@ module.exports = {
     Social : require('./developerSocial'),
     devSkills : require('./developerSkills'),
     devBasic : require('./developerBasic'),
+    devProjects : require('./developerBasic'),
 }
