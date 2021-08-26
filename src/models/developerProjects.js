@@ -4,6 +4,7 @@ const Base = require('./base')
 function devProjects(connection) {
     this.table = 'projects';
     this.columns = ['user_id', 'name', 'link', 'image'];
+    this.active = null;
     Base.call(this, connection)
 }
 
@@ -22,19 +23,36 @@ devProjects.prototype.runQuery = function() {
 /**
  * Adding new basic record
  */
-devProjects.prototype.add = function({user_id, type, degree, about, clients, projects, hours, teams}) {     
-    type = type.join(',');
-    this.data = [user_id, type, degree, about, clients, projects, hours, teams];  
-    this.sql = "INSERT INTO "+this.table+" ("+this.columns.join(',')+") VALUES (?,?,?,?,?,?,?,?)"; console.log(this.sql)
+devProjects.prototype.add = function({user_id, name, link, image}) {   
+    this.data = [user_id, name, link, image];  
+    this.sql = "INSERT INTO "+this.table+" ("+this.columns.join(',')+") VALUES (?,?,?,?)"; 
     return this.runQuery()
 }
 
 /**
  * Check if user record exists
  */
-devProjects.prototype.ifExists = function({user_id}) {
+devProjects.prototype.ifExists = function(user_id) {
     this.sql = `SELECT * FROM ${this.table} WHERE user_id = ${user_id}`;
     return this.runQuery();
+}
+
+/**
+ * Get project by user
+ */
+devProjects.prototype.getByUserId = function(user_id) {
+    this.sql = `SELECT * FROM ${this.table} WHERE user_id = ${user_id}`;
+    return this.runQuery();
+}
+
+/**
+ * Updating record
+ */
+devProjects.prototype.update = function({user_id, name, link, image}) { 
+    image = `${image},${this.active.image}`;
+    this.data = [name, link, image];  
+    this.sql = `UPDATE ${this.table} SET name = ?, link = ?, image = ? WHERE id = ${this.active.id}`; 
+    return this.runQuery()
 }
 
 module.exports = new devProjects(db);

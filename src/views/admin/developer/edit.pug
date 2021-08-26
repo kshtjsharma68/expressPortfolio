@@ -159,31 +159,32 @@ block content
                     h4.card-title Information
                     form.forms-sample(method="post" action="/admin/developers/basic/"+id)
                         input(type="hidden" name="_csrf" value=csrfToken)
+                        - var typeString = basic.type.split(',')
                         .form-group
-                            label(for='type') Type
+                            label(for='type') Type 
                             select#type.form-control(multiple="multiple" name="type")
                                 each title in titles
-                                    option(value=title.name) #{title.name}
+                                    option(value=title.name ) #{title.name}
                         .form-group
                             label(for='exampleInputCity1') Degree
-                            input#exampleInputCity1.form-control(type='text' placeholder='Degree' name="degree")
+                            input#exampleInputCity1.form-control(type='text' placeholder='Degree' name="degree" value=basic.degree||'')
                         .form-group
                             label(for='exampleTextarea1') About
-                            textarea#exampleTextarea1.form-control(rows='4' placeholder="Some info about yourself" name="about")
+                            textarea#exampleTextarea1.form-control(rows='4' placeholder="Some info about yourself" name="about") #{basic.about || ''}
                         .form-group.row
                             .col-md-6
                                 label(for='exampleInputCity1') Client
-                                input#exampleInputCity1.form-control(type='number' placeholder='Number of clients' name="clients")
+                                input#exampleInputCity1.form-control(type='number' placeholder='Number of clients' name="clients" value=basic.client||'')
                             .col-md-6
                                 label(for='exampleInputCity1') Projects
-                                input#exampleInputCity1.form-control(type='number' placeholder='Number of projects' name="projects")
+                                input#exampleInputCity1.form-control(type='number' placeholder='Number of projects' name="projects" value=basic.projects || '')
                         .form-group.row
                             .col-md-6
                                 label(for='exampleInputCity1') Hours
-                                input#exampleInputCity1.form-control(type='number' placeholder='Number of hours' name="hours")
+                                input#exampleInputCity1.form-control(type='number' placeholder='Number of hours' name="hours" value=basic.hours||'')
                             .col-md-6
                                 label(for='exampleInputCity1') Teams
-                                input#exampleInputCity1.form-control(type='number' placeholder='Number of teams' name="teams")
+                                input#exampleInputCity1.form-control(type='number' placeholder='Number of teams' name="teams" value=basic.teams||'')
                         .row(style="justify-content: center;")
                             button.btn.btn-primary.mr-2(type='submit') Submit
                             button.btn.btn-dark Cancel
@@ -246,13 +247,14 @@ block content
                 .card-body
                     h4.card-title Some projects
                     form.form-sample(method='post' action='/admin/developers/projects/'+id+'?_csrf='+csrfToken enctype="multipart/form-data")
-                            
+                            if projects && projects.id  
+                                input(type="hidden" name="projectId" value=projects.id)
                             .form-group
                                 label(for='projectName') Name
-                                input#projectName.form-control(type='text' placeholder='Name' name="name")
+                                input#projectName.form-control(type='text' placeholder='Name' name="name" value=(projects&& projects.name) || '')
                             .form-group
                                 label(for='projectLink') Link
-                                input#projectLink.form-control(type='text' placeholder='Project Link' name="link")
+                                input#projectLink.form-control(type='text' placeholder='Project Link' name="link" value=(projects && projects.link)||'')
                             .form-group
                                 label(for='projectImage') Portfolio Image
                                 input#projectImage.form-control(type='file' name="project_image" multiple="multiple")

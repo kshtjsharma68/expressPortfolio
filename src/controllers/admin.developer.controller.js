@@ -6,7 +6,7 @@ const {
         Title, 
         devSkills, 
         devBasic,
-        devProjects 
+        devProjects, 
     } = require('../models')
 
 class developer {
@@ -24,14 +24,16 @@ class developer {
         if(!id) {
             return res.redirect('/404')
         }
-        let developer, social, titles;
-        await Promise.all([User.getDeveloperById(id), Social.getByUserId(id), Title.all()])
-                .then(values => {  
+        let developer, social, titles, basic, projects;
+        await Promise.all([User.getDeveloperById(id), Social.getByUserId(id), Title.all(), devProjects.getByUserId(id), devBasic.getByUserId(id)])
+                .then(values => { 
                     developer = values[0][0]
                     social = values[1][0] ? values[1][0] : {};
-                    titles = values[2]
-                 });
-        res.render('admin/developer/edit',{id, developer, social, titles})
+                    titles = values[2];
+                    basic = values[4][0];
+                    projects = values[3][0];
+                 }); 
+        res.render('admin/developer/edit',{id, developer, social, titles, basic, projects})
     }
 
     sendErrorResponse(error) {
@@ -65,7 +67,8 @@ class developer {
             return this.sendErrorResponse('Not able to add information')          
         } 
         //Add address
-        let devAddress = await Address.add({user_id, ...address }) 
+        let devAddress = await Address.add({user_id, ...address });
+
         if(!devAddress){
             return this.sendErrorResponse('Developer address not added.')
         }
@@ -128,8 +131,18 @@ class developer {
      * Add project details to the developer
      */
     async addProject(req, res) {
+        let project;
         let { id } = req.params;
-        console.log(req.body, req.files)
+        let { body, files } = req;
+        files = files.map(v => v.filename).join(',');
+        let exists = await devProjects.ifExists(id); 
+        if ( exists ) {
+            devProjects.active = exists[0];
+            project = await devProjects.update({user_id: id, ...body, image: files});
+        } else {
+            project = await devProjects.add({user_id: id, ...body, image: files}); 
+        }
+        console.log(project)
         res.redirect('back')
     }
 }

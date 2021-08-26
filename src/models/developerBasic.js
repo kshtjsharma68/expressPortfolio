@@ -39,4 +39,12 @@ devBasic.prototype.ifExists = function({user_id}) {
     return this.runQuery();
 }
 
+/**
+ * Get basic information by user
+ */
+devBasic.prototype.getByUserId = function(user_id) {
+    this.sql = `SELECT * FROM ${this.table} WHERE user_id = ${user_id}`;
+    return this.runQuery();
+}
+
 module.exports = new devBasic(db);
