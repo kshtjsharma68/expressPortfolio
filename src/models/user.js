@@ -13,11 +13,26 @@ function User(connection) {
         return await bcrypt.hash(password, salt)
 
     }
+    this.data = [];
+    this.sql = '';
     Base.call(this, connection)
 }
 
 //Extending the class and setting methods
 User.prototype = Object.create(Base.prototype);
+
+
+/**
+ * Run Query
+ */
+User.prototype.runQuery = function() { console.log('sql',this.sql)
+    return this.query({sql: this.sql, data: this.data})
+                .then(r => r)
+                .catch(err => {
+                    console.log('query error', err.sqlMessage)
+                    return []
+                });
+}
 
 /**
  * Adding new user record
@@ -45,10 +60,16 @@ User.prototype.add = function({
  * Check if user exists with email and password
  */
 User.prototype.getUserWithEmail = function( email = '' ) { 
-    let sql = `SELECT id, email, password from ${this.table} WHERE email = ` + this.connection.escape(email);
-    return this.query({
-        sql
-    })
+    this.sql = `SELECT id, email, password from ${this.table} WHERE email = ` + this.connection.escape(email);
+    return this.runQuery()
+}
+
+/**
+ * Check if user exists with email and password
+ */
+User.prototype.getUserById = function( id = 0 ) { 
+    this.sql = `SELECT first_name, last_name, email, profile_image, token from ${this.table} WHERE id = ` + id;
+    return this.runQuery()
 }
 
 User.prototype.getDevelopers = function(withAddress = true) {
@@ -72,6 +93,14 @@ User.prototype.getDeveloperById = function(id = 0 ) {
     return this.query({
         sql
     })
+}
+
+/**
+ * Add Token for developer portfolio
+ */
+User.prototype.addToken = function(id = 0, token = '') {
+    this.sql = `UPDATE ${this.table} SET token = '${token}' WHERE id = ${id}`;
+    return this.runQuery();
 }
 
 module.exports = new User(db);

@@ -30,8 +30,8 @@ class developer {
                     developer = values[0][0]
                     social = values[1][0] ? values[1][0] : {};
                     titles = values[2];
-                    basic = values[4][0];
-                    projects = values[3][0];
+                    basic = values[4][0] || {};
+                    projects = values[3][0] || {};
                  }); 
         res.render('admin/developer/edit',{id, developer, social, titles, basic, projects})
     }
@@ -149,6 +149,20 @@ class developer {
         }
         console.log(project)
         res.redirect('back')
+    }
+
+    /**
+     * Generate Portfolio link token
+     */
+    async generatePortfolioLink(req, res) {
+        let { id } = req.query;
+        let user = await User.getUserById(id);
+        let token = user[0].token; 
+        if (!token) {
+            token = (Math.random()+ 1).toString(36).substr(2,6);
+            let result = await User.addToken(id, token); 
+        }        
+        res.status(200).json({message: 'Done', token})
     }
 }
 

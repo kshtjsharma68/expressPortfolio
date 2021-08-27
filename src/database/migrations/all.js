@@ -18,6 +18,7 @@ class Migrations {
             email varchar(40),
             profile_image varchar(255),
             password varchar(100) NOT NULL,
+            token varchar(50),
             PRIMARY KEY (id),
             FOREIGN KEY (role_id) REFERENCES roles(id),
             INDEX (email))`;

@@ -22,6 +22,10 @@ block content
                         a.btn.btn-link.btn-fw(href=`javascript:void(0);` onclick="show('skills')") Skils
                         a.btn.btn-link.btn-fw(href=`javascript:void(0);`  onclick="show('projects')") Projects
                         a.btn.btn-link.btn-fw(href=`javascript:void(0);`  onclick="show('education')") Education
+                        button.btn.btn-outline-danger.btn-icon-text(type='button' onclick=`generatePortfolioLink(${id})`)
+                            i.mdi.mdi-upload.btn-icon-prepend
+                            |  Generate Link
+
                     form.form-sample(method="post" action=`/admin/developers/${id}/update?_csrf=`+csrfToken enctype="multipart/form-data" )
                         p.card-description  Personal Info
                         .row
@@ -159,9 +163,9 @@ block content
                     h4.card-title Information
                     form.forms-sample(method="post" action="/admin/developers/basic/"+id)
                         input(type="hidden" name="_csrf" value=csrfToken)
-                        - var typeString = basic.type.split(',')
+                        - var typeString = basic.type ? basic.type.split(',') : ''
                         .form-group
-                            label(for='type') Type  #{basic.type.split(',')}
+                            label(for='type') Type  
                             select#type.form-control(multiple="multiple" name="type")
                                 each title in titles
                                     if typeString.includes(title.name)
@@ -266,7 +270,7 @@ block content
                                     button.btn.btn-dark(type='reset') Cancel
 block scripts
     script(type="text/javascript").
-        function request (url, type, data) {
+        function request (url, type, data) { 
             return new Promise((resolve, reject) => {
                 $.ajax({
                         url,
@@ -320,5 +324,10 @@ block scripts
             
             ['basic', 'skills', 'education', 'projects'].forEach(v => v === key ? $(`.${v}`).show() : $(`.${v}`).hide());
             
+        }
+
+        async function generatePortfolioLink(id) {
+            let link = await request('/admin/developers/generateLink','get',{id});
+            console.log(link)
         }
 
