@@ -6,7 +6,8 @@ const session = require('express-session');
 
 const csrf = require('csurf')
 
-const routes = require("./routes")
+const routes = require("./routes");
+const flash = require('connect-flash');
 
 // Extracting
 const app = express();
