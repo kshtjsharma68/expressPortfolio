@@ -162,7 +162,7 @@ class developer {
             token = (Math.random()+ 1).toString(36).substr(2,6);
             let result = await User.addToken(id, token); 
         }        
-        res.status(200).json({message: 'Done', token})
+        res.status(200).json({token})
     }
 }
 

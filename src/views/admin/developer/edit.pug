@@ -277,7 +277,7 @@ block scripts
                         type,
                         data,
                         cache: false,
-                        success: data => resolve(data.data),
+                        success: data => data.hasOwnProperty('data') ? resolve(data.data) : resolve(data),
                         error: err => reject([])
                     }); 
             })                
@@ -328,6 +328,11 @@ block scripts
 
         async function generatePortfolioLink(id) {
             let link = await request('/admin/developers/generateLink','get',{id});
-            console.log(link)
+            $('body').append('<input name="token" id="token"/>'); 
+            let tokenInput = $('#token');
+            tokenInput.val(location.origin + '/portofilio/'+link.token).select();
+            document.execCommand('copy');
+            tokenInput.remove();
+            alert('Link copied to clipboard');
         }
 
