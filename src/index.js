@@ -34,6 +34,7 @@ app.use(session({
 
 //CSRF middleware
 app.use(csrf({ cookie: false }))
+app.use(flash())
 
 //Routes
 app.use(routes)
@@ -45,4 +46,8 @@ app.set("view engine", 'pug')
 
 app.listen(port, () => {
     console.log('Server is listening on port:'+ port)
+});
+
+process.on('uncaughtException', function(err) {
+    console.log('Last wall of defence:', err)
 })
