@@ -5,8 +5,8 @@ class BaseController  {
         this.models = models;
     }
 
-    name() {
-        return "base controller";
+    getModels() {
+        return "ccar"
     }
 }
 

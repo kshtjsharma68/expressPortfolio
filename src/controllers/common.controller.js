@@ -1,8 +1,8 @@
 const BaseController = require('./baseController');
 
-class CommonController extends BaseController{
-    constructor(...args) {
-        super(...args);
+class CommonController extends BaseController { 
+    constructor() {
+        super();
         this.name = "Saving car"
     }
 
