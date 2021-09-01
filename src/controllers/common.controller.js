@@ -1,15 +1,12 @@
 const BaseController = require('./baseController');
 
 class CommonController extends BaseController { 
-    constructor() {
-        super();
-        this.name = "Saving car"
-    }
 
     async showPortfolio(req, res) {
-        let { token } = req.params;console.log(this)
+        let models = super.getModels();
+        let { token } = req.params; 
         res.render('common/portfolio');
     }
 }
 
-module.exports = new CommonController;
+module.exports = new CommonController; 

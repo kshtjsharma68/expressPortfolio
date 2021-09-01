@@ -6,7 +6,7 @@ class BaseController  {
     }
 
     getModels() {
-        return "ccar"
+        return models;
     }
 }
 
