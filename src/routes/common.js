@@ -13,7 +13,7 @@ router.get('/', function(req, res){
         res.render('index')
 });
 
+router.get('/project', commonController.showProject);
 router.get('/portfolio/:token', commonController.showPortfolio);
-
 
 module.exports = router;

@@ -25,6 +25,11 @@ class CommonController extends BaseController {
         console.log('data',data)
         res.render('common/portfolio', {developer});
     }
+
+    async showProject(req, res) {
+        res.status(200);
+        res.render('common/project')
+    }
 }
 
 module.exports = new CommonController; 

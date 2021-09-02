@@ -1,46 +1,50 @@
+
+  
 // ======= Header =======
-header#header
-	.d-flex.flex-column
-		.profile
-			img.img-fluid.rounded-circle(src='img/profile-img.jpg', alt='')
-			h1.text-light
-				a(href='index.html') Alex Smith
-			.social-links.mt-3.text-center
-				a.twitter(href='#')
-					i.bx.bxl-twitter
-				a.facebook(href='#')
-					i.bx.bxl-facebook
-				a.instagram(href='#')
-					i.bx.bxl-instagram
-				a.google-plus(href='#')
-					i.bx.bxl-skype
-				a.linkedin(href='#')
-					i.bx.bxl-linkedin
-		nav#navbar.nav-menu.navbar
+header#header.header-tops
+	.container
+		h1
+			a(href='index.html') Emily Jones
+		// Uncomment below if you prefer to use an image logo
+		// <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+		h2
+			| I&apos;m a passionate 
+			span graphic designer
+			|  from New York
+		|       
+		nav.nav-menu.d-none.d-lg-block
 			ul
+				li.active
+					a(href='#header') Home
+				|           
 				li
-					a.nav-link.scrollto.active(href='#hero')
-						i.bx.bx-home
-						span Home
+					a(href='#about') About
+				|           
 				li
-					a.nav-link.scrollto(href='#about')
-						i.bx.bx-user
-						span About
+					a(href='#resume') Resume
+				|           
 				li
-					a.nav-link.scrollto(href='#resume')
-						i.bx.bx-file-blank
-						span Resume
+					a(href='#services') Services
+				|           
 				li
-					a.nav-link.scrollto(href='#portfolio')
-						i.bx.bx-book-content
-						span Portfolio
+					a(href='#portfolio') Portfolio
+				|           
 				li
-					a.nav-link.scrollto(href='#services')
-						i.bx.bx-server
-						span Services
-				li
-					a.nav-link.scrollto(href='#contact')
-						i.bx.bx-envelope
-						span Contact
+					a(href='#contact') Contact
 		// .nav-menu
-// End Header
+		.social-links
+			a.twitter(href='#')
+				i.icofont-twitter
+			|         
+			a.facebook(href='#')
+				i.icofont-facebook
+			|         
+			a.instagram(href='#')
+				i.icofont-instagram
+			|         
+			a.google-plus(href='#')
+				i.icofont-skype
+			|         
+			a.linkedin(href='#')
+				i.icofont-linkedin
+		
