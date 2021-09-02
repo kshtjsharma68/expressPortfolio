@@ -37,4 +37,12 @@ Developer.prototype.removeById = function(id) {
     return this.query({sql})
 }
 
+/**
+ * Get a record by user_id
+ */
+Developer.prototype.getByUserId = function(user_id) {
+    let sql = `SELECT * FROM ${this.table} WHERE user_id=${user_id}`
+    return this.query({sql})
+}
+
 module.exports = new Developer(db);

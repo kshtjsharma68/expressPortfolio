@@ -9,6 +9,15 @@ function Titles(connection) {
 //Extending the class and setting methods
 Titles.prototype = Object.create(Base.prototype);
 
+Titles.prototype.runQuery = function() {
+    return this.query({sql: this.sql, data: this.data})
+                .then(r => r)
+                .catch(err => {
+                    console.log('query error', err.sqlMessage)
+                    return []
+                });
+}
+
 /**
  * Get all titles
  */
@@ -30,6 +39,12 @@ Titles.prototype.add = function({name = ""}) {
 Titles.prototype.removeById = function(id) {
     let sql = `DELETE FROM ${this.table} WHERE id=${id}`
     return this.query({sql})
+}
+
+Titles.prototype.getByUserId = function(id) {
+    this.data = []
+    this.sql = `SELECt * from ${this.table} WHERE user_id = ${id}`;
+    return this.runQuery()
 }
 
 module.exports = new Titles(db);

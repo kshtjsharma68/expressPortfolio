@@ -39,17 +39,11 @@ devSkills.prototype.ifExists = function({user_id, skill_id}) {
     return this.runQuery();
 }
 
-// Social.prototype.getByUserId = function(id) {
-//     this.data = []
-//     this.sql = `SELECt * from ${this.table} WHERE user_id = ${id}`;
-//     return this.runQuery()
-// }
+devSkills.prototype.getByUserId = function(id) {
+    this.data = []
+    this.sql = `SELECt * from ${this.table} WHERE user_id = ${id}`;
+    return this.runQuery()
+}
 
-// Social.prototype.updateById = function(id, fields) {
-//     let { twitter, facebook, instagram, skype, linkedin } = fields; 
-//     this.data = [ twitter, facebook, instagram, skype, linkedin]; 
-//     this.sql = `UPDATE ${this.table} SET twitter=?, facebook=?, instagram=?, skype=?, linkedin=? WHERE id = ${id}`;
-//     return this.runQuery()
-// }
 
 module.exports = new devSkills(db);

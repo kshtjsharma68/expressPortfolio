@@ -65,10 +65,18 @@ User.prototype.getUserWithEmail = function( email = '' ) {
 }
 
 /**
- * Check if user exists with email and password
+ * Get user with id
  */
 User.prototype.getUserById = function( id = 0 ) { 
     this.sql = `SELECT first_name, last_name, email, profile_image, token from ${this.table} WHERE id = ` + id;
+    return this.runQuery()
+}
+
+/**
+ * Get user with token
+ */
+User.prototype.getUserByToken = function( token = '' ) { 
+    this.sql = `SELECT id, first_name, last_name, email, profile_image, token from ${this.table} WHERE token = "${token}"`;
     return this.runQuery()
 }
 
