@@ -10,6 +10,7 @@ block content
                         .card-body.px-5.py-5
                             h3.card-title.text-left.mb-3 Register
                             form
+                                input(type="hidden" name="_csrf" value=csrfToken)
                                 .form-group
                                     label Username
                                     input.form-control.p_input(type='text')
