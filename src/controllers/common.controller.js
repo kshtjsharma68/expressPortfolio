@@ -36,7 +36,7 @@ class CommonController extends BaseController {
     }
 
     sendEmail(req, res) { 
-        let { email, name, subject, message } = req.body;
+        let { email, name, subject, message } = req.body; 
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
