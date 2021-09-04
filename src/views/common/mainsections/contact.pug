@@ -1,0 +1,87 @@
+  
+section#contact.contact
+    .container
+        .section-title
+            h2 Contact
+            |         
+            p Contact Me
+            |       
+        .row.mt-2
+            .col-md-6.d-flex.align-items-stretch
+                .info-box
+                    i.bx.bx-map
+                    |             
+                    h3 My Address
+                    |             
+                    p A108 Adam Street, New York, NY 535022
+                |         
+            .col-md-6.mt-4.mt-md-0.d-flex.align-items-stretch
+                .info-box
+                    i.bx.bx-share-alt
+                    |             
+                    h3 Social Profiles
+                    |             
+                    .social-links
+                        a.twitter(href='#')
+                        i.icofont-twitter
+                        |               
+                        a.facebook(href='#')
+                        i.icofont-facebook
+                        |               
+                        a.instagram(href='#')
+                        i.icofont-instagram
+                        |               
+                        a.google-plus(href='#')
+                        i.icofont-skype
+                        |               
+                        a.linkedin(href='#')
+                        i.icofont-linkedin
+                |         
+            .col-md-6.mt-4.d-flex.align-items-stretch
+                .info-box
+                    i.bx.bx-envelope
+                    |             
+                    h3 Email Me
+                    |             
+                    p contact@example.com
+                |         
+            .col-md-6.mt-4.d-flex.align-items-stretch
+                .info-box
+                    i.bx.bx-phone-call
+                    |             
+                    h3 Call Me
+                    |             
+                    p +1 5589 55488 55
+                |       
+        form.php-email-form.mt-4(action='forms/contact.php', method='post', role='form')
+            .form-row
+                .col-md-6.form-group
+                    input#name.form-control(type='text', name='name', placeholder='Your Name', data-rule='minlen:4', data-msg='Please enter at least 4 chars')
+                    |             
+                    .validate
+                    |           
+                .col-md-6.form-group
+                    input#email.form-control(type='email', name='email', placeholder='Your Email', data-rule='email', data-msg='Please enter a valid email')
+                    |             
+                    .validate
+                |         
+            .form-group
+                input#subject.form-control(type='text', name='subject', placeholder='Subject', data-rule='minlen:4', data-msg='Please enter at least 8 chars of subject')
+                |           
+                .validate
+            |         
+            .form-group
+                textarea.form-control(name='message', rows='5', data-rule='required', data-msg='Please write something for us', placeholder='Message')
+                |           
+                .validate
+            |         
+            .mb-3
+                .loading Loading
+                |           
+                .error-message
+                |           
+                .sent-message Your message has been sent. Thank you!
+            |         
+            .text-center
+                button(type='submit') Send Message
+                // End Contact Section
