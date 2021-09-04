@@ -1,12 +1,14 @@
-.grid-margin {
+
+.content-wrapper .grid-margin {
     height: 100%;
 }
-.skills {
+.content-wrapper .skills {
     display: none;
 }
-.projects {
+.content-wrapper .projects {
     display: none;
 }
-.education {
+.content-wrapper .education {
     display: none;
 }
+

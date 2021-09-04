@@ -129,8 +129,8 @@
       url: action,
       data: data,
       timeout: 40000
-    }).done( function(msg){
-      if (msg.trim() == 'OK') {
+    }).done( function({status, msg}){ 
+      if (status === 200 && msg.trim() == 'OK') {
         this_form.find('.loading').slideUp();
         this_form.find('.sent-message').slideDown();
         this_form.find("input:not(input[type=submit]), textarea").val('');
