@@ -1,5 +1,5 @@
 const BaseController = require('./baseController');
-const nodemailer = require('nodemailer');
+const { sendEmail } = require('../services/mail');
 
 class CommonController extends BaseController { 
     constructor() {
@@ -36,29 +36,7 @@ class CommonController extends BaseController {
     }
 
     sendEmail(req, res) { 
-        let { email, name, subject, message } = req.body;
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-              user: 'kshtjsharma68@gmail.com',
-              pass: 'zycnysltbgkhldcg'
-            }
-          });
-          
-          var mailOptions = {
-            from: email,
-            to: 'kshtjsharma68@gmail.com',
-            subject: subject,
-            text: message
-          };
-          transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-              console.log(error);
-            } else {
-              console.log('Email sent: ' + info.response);
-            }
-          }); 
-
+          sendEmail(req.body);
           res.status(200).json({'status': 200, 'msg': 'OK'})
     }
 }
