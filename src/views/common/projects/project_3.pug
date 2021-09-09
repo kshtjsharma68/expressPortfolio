@@ -1,0 +1,44 @@
+extends ../../layouts/project
+
+block content
+  
+    main#main
+        // ======= Portfolio Details =======
+        #portfolio-details.portfolio-details
+            .container
+                .row
+                    .col-lg-8
+                        //- h2.portfolio-title This is an example of portfolio detail
+                        |             
+                        .owl-carousel.portfolio-details-carousel
+                            img.img-fluid(src='/img/portfolio/portfolio-details-1.jpg', alt='')
+                            |               
+                            img.img-fluid(src='/img/portfolio/portfolio-details-2.jpg', alt='')
+                            |               
+                            img.img-fluid(src='/img/portfolio/portfolio-details-3.jpg', alt='')
+                        |           
+                    .col-lg-4.portfolio-info
+                        h3 Anasa Psychics
+                        |             
+                        ul
+                            li
+                                strong Category
+                                | : Design and Development
+                                |               
+                            li
+                                strong Client
+                                | : Anasa
+                                |               
+                            li
+                                strong Year
+                                | : 2020
+                                |               
+                            li
+                                strong URL
+                                | : 
+                                a(href='https://anasapsychics.co.uk/' blank="_blank") https://anasapsychics.co.uk/
+                        |             
+                        p
+                            | AnasaPsychics is a platform to connect people around the world which need special readings from experts. Its a twilio VoIP based system to connect users and make real time recharges without disconnecting the call. 
+            // End Portfolio Details
+        // End #main

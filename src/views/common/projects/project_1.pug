@@ -1,0 +1,44 @@
+extends ../../layouts/project
+
+block content
+  
+    main#main
+        // ======= Portfolio Details =======
+        #portfolio-details.portfolio-details
+            .container
+                .row
+                    .col-lg-8
+                        //- h2.portfolio-title Beardclub
+                        |             
+                        .owl-carousel.portfolio-details-carousel
+                            img.img-fluid(src='/img/portfolio/portfolio-details-1.jpg', alt='')
+                            |               
+                            img.img-fluid(src='/img/portfolio/portfolio-details-2.jpg', alt='')
+                            |               
+                            img.img-fluid(src='/img/portfolio/portfolio-details-3.jpg', alt='')
+                        |           
+                    .col-lg-4.portfolio-info
+                        h3 Beardclub
+                        |             
+                        ul
+                            li
+                                strong Category
+                                | : Web Integration and Backend Architecture
+                                |               
+                            li
+                                strong Client
+                                | : The Beardclub
+                                |               
+                            li
+                                strong Year
+                                | : 2018
+                                |               
+                            li
+                                strong URL
+                                | : 
+                                a(href='https://thebeardclub.com/' target="_blank") https://thebeardclub.com/
+                        |             
+                        p
+                            | Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+            // End Portfolio Details
+        // End #main

@@ -1,0 +1,44 @@
+extends ../../layouts/project
+
+block content
+  
+    main#main
+        // ======= Portfolio Details =======
+        #portfolio-details.portfolio-details
+            .container
+                .row
+                    .col-lg-8
+                        //- h2.portfolio-title This is an example of portfolio detail
+                        |             
+                        .owl-carousel.portfolio-details-carousel
+                            img.img-fluid(src='/img/portfolio/portfolio-details-1.jpg', alt='')
+                            |               
+                            img.img-fluid(src='/img/portfolio/portfolio-details-2.jpg', alt='')
+                            |               
+                            img.img-fluid(src='/img/portfolio/portfolio-details-3.jpg', alt='')
+                        |           
+                    .col-lg-4.portfolio-info
+                        h3 SPP
+                        |             
+                        ul
+                            li
+                                strong Category
+                                | : Backend Integration
+                                |               
+                            li
+                                strong Client
+                                | : SPP
+                                |               
+                            li
+                                strong Year
+                                | : 2021
+                                |               
+                            li
+                                strong URL
+                                | : 
+                                a(href='https://www.vespp.cn/') https://www.vespp.cn/
+                        |             
+                        p
+                            | Blockchain technology based platform to create extensive tenders for suppliers, place bids for tenders and sorting customer based on the best bid price and order creation. 
+            // End Portfolio Details
+        // End #main

@@ -1,0 +1,44 @@
+extends ../../layouts/project
+
+block content
+  
+    main#main
+        // ======= Portfolio Details =======
+        #portfolio-details.portfolio-details
+            .container
+                .row
+                    .col-lg-8
+                        //- h2.portfolio-title This is an example of portfolio detail
+                        |             
+                        .owl-carousel.portfolio-details-carousel
+                            img.img-fluid(src='/img/portfolio/portfolio-details-1.jpg', alt='')
+                            |               
+                            img.img-fluid(src='/img/portfolio/portfolio-details-2.jpg', alt='')
+                            |               
+                            img.img-fluid(src='/img/portfolio/portfolio-details-3.jpg', alt='')
+                        |           
+                    .col-lg-4.portfolio-info
+                        h3 Kitcheck
+                        |             
+                        ul
+                            li
+                                strong Category
+                                | : Web design and Development
+                                |               
+                            li
+                                strong Client
+                                | : Kit Check
+                                |               
+                            li
+                                strong Year
+                                | : 2017
+                                |               
+                            li
+                                strong URL
+                                | : 
+                                a(href='https://kitcheck.com.au/' target="_blank") https://kitcheck.com.au/
+                        |             
+                        p
+                            | KitCheck is a custom laravel based system for maintaining and keeping your First Aid kits fully stocked. It have a custom shop for buying Defibrillators and maintaining same for our elite customers. 
+            // End Portfolio Details
+        // End #main

@@ -14,6 +14,7 @@ router.get('/', function(req, res){
 });
 
 router.get('/project', commonController.showProject);
+router.all('/project/:id?', commonController.showProject);
 router.get('/portfolio/:token', commonController.showPortfolio);
 
 router.post('/forms/contact', commonController.sendEmail);

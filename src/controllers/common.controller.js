@@ -31,7 +31,12 @@ class CommonController extends BaseController {
     }
 
     async showProject(req, res) {
+        let { id } = req.params; 
         res.status(200);
+        if(id) {
+            return res.render(`common/projects/project_${id}`);
+        }
+        
         res.render('common/project')
     }
 
