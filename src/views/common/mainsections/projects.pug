@@ -10,15 +10,17 @@ section#portfolio.portfolio
             .col-lg-12.d-flex.justify-content-center
                 ul#portfolio-flters
                     li.filter-active(data-filter='*') All
-                    //- |             
-                    //- li(data-filter='.filter-web') Laravel
-                    //- |             
-                    //- li(data-filter='.filter-app') App
-                    //- |             
-                    //- li(data-filter='.filter-card') Card
+                    |             
+                    li(data-filter='.filter-laravel') Laravel
+                    |             
+                    li(data-filter='.filter-twilio') Twilio
+                    |             
+                    li(data-filter='.filter-js') React / Javascript 
+                    |
+                    li(data-filter='.filter-webflow') Webflow
                 |       
         .row.portfolio-container
-            .col-lg-4.col-md-6.portfolio-item.filter-app
+            .col-lg-4.col-md-6.portfolio-item.filter-laravel
                 .portfolio-wrap
                     img.img-fluid(src='/img/portfolio/portfolio-1.jpg', alt='')
                     |             
@@ -34,7 +36,7 @@ section#portfolio.portfolio
                             a.venobox(href='/project/1', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
                                 i.bx.bx-link
                     |         
-            .col-lg-4.col-md-6.portfolio-item.filter-web
+            .col-lg-4.col-md-6.portfolio-item.filter-laravel
                 .portfolio-wrap
                     img.img-fluid(src='/img/portfolio/portfolio-2.jpg', alt='')
                     |             
@@ -50,7 +52,7 @@ section#portfolio.portfolio
                             a.venobox(href='/project/2', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
                                 i.bx.bx-link
                     |         
-            .col-lg-4.col-md-6.portfolio-item.filter-app
+            .col-lg-4.col-md-6.portfolio-item.filter-laravel
                 .portfolio-wrap
                     img.img-fluid(src='/img/portfolio/portfolio-3.jpg', alt='')
                     |             
@@ -65,8 +67,24 @@ section#portfolio.portfolio
                             |                 
                             a.venobox(href='/project/3', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
                                 i.bx.bx-link
-                    |  
-            .col-lg-4.col-md-6.portfolio-item.filter-web
+                    | 
+            .col-lg-4.col-md-6.portfolio-item.filter-twilio
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-3.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 Anasa Psychics
+                        |               
+                        p Laravel
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-3.jpg', data-gall='portfolioGallery', title='App 2')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project/3', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+                    | 
+            .col-lg-4.col-md-6.portfolio-item.filter-laravel
                 .portfolio-wrap
                     img.img-fluid(src='/img/portfolio/portfolio-5.jpg', alt='')
                     |             
@@ -82,79 +100,190 @@ section#portfolio.portfolio
                             a.venobox(href='/project/4', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
                                 i.bx.bx-link
                     |         
-            //- .col-lg-4.col-md-6.portfolio-item.filter-card
-            //-     .portfolio-wrap
-            //-         img.img-fluid(src='/img/portfolio/portfolio-4.jpg', alt='')
-            //-         |             
-            //-         .portfolio-info
-            //-             h4 Card 2
-            //-             |               
-            //-             p Card
-            //-             |               
-            //-             .portfolio-links
-            //-                 a.venobox(href='/img/portfolio/portfolio-4.jpg', data-gall='portfolioGallery', title='Card 2')
-            //-                     i.bx.bx-plus
-            //-                 |                 
-            //-                 a.venobox(href='/project/4', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
-            //-                     i.bx.bx-link
-            //-         |         
+            .col-lg-4.col-md-6.portfolio-item.filter-laravel
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-4.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 Biramedia
+                        |               
+                        p Laravel
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-4.jpg', data-gall='portfolioGallery', title='Card 2')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project/4', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+                    | 
+            .col-lg-4.col-md-6.portfolio-item.filter-js
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-4.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 Biramedia
+                        |               
+                        p React
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-4.jpg', data-gall='portfolioGallery', title='Card 2')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project/4', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+                    |         
                    
-            //- .col-lg-4.col-md-6.portfolio-item.filter-app
-            //-     .portfolio-wrap
-            //-         img.img-fluid(src='/img/portfolio/portfolio-6.jpg', alt='')
-            //-         |             
-            //-         .portfolio-info
-            //-             h4 App 3
-            //-             |               
-            //-             p App
-            //-             |               
-            //-             .portfolio-links
-            //-                 a.venobox(href='/img/portfolio/portfolio-6.jpg', data-gall='portfolioGallery', title='App 3')
-            //-                     i.bx.bx-plus
-            //-                 |                 
-            //-                 a.venobox(href='/project', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
-            //-                     i.bx.bx-link
-            //-         |         
-            //- .col-lg-4.col-md-6.portfolio-item.filter-card
-            //-     .portfolio-wrap
-            //-         img.img-fluid(src='/img/portfolio/portfolio-7.jpg', alt='')
-            //-         |             
-            //-         .portfolio-info
-            //-             h4 Card 1
-            //-             |               
-            //-             p Card
-            //-             |               
-            //-             .portfolio-links
-            //-                 a.venobox(href='/img/portfolio/portfolio-7.jpg', data-gall='portfolioGallery', title='Card 1')
-            //-                     i.bx.bx-plus
-            //-                 |                 
-            //-                 a.venobox(href='/project', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
-            //-                     i.bx.bx-link
-            //-         |         
-            //- .col-lg-4.col-md-6.portfolio-item.filter-card
-            //-     .portfolio-wrap
-            //-         img.img-fluid(src='/img/portfolio/portfolio-8.jpg', alt='')
-            //-         |             
-            //-         .portfolio-info
-            //-             h4 Card 3
-            //-             |               
-            //-             p Card
-            //-             |               
-            //-             .portfolio-links
-            //-                 a.venobox(href='/img/portfolio/portfolio-8.jpg', data-gall='portfolioGallery', title='Card 3')
-            //-                     i.bx.bx-plus
-            //-                 |                 
-            //-                 a.venobox(href='/project', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
-            //-                     i.bx.bx-link
-            //-         |         
-            .col-lg-4.col-md-6.portfolio-item.filter-web
+            .col-lg-4.col-md-6.portfolio-item.filter-laravel
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-6.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 AltSignals
+                        |               
+                        p Laravel
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-6.jpg', data-gall='portfolioGallery', title='App 3')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+                    |
+            .col-lg-4.col-md-6.portfolio-item.filter-webflow
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-6.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 AltSignals
+                        |               
+                        p Webflow
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-6.jpg', data-gall='portfolioGallery', title='App 3')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+                    |         
+            .col-lg-4.col-md-6.portfolio-item.filter-laravel
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-7.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 Mobile Car Wash
+                        |               
+                        p Laravel
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-7.jpg', data-gall='portfolioGallery', title='Card 1')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+                    |   
+            .col-lg-4.col-md-6.portfolio-item.filter-js
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-7.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 Mobile Car Wash
+                        |               
+                        p React
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-7.jpg', data-gall='portfolioGallery', title='Card 1')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+                    |       
+            .col-lg-4.col-md-6.portfolio-item.filter-twilio
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-8.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 DialExcel
+                        |               
+                        p Twilio
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-8.jpg', data-gall='portfolioGallery', title='Card 3')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+                    | 
+            .col-lg-4.col-md-6.portfolio-item.filter-laravel
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-8.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 DialExcel
+                        |               
+                        p Laravel
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-8.jpg', data-gall='portfolioGallery', title='Card 3')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+                    | 
+            .col-lg-4.col-md-6.portfolio-item.filter-twilio
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-8.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 Multi Line Dialer
+                        |               
+                        p Twilio
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-8.jpg', data-gall='portfolioGallery', title='Card 3')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+                    | 
+            .col-lg-4.col-md-6.portfolio-item.filter-laravel
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-8.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 Multi Line Dialer
+                        |               
+                        p Laravel
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-8.jpg', data-gall='portfolioGallery', title='Card 3')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+                    |         
+            .col-lg-4.col-md-6.portfolio-item.filter-laravel
                 .portfolio-wrap
                     img.img-fluid(src='/img/portfolio/portfolio-9.jpg', alt='')
                     |             
                     .portfolio-info
                         h4 Spectage
                         |               
-                        p Laravel &amp; React
+                        p Laravel 
+                        |               
+                        .portfolio-links
+                            a.venobox(href='/img/portfolio/portfolio-9.jpg', data-gall='portfolioGallery', title='Web 3')
+                                i.bx.bx-plus
+                            |                 
+                            a.venobox(href='/project/5', data-gall='portfolioDetailsGallery', data-vbtype='iframe', title='Portfolio Details')
+                                i.bx.bx-link
+            .col-lg-4.col-md-6.portfolio-item.filter-js
+                .portfolio-wrap
+                    img.img-fluid(src='/img/portfolio/portfolio-9.jpg', alt='')
+                    |             
+                    .portfolio-info
+                        h4 Spectage
+                        |               
+                        p React
                         |               
                         .portfolio-links
                             a.venobox(href='/img/portfolio/portfolio-9.jpg', data-gall='portfolioGallery', title='Web 3')

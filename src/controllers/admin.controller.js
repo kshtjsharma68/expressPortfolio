@@ -1,7 +1,7 @@
 class AdminController {
 
     constructor() {
-        console.log('inside admin controller')
+        // console.log('inside admin controller')
     }
 
     index(req, res) {

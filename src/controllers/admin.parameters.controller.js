@@ -2,7 +2,7 @@ const {Title, Skill} = require('../models')
 
 class Parameters {
     constructor() {
-        console.log('inside paramters')
+        // console.log('inside paramters')
     }
 
     /**
