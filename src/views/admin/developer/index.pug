@@ -1,0 +1,163 @@
+extends ../../layouts/adminLayout
+
+block content
+
+
+    .page-header
+        h3.page-title  Developers 
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item
+                    a(href='#') Admin
+                li.breadcrumb-item.active(aria-current='page') Developers
+
+    .row.developer-table
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    //- h4.card-title Striped Table
+                    button.btn.btn-inverse-primary.btn-fw#add-developer(type='button' style="float: right;")
+                        i.mdi.mdi-account-plus
+                        | ADD
+                    .table-responsive
+                        table.table.table-striped
+                            thead
+                                tr
+                                    th  User 
+                                    th  Name 
+                                    th  Dob 
+                                    th  Freelancer 
+                                    th  Actions 
+                            tbody
+                                each developer in developers                            
+                                    tr
+                                        td.py-1
+                                            img(src='/assets/images/faces-clipart/pic-1.png' alt='image')
+                                        td=`${developer.Name||'NA'}`
+                                        td=new Date(developer.dob).toLocaleString('en-US')
+                                            //- .progress
+                                            //-     .progress-bar.bg-success(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
+                                        td=developer.freelancer 
+                                        td
+                                            a.btn.btn-primary.btn-sm.role-del(href=`/admin/developers/${developer.id}/edit`)
+                                                i.mdi.mdi-pencil 
+
+    .row.developer-form
+        .col-12.grid-margin
+            .card
+                .card-body
+                    h4.card-title Basic 
+                    form.form-sample(method="post" action="/admin/developers?_csrf="+csrfToken enctype="multipart/form-data" )
+                        p.card-description  Personal Info
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label(for='first_name') First Name
+                                    .col-sm-9
+                                        input#first_name.form-control(type='text' placeholder="First Name" name="first_name" required)
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label(for='last_name') Last Name
+                                    .col-sm-9
+                                        input#last_name.form-control(type='text' placeholder="Last Name" name="last_name" required)
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label(for='email') Email
+                                    .col-sm-9
+                                        input#email.form-control(type='text' placeholder="Email" name="email" required)
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label Date of Birth
+                                    .col-sm-9
+                                        input.form-control(placeholder='yyyy-mm-dd' name="dob" required)
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label(for='phone') Phone
+                                    .input-group.col-sm-9
+                                        .input-group-prepend
+                                        span.input-group-text +91
+                                        input.form-control(type='text' name="number" placeholder='Phone' required)
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label(for='website') Website
+                                    .col-sm-9
+                                        input#website.form-control(type='text' placeholder="Website" name="website" required)
+
+                        .row                            
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label Type
+                                    .col-sm-4
+                                        .form-check
+                                            label.form-check-label
+                                                input#freelancer.form-check-input(type='radio' name='membertype' value='0' checked='')
+                                                |  Freelancer 
+                                                i.input-helper
+                                    .col-sm-5
+                                        .form-check
+                                            label.form-check-label
+                                                input#professional.form-check-input(type='radio' name='membertype' value='1')
+                                                |  Professional 
+                                                i.input-helper
+                        p.card-description  Address 
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label Line1
+                                    .col-sm-9
+                                        input.form-control(type='text' name="address[line1]" required)
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label Postcode
+                                    .col-sm-9
+                                        input.form-control(type='text' name="address[postcode]"  required)
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label City
+                                    .col-sm-9
+                                        input.form-control(type='text' name="address[city]"  required)
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label Country
+                                    .col-sm-9
+                                        select.form-control(name="address[country]" required)
+                                            option(selected) India
+                        .row 
+                            .form-group.col-md-12.col-sm-12.col-xs-12
+                                label File upload
+                                input.file-upload-default(type='file' name='avatar' )
+                                .input-group.col-xs-12
+                                    input.form-control.file-upload-info(type='text' disabled='' placeholder='Upload Image' required)
+                                    span.input-group-append
+                                    button.file-upload-browse.btn.btn-primary(type='button') Upload
+
+                        .row(style="justify-content: right;")
+                            button.btn.btn-primary.mr-2.col-md-2(type='submit') Submit
+                            button.btn.btn-dark.col-md-2(type='reset') Cancel
+    
+
+
+block scripts
+    script(type="text/javascript").
+        $('#add-developer').on('click',function(e) {
+            $('.developer-table').toggle()
+            $('.developer-form').toggle()
+            })
+
+        $(function() {
+            $('.file-upload-browse').on('click', function() {
+            var file = $(this).parent().parent().parent().find('.file-upload-default');
+            file.trigger('click');
+            });
+            $('.file-upload-default').on('change', function() {
+            $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+            });
+        });
+        $(document).ready(function(){ 
+            $('.developer-form').hide()
+             $('.developer-table').show()
+        })
+

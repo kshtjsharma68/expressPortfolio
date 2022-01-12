@@ -1,0 +1,45 @@
+extends ../../layouts/project
+
+block content
+  
+    main#main
+        // ======= Portfolio Details =======
+        #portfolio-details.portfolio-details
+            .container
+                .row
+                    .col-lg-8
+                        //- h2.portfolio-title Beardclub
+                        |             
+                        .owl-carousel.portfolio-details-carousel
+                            img.img-fluid(src='/img/portfolio/dialexcel.png', alt='Dial Excel')
+                            |               
+                            //- img.img-fluid(src='/img/portfolio/portfolio-details-2.jpg', alt='')
+                            //- |               
+                            //- img.img-fluid(src='/img/portfolio/portfolio-details-3.jpg', alt='')
+                        |           
+                    .col-lg-4.portfolio-info
+                        h3 Dial Excel
+                        |             
+                        ul
+                            li
+                                strong Category
+                                | : Web, Twilio Integration and Backend Architecture
+                                |               
+                            li
+                                strong Client
+                                | : Dial Excel
+                                |               
+                            li
+                                strong Year
+                                | : 2020
+                                |               
+                            li
+                                strong URL
+                                | : 
+                                a(href='https://dialexcel.com/' target="_blank") https://dialexcel.com/
+                        |             
+                        p
+                            | Dial right through your Excel file!
+                            | Instead of uploading your list to a dialer and risk losing any data or notes; we bring the dialer to your data!
+            // End Portfolio Details
+        // End #main

@@ -1,0 +1,44 @@
+extends ../../layouts/project
+
+block content
+  
+    main#main
+        // ======= Portfolio Details =======
+        #portfolio-details.portfolio-details
+            .container
+                .row
+                    .col-lg-8
+                        //- h2.portfolio-title Beardclub
+                        |             
+                        .owl-carousel.portfolio-details-carousel
+                            img.img-fluid(src='/img/portfolio/altsignals.png', alt='Alt-Signals')
+                            |               
+                            //- img.img-fluid(src='/img/portfolio/portfolio-details-2.jpg', alt='')
+                            //- |               
+                            //- img.img-fluid(src='/img/portfolio/portfolio-details-3.jpg', alt='')
+                        |           
+                    .col-lg-4.portfolio-info
+                        h3 AltSignals
+                        |             
+                        ul
+                            li
+                                strong Category
+                                | : Api Services
+                                |               
+                            li
+                                strong Client
+                                | : AltSignals
+                                |               
+                            li
+                                strong Year
+                                | : 2021
+                                |               
+                            li
+                                strong URL
+                                | : 
+                                a(href='https://app.altsignals.io/' target="_blank") https://app.altsignals.io/
+                        |             
+                        p
+                            | AltSignals is a simple trading tool which track the market and help tp compound & multiply your money from anywhere in the world
+            // End Portfolio Details
+        // End #main

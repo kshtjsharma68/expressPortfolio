@@ -1,0 +1,338 @@
+extends ../../layouts/adminLayout
+
+block style
+    link(rel="stylesheet" type="text/css" href="/css/custom.css")
+
+block content
+
+    .page-header
+        h3.page-title  Developers 
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item
+                    a(href='#') Admin
+                li.breadcrumb-item.active(aria-current='page') Developers
+
+    .row
+        .col-12.grid-margin
+            .card
+                .card-body
+                    h4.card-title Basic 
+                    .text-right 
+                        a.btn.btn-link.btn-fw(href=`javascript:void(0);` onclick="show('skills')") Skils
+                        a.btn.btn-link.btn-fw(href=`javascript:void(0);`  onclick="show('projects')") Projects
+                        a.btn.btn-link.btn-fw(href=`javascript:void(0);`  onclick="show('education')") Education
+                        button.btn.btn-outline-danger.btn-icon-text(type='button' onclick=`generatePortfolioLink(${id})`)
+                            i.mdi.mdi-upload.btn-icon-prepend
+                            |  Generate Link
+
+                    form.form-sample(method="post" action=`/admin/developers/${id}/update?_csrf=`+csrfToken enctype="multipart/form-data" )
+                        p.card-description  Personal Info
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label(for='first_name') First Name
+                                    .col-sm-9
+                                        input#first_name.form-control(type='text' placeholder="First Name" name="first_name" value=`${developer.first_name}` required)
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label(for='last_name') Last Name
+                                    .col-sm-9
+                                        input#last_name.form-control(type='text' placeholder="Last Name" name="last_name" value=developer.last_name required)
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label(for='email') Email
+                                    .col-sm-9
+                                        input#email.form-control(type='text' placeholder="Email" name="email" value=developer.email required)
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label Date of Birth
+                                    .col-sm-9
+                                        input.form-control(placeholder='yyyy-mm-dd' name="dob" value=new Date(developer.dob).toLocaleString('en-US') required)
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label(for='phone') Phone
+                                    .input-group.col-sm-9
+                                        .input-group-prepend
+                                        span.input-group-text +91
+                                        input.form-control(type='text' name="number" placeholder='Phone' value=developer.phone required)
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label(for='website') Website
+                                    .col-sm-9
+                                        input#website.form-control(type='text' placeholder="Website" name="website" value=developer.website required)
+
+                        .row                            
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label Type
+                                    .col-sm-4
+                                        .form-check
+                                            label.form-check-label
+                                                input#freelancer.form-check-input(type='radio' name='membertype' value='0' checked=`${developer.freelancer.toString('hex')[1] === 1 ? 'checked' : ''}`)
+                                                |  Freelancer 
+                                                i.input-helper
+                                    .col-sm-5
+                                        .form-check
+                                            label.form-check-label
+                                                input#professional.form-check-input(type='radio' name='membertype' value='1' checked=`${developer.freelancer.toString('hex')[1] === 0 ? '' : 'checked'}`)
+                                                |  Professional 
+                                                i.input-helper
+                        p.card-description  Address 
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label Line1
+                                    .col-sm-9
+                                        input.form-control(type='text' name="address[line1]" value=developer.line1 required)
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label Postcode
+                                    .col-sm-9
+                                        input.form-control(type='text' name="address[postcode]" value=developer.postcode  required)
+                        .row
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label City
+                                    .col-sm-9
+                                        input.form-control(type='text' name="address[city]" value=developer.city required)
+                            .col-md-6
+                                .form-group.row
+                                    label.col-sm-3.col-form-label Country
+                                    .col-sm-9
+                                        select.form-control(name="address[country]" required)
+                                            option(selected) India
+                        .row 
+                            .form-group.col-md-12.col-sm-12.col-xs-12
+                                label File upload
+                                input.file-upload-default(type='file' name='avatar' )
+                                .input-group.col-xs-12
+                                    input.form-control.file-upload-info(type='text' disabled='' placeholder='Upload Image' required)
+                                    span.input-group-append
+                                    button.file-upload-browse.btn.btn-primary(type='button') Upload
+
+                        .row(style="justify-content: right;")
+                            button.btn.btn-primary.mr-2.col-md-2(type='submit') Submit
+                            button.btn.btn-dark.col-md-2(type='reset') Cancel
+        .col-md-6.grid-margin.stretch-card.basic
+            .card
+                .card-body
+                    h4.card-title Social Media Links
+                    form.form-sample(method='post' action='/admin/developers/social/'+id+(social.id ? '/update/'+social.id : ''))
+                            
+                            input(type="hidden" name="_csrf" value=csrfToken)
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name="twitter" placeholder='Twitter' aria-label="Recipient's username" aria-describedby='basic-addon2' value=(social.twitter||''))
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-twitter(type='button')
+                                            i.mdi.mdi-twitter 
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name="facebook" placeholder='Facebook' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.facebook|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-facebook(type='button')
+                                            i.mdi.mdi-facebook
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='instagram' placeholder='Instagram' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.instagram|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-instagram(type='button')
+                                            i.mdi.mdi-instagram
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='linkedin' placeholder='LinkedIn' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.linkedin|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-linkedin(type='button')
+                                            i.mdi.mdi-linkedin
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='skype' placeholder='Skype' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.skype|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-skype(type='button')
+                                            i.mdi.mdi-skype
+                            .row(style="justify-content: center;")
+                                    button.btn.btn-primary.mr-2(type='submit') Submit
+                                    button.btn.btn-dark(type='reset') Cancel
+
+        .col-md-6.grid-margin.stretch-card.basic
+            .card
+                .card-body
+                    h4.card-title Information
+                    form.forms-sample(method="post" action="/admin/developers/basic/"+id)
+                        input(type="hidden" name="_csrf" value=csrfToken)
+                        - var typeString = basic.type ? basic.type.split(',') : ''
+                        .form-group
+                            label(for='type') Type  
+                            select#type.form-control(multiple="multiple" name="type")
+                                each title in titles
+                                    if typeString.includes(title.name)
+                                        option(value=title.name, selected) #{title.name}
+                                    else 
+                                        option(value=title.name) #{title.name}
+                        .form-group
+                            label(for='exampleInputCity1') Degree
+                            input#exampleInputCity1.form-control(type='text' placeholder='Degree' name="degree" value=basic.degree||'')
+                        .form-group
+                            label(for='exampleTextarea1') About
+                            textarea#exampleTextarea1.form-control(rows='4' placeholder="Some info about yourself" name="about") #{basic.about || ''}
+                        .form-group.row
+                            .col-md-6
+                                label(for='exampleInputCity1') Client
+                                input#exampleInputCity1.form-control(type='number' placeholder='Number of clients' name="clients" value=basic.client||'')
+                            .col-md-6
+                                label(for='exampleInputCity1') Projects
+                                input#exampleInputCity1.form-control(type='number' placeholder='Number of projects' name="projects" value=basic.projects || '')
+                        .form-group.row
+                            .col-md-6
+                                label(for='exampleInputCity1') Hours
+                                input#exampleInputCity1.form-control(type='number' placeholder='Number of hours' name="hours" value=basic.hours||'')
+                            .col-md-6
+                                label(for='exampleInputCity1') Teams
+                                input#exampleInputCity1.form-control(type='number' placeholder='Number of teams' name="teams" value=basic.teams||'')
+                        .row(style="justify-content: center;")
+                            button.btn.btn-primary.mr-2(type='submit') Submit
+                            button.btn.btn-dark Cancel
+
+        .col-md-6.grid-margin.stretch-card.skills
+            .card
+                .card-body
+                    h4.card-title Skils
+                    form.form-sample(method='post' action='/admin/developers/social/'+id+'/skills')
+                            
+                            input(type="hidden" name="_csrf" value=csrfToken)
+                            .row#skill-content
+                            .row(style="justify-content: center;")
+                                    button.btn.btn-primary.mr-2(type='submit') Submit
+                                    button.btn.btn-dark(type='reset') Cancel
+
+        .col-md-6.grid-margin.stretch-card.education
+            .card
+                .card-body
+                    h4.card-title Education
+                    form.form-sample(method='post' action='/admin/developers/social/'+id+(social.id ? '/update/'+social.id : ''))
+                            
+                            input(type="hidden" name="_csrf" value=csrfToken)
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name="twitter" placeholder='Twitter' aria-label="Recipient's username" aria-describedby='basic-addon2' value=(social.twitter||''))
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-twitter(type='button')
+                                            i.mdi.mdi-twitter 
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name="facebook" placeholder='Facebook' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.facebook|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-facebook(type='button')
+                                            i.mdi.mdi-facebook
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='instagram' placeholder='Instagram' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.instagram|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-instagram(type='button')
+                                            i.mdi.mdi-instagram
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='linkedin' placeholder='LinkedIn' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.linkedin|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-linkedin(type='button')
+                                            i.mdi.mdi-linkedin
+                            .form-group
+                                .input-group
+                                    input.form-control(type='text' name='skype' placeholder='Skype' aria-label="Recipient's username" aria-describedby='basic-addon2' value=social.skype|| '')
+                                    .input-group-append
+                                        button.btn.btn-sm.btn-skype(type='button')
+                                            i.mdi.mdi-skype
+                            .row(style="justify-content: center;")
+                                    button.btn.btn-primary.mr-2(type='submit') Submit
+                                    button.btn.btn-dark(type='reset') Cancel
+
+        .col-md-6.grid-margin.stretch-card.projects
+            .card
+                .card-body
+                    h4.card-title Some projects
+                    form.form-sample(method='post' action='/admin/developers/projects/'+id+'?_csrf='+csrfToken enctype="multipart/form-data")
+                            if projects && projects.id  
+                                input(type="hidden" name="projectId" value=projects.id)
+                            .form-group
+                                label(for='projectName') Name
+                                input#projectName.form-control(type='text' placeholder='Name' name="name" value=(projects&& projects.name) || '')
+                            .form-group
+                                label(for='projectLink') Link
+                                input#projectLink.form-control(type='text' placeholder='Project Link' name="link" value=(projects && projects.link)||'')
+                            .form-group
+                                label(for='projectImage') Portfolio Image
+                                input#projectImage.form-control(type='file' name="project_image" multiple="multiple")
+                            .row(style="justify-content: center;")
+                                    button.btn.btn-primary.mr-2(type='submit') Submit
+                                    button.btn.btn-dark(type='reset') Cancel
+block scripts
+    script(type="text/javascript").
+        function request (url, type, data) { 
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                        url,
+                        type,
+                        data,
+                        cache: false,
+                        success: data => data.hasOwnProperty('data') ? resolve(data.data) : resolve(data),
+                        error: err => reject([])
+                    }); 
+            })                
+        }
+
+        var parent = {}
+        var operations = {
+            __proto__: parent,
+            allSkills: [],
+            index: '', 
+            path: '',
+            type: '',
+            get skills() {
+                this.index = "skills"; 
+                this.path = '/admin/skills';
+                this.type = 'get';
+                return this.allSkills;
+            },
+            set skills(data) {
+                this.allSkills = data;
+            },
+            skillsHtml: function() {
+                let html = ``; 
+                this.allSkills.forEach((v, k) => { 
+                    html += `<div class="form-group row col-md-12">`;
+                    html += `<label class="col-sm-3 col-form-label" for="">${v.name}</label>`;
+                    html += `<div class="col-sm-9">`;
+                    html += `<input type="hidden" name="skill[${k}][id]" value="${v.id}"/>`;
+                    html += `<input class="form-control" type="number" name="skill[${k}][fill]"  required/>`;
+                    html += `</div></div>`;
+                });                
+                $('#skill-content').html(html);
+            },
+            render: function(){ 
+                let key = `${this.index}Html`;
+                return this[key]();                
+            }
+        }
+        async function show(key) { 
+            if( operations.hasOwnProperty(key) ){
+                if(!operations[key].length) operations[key] = await request(operations.path, operations.type, {});
+                operations.render();
+            }
+            
+            ['basic', 'skills', 'education', 'projects'].forEach(v => v === key ? $(`.${v}`).show() : $(`.${v}`).hide());
+            
+        }
+
+        async function generatePortfolioLink(id) {
+            let link = await request('/admin/developers/generateLink','get',{id});
+            $('body').append('<input name="token" id="token"/>'); 
+            let tokenInput = $('#token');
+            tokenInput.val(location.origin + '/portfolio/'+link.token).select();
+            document.execCommand('copy');
+            tokenInput.remove();
+            alert('Link copied to clipboard');
+        }
+

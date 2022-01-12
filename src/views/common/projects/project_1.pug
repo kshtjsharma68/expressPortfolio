@@ -1,0 +1,47 @@
+extends ../../layouts/project
+
+block content
+  
+    main#main
+        // ======= Portfolio Details =======
+        #portfolio-details.portfolio-details
+            .container
+                .row
+                    .col-lg-8
+                        //- h2.portfolio-title Beardclub
+                        |             
+                        .owl-carousel.portfolio-details-carousel
+                            img.img-fluid(src='/img/portfolio/Beardclub.png', alt='Beardclub')
+                            |               
+                            //- img.img-fluid(src='/img/portfolio/portfolio-details-2.jpg', alt='')
+                            //- |               
+                            //- img.img-fluid(src='/img/portfolio/portfolio-details-3.jpg', alt='')
+                        |           
+                    .col-lg-4.portfolio-info
+                        h3 Beardclub
+                        |             
+                        ul
+                            li
+                                strong Category
+                                | : Web Integration and Backend Architecture
+                                |               
+                            li
+                                strong Client
+                                | : The Beardclub
+                                |               
+                            li
+                                strong Year
+                                | : 2018
+                                |               
+                            li
+                                strong URL
+                                | : 
+                                a(href='https://thebeardclub.com/' target="_blank") https://thebeardclub.com/
+                        |             
+                        p
+                            | Buy Beard product on subscription based (login and registration process included in b/w ) Manage various beard product and kits from admin , sync sku with shipwire.
+                            | Managing your subscription .
+                            | Using Recurly API for invoice and subscription management
+                            | Using Shipwire API for shipping solution.
+            // End Portfolio Details
+        // End #main

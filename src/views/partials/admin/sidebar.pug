@@ -1,0 +1,58 @@
+// partial:partials/_sidebar.html
+nav#sidebar.sidebar.sidebar-offcanvas
+  .sidebar-brand-wrapper.d-none.d-lg-flex.align-items-center.justify-content-center.fixed-top
+    a.sidebar-brand.brand-logo(href='index.html')
+      img(src='/assets/images/logo.svg' alt='logo')
+    a.sidebar-brand.brand-logo-mini(href='index.html')
+      img(src='/assets/images/logo-mini.svg' alt='logo')
+  ul.nav
+    li.nav-item.profile
+      .profile-desc
+        .profile-pic
+          .count-indicator
+            img.img-xs.rounded-circle(src='/assets/images/faces/face15.jpg' alt='')
+            span.count.bg-success
+          .profile-name
+            h5.mb-0.font-weight-normal Admin
+            span Admin member
+        a#profile-dropdown(href='#' data-toggle='dropdown')
+          i.mdi.mdi-dots-vertical
+        .dropdown-menu.dropdown-menu-right.sidebar-dropdown.preview-list(aria-labelledby='profile-dropdown')
+          //- a.dropdown-item.preview-item(href='#')
+          //-   .preview-thumbnail
+          //-     .preview-icon.bg-dark.rounded-circle
+          //-       i.mdi.mdi-settings.text-primary
+          //-   .preview-item-content
+          //-     p.preview-subject.ellipsis.mb-1.text-small Account settings
+          //- .dropdown-divider
+          a.dropdown-item.preview-item(href='/admin/change-password')
+            .preview-thumbnail
+              .preview-icon.bg-dark.rounded-circle
+                i.mdi.mdi-onepassword.text-info
+            .preview-item-content
+              p.preview-subject.ellipsis.mb-1.text-small Change Password
+          .dropdown-divider
+          //- a.dropdown-item.preview-item(href='#')
+          //-   .preview-thumbnail
+          //-     .preview-icon.bg-dark.rounded-circle
+          //-       i.mdi.mdi-calendar-today.text-success
+          //-   .preview-item-content
+          //-     p.preview-subject.ellipsis.mb-1.text-small To-do list
+    li.nav-item.nav-category
+      span.nav-link Navigation
+    li.nav-item.menu-items
+      a.nav-link(href='/admin')
+        span.menu-icon
+          i.mdi.mdi-speedometer
+        span.menu-title Dashboard
+    li.nav-item.menu-items
+      a.nav-link(href='/admin/developers')
+        span.menu-icon
+          i.mdi.mdi-laptop
+        span.menu-title Developers
+    li.nav-item.menu-items
+      a.nav-link(href='/admin/parameters')
+        span.menu-icon
+          i.mdi.mdi-playlist-play
+        span.menu-title Parameters
+    

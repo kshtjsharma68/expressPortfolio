@@ -1,0 +1,372 @@
+extends ../layouts/adminLayout
+
+block content
+        
+    .page-header
+        h3.page-title  Basic Tables 
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item
+                    a(href='#') Tables
+                li.breadcrumb-item.active(aria-current='page') Basic tables
+    .row
+        .col-lg-6.grid-margin.stretch-card
+            .card
+                .card-body
+                    h4.card-title Roles
+                        button#roles_btn.btn.btn-inverse-primary.btn-fw(style="float: right;")  ADD
+                    .table-responsive
+                        table.table.role-table
+                            thead
+                                tr
+                                    th Id
+                                    th Name
+                                    th Action
+                            tbody
+                                each title in titles
+                                    tr
+                                        td=title.id
+                                        td=title.name
+                                        td 
+                                            button.btn.btn-danger.btn-sm.role-del(data-id=title.id, onclick=`removeRole(this,${title.id})`)
+                                                i.mdi.mdi-pencil  
+
+                    form.forms-sample.role-form(style="display: none;", method="post", action="/admin/add-role")
+                        input(type="hidden" name="_csrf" value=csrfToken)
+                        .form-group
+                            label(for='Name') Name
+                            input#name.form-control(type='text' name="name" placeholder='Role name')
+                        button.btn.btn-primary.mr-2(type='submit') Submit
+                        button.btn.btn-dark(type="reset") Cancel
+        .col-lg-6.grid-margin.stretch-card
+            .card
+                .card-body
+                    h4.card-title 
+                        |   Skills
+                        button#skills_btn.btn.btn-inverse-primary.btn-fw(style="float: right;")  ADD
+                    .table-responsive.skill-table
+                        table.table.table-hover
+                            thead
+                                tr
+                                    th Id
+                                    th Skill
+                                    th Action
+                            tbody
+                                each skill in skills
+                                    tr
+                                        td=skill.id
+                                        td=skill.name
+                                        td 
+                                            button.btn.btn-danger.btn-sm(data-id=skill.id, onclick=`removeSkill(this,${skill.id})`)
+                                                i.mdi.mdi-delete
+                    form.forms-sample.skill-form(style="display: none;", method="post", action="/admin/add-skill")
+                        input(type="hidden" name="_csrf" value=csrfToken)
+                        .form-group
+                            label(for='Name') Name
+                            input#name.form-control(type='text' name="name" placeholder='Skill name')
+                        button.btn.btn-primary.mr-2(type='submit') Submit
+                        button.btn.btn-dark(type="reset") Cancel
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    h4.card-title Striped Table
+                    p.card-description
+                        | Add class 
+                        code .table-striped
+                    .table-responsive
+                        table.table.table-striped
+                            thead
+                                tr
+                                    th  User 
+                                    th  First name 
+                                    th  Progress 
+                                    th  Amount 
+                                    th  Deadline 
+                            tbody
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-1.png' alt='image')
+                                    td  Herman Beck 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-success(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-2.png' alt='image')
+                                    td  Messsy Adam 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-danger(role='progressbar' style='width: 75%' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
+                                    td  $245.30 
+                                    td  July 1, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-3.png' alt='image')
+                                    td  John Richards 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-warning(role='progressbar' style='width: 90%' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100')
+                                    td  $138.00 
+                                    td  Apr 12, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-4.png' alt='image')
+                                    td  Peter Meggik 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-primary(role='progressbar' style='width: 50%' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-1.png' alt='image')
+                                    td  Edward 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-danger(role='progressbar' style='width: 35%' aria-valuenow='35' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 160.25 
+                                    td  May 03, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-2.png' alt='image')
+                                    td  John Doe 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-info(role='progressbar' style='width: 65%' aria-valuenow='65' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 123.21 
+                                    td  April 05, 2015 
+                                tr
+                                    td.py-1
+                                        img(src='../../assets/images/faces-clipart/pic-3.png' alt='image')
+                                    td  Henry Tom 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-warning(role='progressbar' style='width: 20%' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 150.00 
+                                    td  June 16, 2015 
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    h4.card-title Bordered table
+                    p.card-description
+                        | Add class 
+                        code .table-bordered
+                    .table-responsive
+                        table.table.table-bordered
+                            thead
+                                tr
+                                    th  # 
+                                    th  First name 
+                                    th  Progress 
+                                    th  Amount 
+                                    th  Deadline 
+                            tbody
+                                tr
+                                    td  1 
+                                    td  Herman Beck 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-success(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td  2 
+                                    td  Messsy Adam 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-danger(role='progressbar' style='width: 75%' aria-valuenow='75' aria-valuemin='0' aria-valuemax='100')
+                                    td  $245.30 
+                                    td  July 1, 2015 
+                                tr
+                                    td  3 
+                                    td  John Richards 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-warning(role='progressbar' style='width: 90%' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100')
+                                    td  $138.00 
+                                    td  Apr 12, 2015 
+                                tr
+                                    td  4 
+                                    td  Peter Meggik 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-primary(role='progressbar' style='width: 50%' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td  5 
+                                    td  Edward 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-danger(role='progressbar' style='width: 35%' aria-valuenow='35' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 160.25 
+                                    td  May 03, 2015 
+                                tr
+                                    td  6 
+                                    td  John Doe 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-info(role='progressbar' style='width: 65%' aria-valuenow='65' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 123.21 
+                                    td  April 05, 2015 
+                                tr
+                                    td  7 
+                                    td  Henry Tom 
+                                    td
+                                        .progress
+                                            .progress-bar.bg-warning(role='progressbar' style='width: 20%' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100')
+                                    td  $ 150.00 
+                                    td  June 16, 2015 
+        .col-lg-12.grid-margin.stretch-card
+            .card
+                .card-body
+                    h4.card-title Inverse table
+                    p.card-description
+                        | Add class 
+                        code .table-dark
+                    .table-responsive
+                        table.table.table-dark
+                            thead
+                                tr
+                                    th  # 
+                                    th  First name 
+                                    th  Amount 
+                                    th  Deadline 
+                            tbody
+                                tr
+                                    td  1 
+                                    td  Herman Beck 
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td  2 
+                                    td  Messsy Adam 
+                                    td  $245.30 
+                                    td  July 1, 2015 
+                                tr
+                                    td  3 
+                                    td  John Richards 
+                                    td  $138.00 
+                                    td  Apr 12, 2015 
+                                tr
+                                    td  4 
+                                    td  Peter Meggik 
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr
+                                    td  5 
+                                    td  Edward 
+                                    td  $ 160.25 
+                                    td  May 03, 2015 
+                                tr
+                                    td  6 
+                                    td  John Doe 
+                                    td  $ 123.21 
+                                    td  April 05, 2015 
+                                tr
+                                    td  7 
+                                    td  Henry Tom 
+                                    td  $ 150.00 
+                                    td  June 16, 2015 
+        .col-lg-12.stretch-card
+            .card
+                .card-body
+                    h4.card-title Table with contextual classes
+                    p.card-description
+                        | Add class 
+                        code .table-{color}
+                    .table-responsive
+                        table.table.table-bordered.table-contextual
+                            thead
+                                tr
+                                    th  # 
+                                    th  First name 
+                                    th  Product 
+                                    th  Amount 
+                                    th  Deadline 
+                            tbody
+                                tr.table-info
+                                    td  1 
+                                    td  Herman Beck 
+                                    td  Photoshop 
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr.table-warning
+                                    td  2 
+                                    td  Messsy Adam 
+                                    td  Flash 
+                                    td  $245.30 
+                                    td  July 1, 2015 
+                                tr.table-danger
+                                    td  3 
+                                    td  John Richards 
+                                    td  Premeire 
+                                    td  $138.00 
+                                    td  Apr 12, 2015 
+                                tr.table-success
+                                    td  4 
+                                    td  Peter Meggik 
+                                    td  After effects 
+                                    td  $ 77.99 
+                                    td  May 15, 2015 
+                                tr.table-primary
+                                    td  5 
+                                    td  Edward 
+                                    td  Illustrator 
+                                    td  $ 160.25 
+                                    td  May 03, 2015 
+
+                
+block scripts
+    script(type="text/javascript").
+        $.ajaxSetup({
+            headers: {'X-CSRF-Token': $('input[name="_csrf"]').val()}
+        });
+
+        $(document).ready(function() {
+
+            $('#roles_btn').click(function(){
+                    $('.role-form').toggle()
+                    $('.role-table').toggle()
+            })
+
+            $('#skills_btn').click(function() {
+                $('.skill-form').toggle()
+                $('.skill-table').toggle()
+            })
+        })
+
+        async function removeRole(elm, id) {
+            let rows = '';
+            let data = await sendRequest('/admin/remove-role', {id}).then(r =>  r).catch(err => []);
+            data.forEach(title => rows +=`<tr><td>${title.id}</td><td>${title.name}</td><td><button class="btn btn-danger btn-sm" onClick="removeRole(this, ${title.id})"><i class="mdi mdi-delete"></i></button></td></tr>`);
+            $(elm).parent().parent().parent().empty().html(rows)
+        }
+
+        async function removeSkill(elm, id) {
+            let rows = '';
+            let data = await sendRequest('/admin/remove-skill', {id}).then(r =>  r).catch(err => []);
+            data.forEach(skill => rows +=`<tr><td>${skill.id}</td><td>${skill.name}</td><td><button class="btn btn-danger btn-sm" onClick="removeSkill(this, ${skill.id})"><i class="mdi mdi-delete"></i></button></td></tr>`);
+            $(elm).parent().parent().parent().empty().html(rows)
+        }
+
+        function sendRequest(url, data) { 
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url,
+                    type:'post',
+                    data,
+                    success: function({message, data}){   
+                        resolve(data)
+                    },
+                    error: function(err){
+                        console.log(err)
+                        reject([]);
+                    }
+                })
+            })
+        }
+
+

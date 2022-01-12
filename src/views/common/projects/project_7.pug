@@ -1,0 +1,44 @@
+extends ../../layouts/project
+
+block content
+  
+    main#main
+        // ======= Portfolio Details =======
+        #portfolio-details.portfolio-details
+            .container
+                .row
+                    .col-lg-8
+                        //- h2.portfolio-title Beardclub
+                        |             
+                        .owl-carousel.portfolio-details-carousel
+                            img.img-fluid(src='/img/portfolio/carwash.png', alt='Car Wash')
+                            |               
+                            //- img.img-fluid(src='/img/portfolio/portfolio-details-2.jpg', alt='')
+                            //- |               
+                            //- img.img-fluid(src='/img/portfolio/portfolio-details-3.jpg', alt='')
+                        |           
+                    .col-lg-4.portfolio-info
+                        h3 Mobile Car Wash
+                        |             
+                        ul
+                            li
+                                strong Category
+                                | : Web Integration and Backend Architecture
+                                |               
+                            li
+                                strong Client
+                                | : Mobile Car Wash
+                                |               
+                            li
+                                strong Year
+                                | : 2019
+                                |               
+                            li
+                                strong URL
+                                | : 
+                                a(href='https://www.mobilecarwash.com/' target="_blank") https://www.mobilecarwash.com/
+                        |             
+                        p
+                            | Mobile Car wash booking website and mobile app which provides a platform to book a car wash service easily, keeping long queues and waits out of the picture. Mobile car wash websites and apps allow users to check the type of car they own and the service they want to avail according to the requirement. 
+            // End Portfolio Details
+        // End #main
