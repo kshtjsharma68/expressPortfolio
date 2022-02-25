@@ -1,0 +1,44 @@
+extends ../../layouts/project
+
+block content
+  
+    main#main
+        // ======= Portfolio Details =======
+        #portfolio-details.portfolio-details
+            .container
+                .row
+                    .col-lg-8
+                        //- h2.portfolio-title Beardclub
+                        |             
+                        .owl-carousel.portfolio-details-carousel
+                            img.img-fluid(src='/img/portfolio/Athena.png', alt='Ath3na')
+                            |               
+                            //- img.img-fluid(src='/img/portfolio/portfolio-details-2.jpg', alt='')
+                            //- |               
+                            //- img.img-fluid(src='/img/portfolio/portfolio-details-3.jpg', alt='')
+                        |           
+                    .col-lg-4.portfolio-info
+                        h3 Ath3na communication tool
+                        |             
+                        ul
+                            li
+                                strong Category
+                                | : React Integration, Backend Architecture with ExpressJS and airtable and Twilio integration
+                                |               
+                            li
+                                strong Client
+                                | : Ath3na
+                                |               
+                            li
+                                strong Year
+                                | : 2021
+                                |               
+                            //- li
+                            //-     strong URL
+                            //-     | : 
+                                //- a(href='https://biramedia.com/' target="_blank") https://biramedia.com/
+                        |             
+                        p
+                            | Platform to connect customer's and manager in a conference through the twilio service.
+            // End Portfolio Details
+        // End #main
